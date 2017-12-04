@@ -1,0 +1,44 @@
+{
+  "name": "supertest",
+  "version": "3.0.0",
+  "description": "SuperAgent driven library for testing HTTP servers",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "npm install",
+    "test": "eslint lib/**/*.js test/**/*.js && mocha --require should --reporter spec --check-leaks"
+  },
+  "dependencies": {
+    "superagent": "^3.0.0",
+    "methods": "~1.1.2"
+  },
+  "devDependencies": {
+    "body-parser": "~1.16.0",
+    "cookie-parser": "~1.4.1",
+    "eslint": "^3.14.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "1.16.0",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "6.4.1",
+    "express": "~4.14.0",
+    "mocha": "~3.2.0",
+    "should": "~11.2.0"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "keywords": [
+    "superagent",
+    "request",
+    "tdd",
+    "bdd",
+    "http",
+    "test",
+    "testing"
+  ],
+  "author": "TJ Holowaychuk",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/visionmedia/supertest.git"
+  }
+}

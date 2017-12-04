@@ -1,0 +1,49 @@
+{
+  "name": "caching-transform",
+  "version": "1.0.1",
+  "description": "Wraps a transform and provides caching",
+  "license": "MIT",
+  "repository": "jamestalmage/caching-transform",
+  "author": {
+    "name": "James Talmage",
+    "email": "james@talmage.io",
+    "url": "github.com/jamestalmage"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "xo && nyc --reporter=lcov --reporter=text ava"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "transform",
+    "cache",
+    "require",
+    "transpile",
+    "fast",
+    "speed",
+    "hash"
+  ],
+  "dependencies": {
+    "md5-hex": "^1.2.0",
+    "mkdirp": "^0.5.1",
+    "write-file-atomic": "^1.1.4"
+  },
+  "devDependencies": {
+    "ava": "^0.8.0",
+    "coveralls": "^2.11.6",
+    "mock-fs": "^3.5.0",
+    "nyc": "5.0.1",
+    "proxyquire": "^1.7.3",
+    "sinon": "^1.17.2",
+    "xo": "^0.12.1"
+  },
+  "xo": {
+    "ignores": [
+      "test.js"
+    ]
+  }
+}
