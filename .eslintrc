@@ -14,12 +14,9 @@
     "jsx-a11y",
     "react"
   ],
-  "globals": {
-    "pptx": true,
-    "sidekiq": true,
-    },
+  "globals": {},
   "env": {
-    "browser": true,
+    "browser": false,
     "commonjs": true,
     "es6": true,
     "jest": true,

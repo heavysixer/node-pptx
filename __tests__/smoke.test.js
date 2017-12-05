@@ -1,7 +1,6 @@
-let pptx = require('../index.js');
+const PPTX = require('../index.js');
 describe('test essentials', () => {
 	test('true', () => {
-		console.log(pptx);
-		expect(true).toBe(true);
+		expect(Object.keys(PPTX)).toEqual(['Presentation', 'Slide', 'emu']);
 	});
 });
