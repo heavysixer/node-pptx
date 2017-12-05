@@ -1,6 +1,8 @@
 # node-pptx [![Build Status](https://travis-ci.org/heavysixer/node-pptx.svg?branch=master)](https://travis-ci.org/heavysixer/node-pptx)
 
-> Generate PPTX files on the server-side with JavaScript.
+## Under Development (Do not use)
+
+Generate PPTX files on the server-side with JavaScript.
 
 ## Install
 
