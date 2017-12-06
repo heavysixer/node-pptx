@@ -14,7 +14,7 @@ describe('Presentation Module', () => {
 	// 	    two: 'two',
 	// 	  },
 	// 	};
-    //
+	//
 	// 	let presentation = new PPTX.Presentation(opts);
 	// 	expect(presentation.content.foo).toBe('bar');
 	// 	expect(presentation.content.obj.one).toBe('one');
@@ -26,7 +26,10 @@ describe('Presentation Module', () => {
 
 			console.log(`Using file path: ${fulltemplateFilePath}`);
 			let presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
-			presentation.save(tmpDir+"/rewrite-of-existing.pptx");
+
+			presentation.loadExistingPPTX(function() {
+				presentation.save(`${tmpDir}/rewrite-of-existing.pptx`);
+			});
 		} catch (err) {
 			console.log(err);
 			throw err;
@@ -36,6 +39,7 @@ describe('Presentation Module', () => {
 	test('should be able to create a pptx file from scratch', () => {
 		try {
 			let presentation = new PPTX.Presentation();
+			console.log('presentation content: ', presentation.content);
 			presentation.save(`${tmpDir}/example2.pptx`);
 		} catch (err) {
 			console.log(err);

@@ -1,4 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+let convert = require('xml-js');
+let fs = require('fs');
+let options = { ignoreComment: true, alwaysChildren: true, compact: false };
+
+let test_xml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <p:sldMaster xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main">
   <p:cSld>
     <p:bg>
@@ -500,4 +504,8 @@
       </a:lvl9pPr>
     </p:otherStyle>
   </p:txStyles>
-</p:sldMaster>
+</p:sldMaster>`;
+
+let json_object = convert.xml2json(test_xml, options);
+console.log(json_object);
+fs.writeFileSync(__dirname+"/slideMaster1.stub.js", json_object.toString());
