@@ -27,7 +27,7 @@ describe('Presentation Module', () => {
 			console.log(`Using file path: ${fulltemplateFilePath}`);
 			let presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
 
-			presentation.loadExistingPPTX(function() {
+			presentation.loadExistingPPTX(async function() {
 				presentation.save(`${tmpDir}/rewrite-of-existing.pptx`);
 			});
 		} catch (err) {
@@ -39,7 +39,6 @@ describe('Presentation Module', () => {
 	test('should be able to create a pptx file from scratch', () => {
 		try {
 			let presentation = new PPTX.Presentation();
-			console.log('presentation content: ', presentation.content);
 			presentation.save(`${tmpDir}/example2.pptx`);
 		} catch (err) {
 			console.log(err);
