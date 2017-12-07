@@ -7,4 +7,4 @@ bower_components/
 .icloud
 *.icloud
 package-lock.json
-/.idea
+/__tests__/tmp
