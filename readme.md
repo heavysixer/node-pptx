@@ -12,7 +12,7 @@ $ npm install node-pptx
 
 ## Usage
 
-```js
+```javascript
 const pptx = require('node-pptx');
 
 // Currently PowerPoint files can only be created by supplying a JSON
