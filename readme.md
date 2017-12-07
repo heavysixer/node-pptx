@@ -74,6 +74,14 @@ new pptx.Presentation()
 .save('/tmp/my-presentation.pptx');
 ```
 
+## Special Thanks
+
+This project builds off the hard work of several other PPTX libraries namely:
+
+* <https://github.com/gitbrent/PptxGenJS>
+* <https://github.com/Ziv-Barber/officegen>
+* <https://github.com/won21kr/js-pptx>
+
 ## License
 
 MIT © [Mark Daggett](https://github.com/heavysixer)
