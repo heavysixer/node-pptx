@@ -62,9 +62,11 @@ new pptx.Presentation()
         .y(0);
       })
       .addShape(shape => {
+
         shape.type('circle');
       })
       .addImage(image => {
+
         image.src('http://www.someurl.com/some-image.jpg');
       });
     });
