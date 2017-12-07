@@ -13,10 +13,35 @@ $ npm install node-pptx
 ## Usage
 
 ```js
-const nodePptx = require('node-pptx');
-```
+const pptx = require('node-pptx');
 
-## API
+// Currently PowerPoint files can only be created by supplying a JSON
+// representation of the presentation to the initializer.
+
+let presentation = new pptx.Presentation({});
+presentation.save('/tmp/my-presentation');
+
+// In the futures presentations will also be able to composed through the DSL
+new pptx.Presentation()
+	.compose(pres => {
+		pres.title('My Presentation').addSlide(slide => {
+			slide
+				.addText(text => {
+					text
+						.value('Hello world')
+						.x(10)
+						.y(0);
+				})
+				.addShape(shape => {
+					shape.type('circle');
+				})
+				.addImage(image => {
+					image.url('http://www.someurl.com/some-image.jpg');
+				});
+		});
+	})
+	.save('/tmp/my-presentation.pptx');
+```
 
 ## License
 
