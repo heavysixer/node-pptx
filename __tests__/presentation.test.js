@@ -27,6 +27,8 @@ describe('Presentation Module', () => {
 			console.log(`Using file path: ${fulltemplateFilePath}`);
 			let presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
 
+			fail('This no longer works because the callback is never triggered for existing files');
+
 			presentation.loadExistingPPTX(async function() {
 				presentation.save(`${tmpDir}/rewrite-of-existing.pptx`);
 				expect(fs.existsSync(`${tmpDir}/rewrite-of-existing.pptx`)).toBe(true);
