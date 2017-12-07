@@ -29,6 +29,7 @@ describe('Presentation Module', () => {
 
 			presentation.loadExistingPPTX(async function() {
 				presentation.save(`${tmpDir}/rewrite-of-existing.pptx`);
+				expect(fs.existsSync(`${tmpDir}/rewrite-of-existing.pptx`)).toBe(true);
 			});
 		} catch (err) {
 			console.log(err);
@@ -40,6 +41,7 @@ describe('Presentation Module', () => {
 		try {
 			let presentation = new PPTX.Presentation();
 			presentation.save(`${tmpDir}/example2.pptx`);
+			expect(fs.existsSync(`${tmpDir}/example2.pptx`)).toBe(true);
 		} catch (err) {
 			console.log(err);
 			throw err;
