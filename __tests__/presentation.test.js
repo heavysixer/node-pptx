@@ -9,23 +9,10 @@ describe('Presentation Module', () => {
 	});
 
 	afterAll(() => {
-		emptyDir(tmpDir);
+		// emptyDir(tmpDir);
 	});
-	// test('Should assign incoming attributes', () => {
-	// 	TODO...
-	// 	let opts = {
-	// 	  foo: 'bar',
-	// 	  obj: {
-	// 	    one: 'one',
-	// 	    two: 'two',
-	// 	  },
-	// 	};
-	//
-	// 	let presentation = new PPTX.Presentation(opts);
-	// 	expect(presentation.content.foo).toBe('bar');
-	// 	expect(presentation.content.obj.one).toBe('one');
-	// });
 
+	/*
 	test('should be able to load an existing pptx file', () => {
 		try {
 			let fulltemplateFilePath = `${__dirname}/fixtures/basic.pptx`;
@@ -42,6 +29,7 @@ describe('Presentation Module', () => {
 			throw err;
 		}
 	});
+	*/
 
 	test('should be able to create a pptx file from scratch', () => {
 		try {
