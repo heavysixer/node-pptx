@@ -23,8 +23,6 @@ describe('Presentation Module', () => {
 	test('should be able to load an existing pptx file', () => {
 		try {
 			let fulltemplateFilePath = `${__dirname}/fixtures/basic.pptx`;
-
-			console.log(`Using file path: ${fulltemplateFilePath}`);
 			let presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
 
 			fail('This no longer works because the callback is never triggered for existing files');
