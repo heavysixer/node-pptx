@@ -1,10 +1,16 @@
 const PPTX = require('../index.js');
 const fs = require('fs');
+const path = require('path');
 const tmpDir = `${__dirname}/tmp`;
 
-createTmpDir(tmpDir);
-
 describe('Presentation Module', () => {
+	beforeAll(() => {
+		prepareTmpDir(tmpDir);
+	});
+
+	afterAll(() => {
+		emptyDir(tmpDir);
+	});
 	// test('Should assign incoming attributes', () => {
 	// 	TODO...
 	// 	let opts = {
@@ -49,8 +55,18 @@ describe('Presentation Module', () => {
 	});
 });
 
-function createTmpDir(dir) {
+function prepareTmpDir(dir) {
 	if (!fs.existsSync(dir)) {
 		fs.mkdirSync(dir);
+	} else {
+		emptyDir(dir);
+	}
+}
+
+function emptyDir(dir) {
+	for (const file of fs.readdirSync(dir)) {
+		fs.unlink(path.join(dir, file), err => {
+			if (err) throw err;
+		});
 	}
 }
