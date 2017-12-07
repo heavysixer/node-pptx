@@ -18,7 +18,32 @@ const pptx = require('node-pptx');
 // Currently PowerPoint files can only be created by supplying a JSON
 // representation of the presentation to the initializer.
 
-let presentation = new pptx.Presentation({});
+let presentation = new pptx.Presentation({
+  title: 'Hello World',
+  slides: [
+    {elements:
+    [{
+      type: 'Text'
+      attributes: {
+        value: 'Hi!'
+        x: 10,
+        y: 0
+      }
+    },
+    {
+      type: 'Shape',
+      attributes: {
+        type: 'Circle'
+      }
+    },
+    {
+      type: 'Image',
+      attributes: {
+        src: 'http://www.someurl.com/some-image.jpg'
+      }
+    }]}
+  ]
+});
 presentation.save('/tmp/my-presentation');
 
 // In the futures presentations will also be able to composed through the DSL
@@ -40,7 +65,7 @@ new pptx.Presentation()
         shape.type('circle');
       })
       .addImage(image => {
-        image.url('http://www.someurl.com/some-image.jpg');
+        image.src('http://www.someurl.com/some-image.jpg');
       });
     });
 })
