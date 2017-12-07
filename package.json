@@ -9,6 +9,12 @@
 		"email": "mark@humansized.com",
 		"url": "github.com/heavysixer"
 	},
+	"contributors": [
+		{
+			"name": "Greg Dolley",
+			"url": "github.com/gregdolley"
+		}
+	],
 	"engines": {
 		"node": ">=4"
 	},
