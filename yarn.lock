@@ -3655,7 +3655,7 @@ sane@^2.0.0:
   optionalDependencies:
     fsevents "^1.1.1"
 
-sax@>=0.6.0, sax@^1.2.1:
+sax@>=0.6.0, sax@^1.2.1, sax@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
 
@@ -4233,6 +4233,12 @@ write@^0.2.1:
 xdg-basedir@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/xdg-basedir/-/xdg-basedir-3.0.0.tgz#496b2cc109eca8dbacfe2dc72b603c17c5870ad4"
+
+xml-js@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/xml-js/-/xml-js-1.5.2.tgz#234780d012b49a19093dbd464228d06303fddc23"
+  dependencies:
+    sax "^1.2.4"
 
 xml-name-validator@^2.0.1:
   version "2.0.1"
