@@ -34,8 +34,8 @@ describe('Presentation Module', () => {
 	test('should be able to create a pptx file from scratch', () => {
 		try {
 			let presentation = new PPTX.Presentation();
-			presentation.save(`${tmpDir}/example2.pptx`);
-			expect(fs.existsSync(`${tmpDir}/example2.pptx`)).toBe(true);
+			presentation.save(`${tmpDir}/two_slides.pptx`);
+			expect(fs.existsSync(`${tmpDir}/two_slides.pptx`)).toBe(true);
 		} catch (err) {
 			console.log(err);
 			throw err;
