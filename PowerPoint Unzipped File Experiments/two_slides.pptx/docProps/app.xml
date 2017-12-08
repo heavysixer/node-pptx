@@ -22,15 +22,14 @@
         <vt:lpstr>Slide Titles</vt:lpstr>
       </vt:variant>
       <vt:variant>
-        <vt:i4>2</vt:i4>
+        <vt:i4>1</vt:i4>
       </vt:variant>
     </vt:vector>
   </HeadingPairs>
   <TitlesOfParts>
-    <vt:vector size="3" baseType="lpstr">
+    <vt:vector size="2" baseType="lpstr">
       <vt:lpstr>Office Theme</vt:lpstr>
       <vt:lpstr>Slide 1</vt:lpstr>
-      <vt:lpstr>Slide 2</vt:lpstr>
     </vt:vector>
   </TitlesOfParts>
   <LinksUpToDate>false</LinksUpToDate>
