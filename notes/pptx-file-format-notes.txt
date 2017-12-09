@@ -47,7 +47,7 @@ The r:id="rId2" references the following XML in slide1.xml.rels:
 
 -------------
 -For adding a slide:
-    -Three things are affected:
+    -These things are affected:
         -ppt/slideLayouts (but only if you need to define a NEW slide layout)
         -ppt/slides
         -ppt/slides/_rels
@@ -81,4 +81,3 @@ The r:id="rId2" references the following XML in slide1.xml.rels:
           <Slides>1</Slides>
 
         -This is the slide count - increment it by one.
-        
