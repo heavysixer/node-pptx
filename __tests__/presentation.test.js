@@ -12,27 +12,30 @@ describe('Presentation Module', () => {
 		// emptyDir(tmpDir);
 	});
 
-	// test('should be able to load an existing pptx file', () => {
-	// 	try {
-	// 		let fulltemplateFilePath = `${__dirname}/fixtures/basic.pptx`;
-	// 		let presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
-    //
-	// 		fail('This no longer works because the callback is never triggered for existing files');
-    //
-	// 		presentation.loadExistingPPTX(async function() {
-	// 			presentation.save(`${tmpDir}/rewrite-of-existing.pptx`);
-	// 			expect(fs.existsSync(`${tmpDir}/rewrite-of-existing.pptx`)).toBe(true);
-	// 		});
-	// 	} catch (err) {
-	// 		console.log(err);
-	// 		throw err;
-	// 	}
-	// });
+	test('should be able to load an existing pptx file', () => {
+		try {
+			let fulltemplateFilePath = `${__dirname}/fixtures/basic.pptx`;
+			let presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
+
+			presentation.loadExistingPPTX(function(err) {
+				if (err) fail(err);
+
+				presentation.save(`${tmpDir}/rewrite-of-existing.pptx`);
+				expect(fs.existsSync(`${tmpDir}/rewrite-of-existing.pptx`)).toBe(true);
+			});
+		} catch (err) {
+			console.log(err);
+			throw err;
+		}
+	});
 
 	test('should be able to create a pptx file from scratch', () => {
 		try {
 			let presentation = new PPTX.Presentation();
+
+			presentation.buildPowerPoint();
 			presentation.save(`${tmpDir}/two_slides_with_template.pptx`);
+
 			expect(fs.existsSync(`${tmpDir}/two_slides_with_template.pptx`)).toBe(true);
 		} catch (err) {
 			console.log(err);
