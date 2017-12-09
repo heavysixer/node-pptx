@@ -34,13 +34,18 @@ describe('Presentation Module', () => {
 			let presentation = new PPTX.Presentation();
 
 			presentation.buildPowerPoint();
-			presentation.addSlide('slide2');
-			presentation.addSlide('slide3!');
-			presentation.addSlide('slide4');
-			presentation.addSlide('Another');
-			presentation.addSlide('Woohoo!');
-			presentation.addSlide('HelloWorld!');
-			presentation.addSlide('Last');
+			let newSlide = presentation.addSlide('slide2', 'slideLayout2');
+
+			expect(newSlide.rId).toBeDefined();
+			expect(newSlide.rId).not.toBeNull();
+			console.log('rId = ', newSlide.rId);
+
+			presentation.addSlide('slide3!', 'slideLayout3');
+			presentation.addSlide('slide4', 'slideLayout4');
+			presentation.addSlide('Another', 'slideLayout5');
+			presentation.addSlide('Woohoo!', 'slideLayout6');
+			presentation.addSlide('HelloWorld!', 'slideLayout7');
+			presentation.addSlide('Last', 'slideLayout8');
 
 			presentation.save(`${tmpDir}/multiple_slides.pptx`);
 
