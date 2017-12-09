@@ -34,9 +34,17 @@ describe('Presentation Module', () => {
 			let presentation = new PPTX.Presentation();
 
 			presentation.buildPowerPoint();
-			presentation.save(`${tmpDir}/two_slides_with_template.pptx`);
+			presentation.addSlide('slide2');
+			presentation.addSlide('slide3!');
+			presentation.addSlide('slide4');
+			presentation.addSlide('Another');
+			presentation.addSlide('Woohoo!');
+			presentation.addSlide('HelloWorld!');
+			presentation.addSlide('Last');
 
-			expect(fs.existsSync(`${tmpDir}/two_slides_with_template.pptx`)).toBe(true);
+			presentation.save(`${tmpDir}/multiple_slides.pptx`);
+
+			expect(fs.existsSync(`${tmpDir}/multiple_slides.pptx`)).toBe(true);
 		} catch (err) {
 			console.log(err);
 			throw err;
