@@ -33,12 +33,11 @@ describe('Presentation Module', () => {
 		try {
 			let presentation = new PPTX.Presentation();
 
-			presentation.buildPowerPoint();
+			presentation.buildPowerPoint(); // TODO: this function is needed for init, but is also used for building after adding objects to a pptx. Separate into two different functions...
 			let newSlide = presentation.addSlide('slide2', 'slideLayout2');
 
 			expect(newSlide.rId).toBeDefined();
 			expect(newSlide.rId).not.toBeNull();
-			console.log('rId = ', newSlide.rId);
 
 			presentation.addSlide('slide3!', 'slideLayout3');
 			presentation.addSlide('slide4', 'slideLayout4');
