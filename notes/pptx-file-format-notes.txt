@@ -81,3 +81,39 @@ The r:id="rId2" references the following XML in slide1.xml.rels:
           <Slides>1</Slides>
 
         -This is the slide count - increment it by one.
+
+
+-----------
+
+Notes on file format differences when adding a single image to a brand new PPTX (new PPTX just had one blank slide and I clicked "insert image" and saved, that's it):
+
+-[Content_Types].xml:
+    -A new entry was added under the root node <Types> for a png content type. Here's the node:
+        <Default Extension="png" ContentType="image/png"/>
+
+-No changes to the root _rels folder or .rels file.
+
+-Changes to docProps folder:
+    -That default thumbnail.jpeg which is normally a blank white image changed into a thumbnail of the image I inserted into the first slide (notice how it's jpeg and not png).
+        -So I guess PowerPoint is taking the first image of a pptx, shrinking it, saving it as jpeg, and using that as the thumbnail.
+        -(Although I doubt this is necessary for the file format to work. We could probably just leave the original one there.)
+
+    -In app.xml:
+        -The <TotalTime> node (under the <Properties> root node) got its value changed from "0" to "1"... wonder what this means? It now looks like:
+            <TotalTime>1</TotalTime>
+
+    -In core.xml:
+        -Under the <cp:coreProperties> root node, the following two child nodes changed (only the values changed, no attributes were affected):
+            <dcterms:created xsi:type="dcterms:W3CDTF">2017-12-12T03:55:06Z</dcterms:created>
+            <dcterms:modified xsi:type="dcterms:W3CDTF">2017-12-12T03:56:51Z</dcterms:modified>
+
+
+-In the ppt folder:
+    -No changes to any of the root files (so presentation.xml, presProps.xml, tableStyles.xml, and viewProps.xml are the same).
+
+    -No changes to ppt/_rels.
+
+    -NEW folder added called "media":
+        -This contains one file called image1.png (and it is the original image I inserted on slide 1 - same size and everything).
+
+    -In slideLayouts: WTF??? some weird timestamp and GUID changes. TODO: figure this out...
