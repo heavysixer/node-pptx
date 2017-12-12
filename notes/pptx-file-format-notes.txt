@@ -88,12 +88,16 @@ The r:id="rId2" references the following XML in slide1.xml.rels:
 Notes on file format differences when adding a single image to a brand new PPTX (new PPTX just had one blank slide and I clicked "insert image" and saved, that's it):
 
 -[Content_Types].xml:
+
     -A new entry was added under the root node <Types> for a png content type. Here's the node:
         <Default Extension="png" ContentType="image/png"/>
 
+
 -No changes to the root _rels folder or .rels file.
 
+
 -Changes to docProps folder:
+
     -That default thumbnail.jpeg which is normally a blank white image changed into a thumbnail of the image I inserted into the first slide (notice how it's jpeg and not png).
         -So I guess PowerPoint is taking the first image of a pptx, shrinking it, saving it as jpeg, and using that as the thumbnail.
         -(Although I doubt this is necessary for the file format to work. We could probably just leave the original one there.)
@@ -109,6 +113,7 @@ Notes on file format differences when adding a single image to a brand new PPTX 
 
 
 -In the ppt folder:
+
     -No changes to any of the root files (so presentation.xml, presProps.xml, tableStyles.xml, and viewProps.xml are the same).
 
     -No changes to ppt/_rels.
@@ -116,4 +121,57 @@ Notes on file format differences when adding a single image to a brand new PPTX 
     -NEW folder added called "media":
         -This contains one file called image1.png (and it is the original image I inserted on slide 1 - same size and everything).
 
-    -In slideLayouts: WTF??? some weird timestamp and GUID changes. TODO: figure this out...
+    -In slideLayouts:
+        -No changes to slideLayouts/_rels.
+
+        -slideLayout1 - 11.xml: all of them had some weird timestamp and GUID change to a couple <a:fld> nodes which matched my last save timestamp.
+            -Can't tell much from the attribute names, but looks like this is where Office might be saving a "recovery" timestamp for the "smart clean" feature - in other words,
+             when your computer crashes and you have office documents open, it knows what files to put in that "do you want to recover these files" box. I doubt we'll need to
+             touch these nodes.
+
+    -In slideMasters:
+        -No changes to slideMasters/_rels.
+
+        -In slideMaster1.xml: exact same weird <a:fld> node timestamp change as in slideLayout1 - 11.xml described above.
+
+    -In slides:
+        -In slides/_rels/slide1.xml.rels:
+            -A <Relationship> node was added under the root <Relationships> node which gives my png image an ID. The node looks like:
+
+            <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="../media/image1.png"/>
+
+            (There's only one other relationship node in that file, which is for slideLayout1.xml [same as the blank pptx], which has ID "rId1" - so looks like the PowerPoint just uses a
+             "rId"+<increment last number> ID naming scheme. I've noticed this in many other files too. It probably doesn't have to start with "rId" as long as the names you use to
+             reference is the same.)
+
+        -In slides/slide1.xml:
+            -A big <p:pic> node was added under <p:sld> -> <p:cSld> -> <p:spTree>. It looks like:
+
+            <p:pic>
+                <p:nvPicPr>
+                    <p:cNvPr id="4" name="Picture 3" descr="ComputerLanguagesChart.png"/>
+                    <p:cNvPicPr>
+                        <a:picLocks noChangeAspect="1"/>
+                    </p:cNvPicPr>
+                    <p:nvPr/>
+                </p:nvPicPr>
+                <p:blipFill>
+                    <a:blip r:embed="rId2" cstate="print"/>
+                    <a:stretch>
+                        <a:fillRect/>
+                    </a:stretch>
+                </p:blipFill>
+                <p:spPr>
+                    <a:xfrm>
+                        <a:off x="0" y="591502"/>
+                        <a:ext cx="9144000" cy="5674995"/>
+                    </a:xfrm>
+                    <a:prstGeom prst="rect">
+                        <a:avLst/>
+                    </a:prstGeom>
+                </p:spPr>
+            </p:pic>
+
+    -In theme: no changes.
+
+    DONE.
