@@ -125,14 +125,15 @@ Notes on file format differences when adding a single image to a brand new PPTX 
         -No changes to slideLayouts/_rels.
 
         -slideLayout1 - 11.xml: all of them had some weird timestamp and GUID change to a couple <a:fld> nodes which matched my last save timestamp.
-            -Can't tell much from the attribute names, but looks like this is where Office might be saving a "recovery" timestamp for the "smart clean" feature - in other words,
-             when your computer crashes and you have office documents open, it knows what files to put in that "do you want to recover these files" box. I doubt we'll need to
-             touch these nodes.
+            -UPDATE (12/12/2017): the FIRST <a:fld> node is a default date placeholder for a slide layout. The second is used for auto generated slide numbers.
+             The GUID id attribute value seems like it can be any GUID as long as it is consistent across the entire document (after looking at pptxgenjs source,
+             they are using just one hard-coded GUID, but he has a FIXME comment in there saying the slide numbers weren't showing by default; so I don't know
+             how accurate my assumptions can be. Pptxgenjs was NOT writing out the first date layout placeholder node, so maybe this isn't needed.)
 
     -In slideMasters:
         -No changes to slideMasters/_rels.
 
-        -In slideMaster1.xml: exact same weird <a:fld> node timestamp change as in slideLayout1 - 11.xml described above.
+        -In slideMaster1.xml: same <a:fld> nodes as in slideLayout1 - 11.xml described above.
 
     -In slides:
         -In slides/_rels/slide1.xml.rels:
