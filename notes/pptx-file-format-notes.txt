@@ -273,4 +273,7 @@ The (minimal) steps to add a new image:
 
     -Add a <p:pic> node (put in the ID from above in the <a:blip> "r:embed" attribute).
         -Fill in the coordinates (under the <a:xfrm> node).
-        -TODO: figure what attribute values need to go into the <p:cNvPr> node...
+        -<p:cNvPr> node has the following attributes:
+            -"id" = seems like an id relative to the slide itself (so it can just be the object count)
+            -"name" = in my pptx, it was named "Picture 3" when the id was "4" (in pptxgenjs code, they use an "id" of <object count>+2 and "name" of "Object <object count>+1")
+            -"descr" = can just be the image named
