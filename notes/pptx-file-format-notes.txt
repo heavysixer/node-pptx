@@ -233,3 +233,43 @@ smaller, and moved it a little to the left and up. Let's see how the pptx format
     -In theme: no changes.
 
     DONE.
+
+
+OK, very strange... Those coordinates are still huge. Let's compare the last test to this one.
+
+In the last test (no image resizing or positioning):
+
+
+<a:off x="0" y="591502"/>
+<a:ext cx="9144000" cy="5674995"/>
+
+
+And now we have (after image resize and repositioning):
+
+
+<a:off x="533400" y="914400"/>
+<a:ext cx="8077200" cy="5012912"/>
+
+
+----------------------
+
+OK, after googling, looks like these are DXA coordinates and Mark already had some code to do the conversions.
+Here's some more info about it: https://startbigthinksmall.wordpress.com/2010/01/04/points-inches-and-emus-measuring-units-in-office-open-xml/
+
+
+----------------------
+
+The (minimal) steps to add a new image:
+
+-Add a node to [Content_Types].xml IF the content-type of the image doesn't already exist in the file.
+-Update docProps/core.xml:
+    <dcterms:created> and <dcterms:modified> nodes with timestamps if appropriate.
+
+-Add image file to ppt/media folder.
+-In slides/_rels/slide1.xml.rels (or whatever slide you're adding to): add a <Relationship> node. Save the ID.
+
+-In slides/slide1.xml (or whatever slide you're adding to):
+
+    -Add a <p:pic> node (put in the ID from above in the <a:blip> "r:embed" attribute).
+        -Fill in the coordinates (under the <a:xfrm> node).
+        -TODO: figure what attribute values need to go into the <p:cNvPr> node...
