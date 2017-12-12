@@ -175,3 +175,61 @@ Notes on file format differences when adding a single image to a brand new PPTX 
     -In theme: no changes.
 
     DONE.
+
+-----------------------
+
+
+Another test: from looking at those x/y and cx/cy values above (in the last <p:pic> node), something looks weird. They seem way too big. Maybe this is some special default number PowerPoint uses
+when you don't specify a starting x/y and width/height (in the test above I simply did "insert image" but didn't move the image or resize it). So I opened that last test file, made the image a bit
+smaller, and moved it a little to the left and up. Let's see how the pptx format changes now:
+
+-[Content_Types].xml: no changes.
+
+-No changes to the root _rels folder or .rels file.
+
+-Changes to docProps folder:
+
+    -thumbnail.jpeg: Aaaaahhhh!!!! Forget what I said in my previous test. This thumbnail is like a minified screenshot of whatever is on the first slide.
+
+    -In app.xml: no changes.
+
+    -In core.xml:
+        -Under the <cp:coreProperties> root node, the following two child nodes changed (only the values changed, no attributes were affected):
+            <cp:revision>2</cp:revision>
+            <dcterms:modified xsi:type="dcterms:W3CDTF">2017-12-12T07:41:40Z</dcterms:modified>
+
+            So it looks like the revision number changed and the modified date. (The created date node in my previous test stayed the same.)
+
+
+-In the ppt folder:
+
+    -No changes to any of the root files (so presentation.xml, presProps.xml, tableStyles.xml, and viewProps.xml are the same).
+
+    -No changes to ppt/_rels.
+
+    -No changes to "media" folder.
+
+    -In slideLayouts:
+        -No changes to slideLayouts/_rels.
+
+        -slideLayout1 - 11.xml: OK, weird shit going on like in the last test. But it gets weirder: these two <a:fld> nodes are now exactly the same with ONE EXCEPTION:
+            -There's an extra <a:pPr> node under both of them (NOT "rPr" but "pPr"). The node is completely empty. Looks like:
+            <a:pPr/>
+
+    -In slideMasters:
+        -No changes to slideMasters/_rels.
+
+        -In slideMaster1.xml: EXACT same weird <a:pPr> node thing described above as in slideLayout1 - 11.xml.
+
+
+    -In slides:
+        -In slides/_rels/slide1.xml.rels: no changes.
+
+        -In slides/slide1.xml: the <p:pic> node looks very similar to the test above, except (as you would expect) the coordinates changed. Now underneath the <a:xfrm> node it looks like:
+
+            <a:off x="533400" y="914400"/>
+            <a:ext cx="8077200" cy="5012912"/>
+
+    -In theme: no changes.
+
+    DONE.
