@@ -1,0 +1,83 @@
+-A note about the root [Content_Types].xml.js file:
+
+    -EVERY file in the pptx zip must have an entry in this content types file. So slides, master slides, layout files, etc.
+
+    -The only exception to this is the actual images (ex: thumbnail.jpeg). HOWEVER, an entry DOES have to exist for every image TYPE that is contained in the pptx.
+
+    -For example, if you have 10 jpeg images in the pptx and that's it, then you'll have one jpeg content type entry in this file. But if you have jpeg's and gif's,
+     you'll have two entries in this file (one for the jpeg content type and one for the gif content type).
+
+    -An example of this for jpeg's:
+    { type: 'element', name: 'Default', attributes: { Extension: 'jpeg', ContentType: 'image/jpeg' }, elements: [] },
+
+
+Relationships
+-------------
+
+    -There is always a _rels folder at the root of any pptx.
+
+    -It contains the start of the "master" relationships between each document part. For a pptx, at a minimum there will be these "root" parts:
+        -presProps.xml
+        -viewProps.xml
+        -tableStyles.xml
+        -theme/theme1.xml
+        -slideMasters/slideMaster1.xml
+        -slides/slide1.xml
+
+    -In addition to the _rels folder at the root, each relationship source that also has child relationships will have its OWN _rels folder in its root. So that means:
+        -slides/_rels (because a slide contains a relationship to a slideLayout)
+        -slideMasters/_rels (because slide masters contain relationships to slideLayouts and themes)
+
+        -A theme has no relationships so it will not have a _rels folder. (At least this is true on a simple PowerPoint, I'm not sure if this is true on more complicated PowerPoints.)
+
+    -The relationship files are always named by appending ".rels" to the end of the source relationship name. So, for example, slide1.xml would have its relationship file named
+     slide1.xml.rels. Presentation.xml would have a corresponding presentation.xml.rels, etc.
+
+Relationship parts
+------------------
+
+If an explicit relationship exists between two document "resources", the ID of the source maps to the ID of the target resource. For example, slide 1 might contain a clickable link that looks like:
+
+<a:hlinkClick r:id="rId2">
+
+The r:id="rId2" references the following XML in slide1.xml.rels:
+
+<Relationship Id="rId2" Type="http://. . ./hyperlink" Target="http://www.google.com/" TargetMode="External"/>
+
+
+-------------
+-For adding a slide:
+    -These things are affected:
+        -ppt/slideLayouts (but only if you need to define a NEW slide layout)
+        -ppt/slides
+        -ppt/slides/_rels
+        -docProps
+        -[Content_Types]
+
+    -An entry in [Content_Types] for the new slide.
+    -A ppt/slides/_rels entry.
+    -A ppt/slides file (the actual slide JSON).
+    -An entry in presentation.xml.rels (make "Id" attribute set to "rId"+number_of_existing_relationship_nodes+1 - we'll refer to it as "totalNumRelationships")
+    -Foreach across all these nodes in the presentation.xml JSON:
+        { type: 'element', name: 'p:sldIdLst', elements: [{ type: 'element', name: 'p:sldId', attributes: { id: '256', 'r:id': 'rId2' }, elements: [] }] },
+
+        Which looks like this in XML:
+
+        <p:sldIdLst>
+          <p:sldId id="256" r:id="rId2"/>
+        </p:sldIdLst>
+
+
+        -VERY IMPORTANT: find the MAX (not COUNT) value of that p:sldId->id attribute, add 1, and save this value (we'll refer to it as "maxId" here).
+        -Add an entry to the sldIdList where "id" = MaxId and "r:id" = totalNumRelationships (from a few lines above)
+
+    -In docProps/app.xml, find this element in the JSON:
+        { type: 'element', name: 'Slides', elements: [{ type: 'text', text: '2' }] },
+
+        Which looks like this in the XML:
+
+        <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
+          ...
+          <Slides>1</Slides>
+
+        -This is the slide count - increment it by one.

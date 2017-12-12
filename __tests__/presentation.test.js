@@ -12,15 +12,14 @@ describe('Presentation Module', () => {
 		// emptyDir(tmpDir);
 	});
 
-	/*
 	test('should be able to load an existing pptx file', () => {
 		try {
 			let fulltemplateFilePath = `${__dirname}/fixtures/basic.pptx`;
 			let presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
 
-			fail('This no longer works because the callback is never triggered for existing files');
+			presentation.loadExistingPPTX(function(err) {
+				if (err) fail(err);
 
-			presentation.loadExistingPPTX(async function() {
 				presentation.save(`${tmpDir}/rewrite-of-existing.pptx`);
 				expect(fs.existsSync(`${tmpDir}/rewrite-of-existing.pptx`)).toBe(true);
 			});
@@ -29,13 +28,27 @@ describe('Presentation Module', () => {
 			throw err;
 		}
 	});
-	*/
 
 	test('should be able to create a pptx file from scratch', () => {
 		try {
 			let presentation = new PPTX.Presentation();
-			presentation.save(`${tmpDir}/example2.pptx`);
-			expect(fs.existsSync(`${tmpDir}/example2.pptx`)).toBe(true);
+
+			presentation.buildPowerPoint(); // TODO: this function is needed for init, but is also used for building after adding objects to a pptx. Separate into two different functions...
+			let newSlide = presentation.addSlide('slide2', 'slideLayout2');
+
+			expect(newSlide.rId).toBeDefined();
+			expect(newSlide.rId).not.toBeNull();
+
+			presentation.addSlide('slide3!', 'slideLayout3');
+			presentation.addSlide('slide4', 'slideLayout4');
+			presentation.addSlide('Another', 'slideLayout5');
+			presentation.addSlide('Woohoo!', 'slideLayout6');
+			presentation.addSlide('HelloWorld!', 'slideLayout7');
+			presentation.addSlide('Last', 'slideLayout8');
+
+			presentation.save(`${tmpDir}/multiple_slides.pptx`);
+
+			expect(fs.existsSync(`${tmpDir}/multiple_slides.pptx`)).toBe(true);
 		} catch (err) {
 			console.log(err);
 			throw err;
