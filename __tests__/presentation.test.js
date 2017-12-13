@@ -58,6 +58,8 @@ describe('Presentation Module', () => {
             expect(newSlide.rId).toBeDefined();
             expect(newSlide.rId).not.toBeNull();
 
+            newSlide.addImage(`${__dirname}/images/image1.png`, {});
+
             presentation.addSlide('slideLayout3');
             presentation.addSlide('slideLayout4');
             presentation.addSlide('slideLayout5');
