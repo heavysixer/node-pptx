@@ -92,3 +92,7 @@ function emptyDir(dir) {
         });
     }
 }
+
+function fail(err) {
+    expect(err).toBeNull();
+}
