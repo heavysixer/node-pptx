@@ -58,7 +58,17 @@ describe('Presentation Module', () => {
             expect(newSlide.rId).toBeDefined();
             expect(newSlide.rId).not.toBeNull();
 
-            newSlide.addImage(`${__dirname}/images/image1.png`, { x: 200, y: 200 });
+            let newImage = newSlide.addImage(`${__dirname}/images/image1.png`, { x: 200, y: 200 });
+            newImage
+                .x(25)
+                .y(50)
+                .cx(800)
+                .cy(300); // reposition
+
+            console.log('Image x = ', newImage.x());
+            console.log('Image y = ', newImage.y());
+            console.log('Image cx = ', newImage.cx());
+            console.log('Image cy = ', newImage.cy());
 
             presentation.addSlide('slideLayout3');
             presentation.addSlide('slideLayout4');
