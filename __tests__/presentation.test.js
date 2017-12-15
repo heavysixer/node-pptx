@@ -23,6 +23,26 @@ describe('Presentation Module', () => {
                 presentation.save(`${tmpDir}/rewrite-of-existing.pptx`);
                 expect(fs.existsSync(`${tmpDir}/rewrite-of-existing.pptx`)).toBe(true);
             });
+
+            fulltemplateFilePath = `${__dirname}/fixtures/basic2.pptx`;
+            presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
+
+            presentation.loadExistingPPTX(function(err) {
+                if (err) fail(err);
+
+                presentation
+                    .getSlide('slide1')
+                    .addImage(`${__dirname}/images/pizza.jpg`)
+                    .x(500)
+                    .y(100)
+                    .cx(166)
+                    .cy(100);
+
+                presentation.addSlide('slideLayout6').addImage(`${__dirname}/images/image1.png`);
+
+                presentation.save(`${tmpDir}/add-image-to-basic2.pptx`);
+                expect(fs.existsSync(`${tmpDir}/add-image-to-basic2.pptx`)).toBe(true);
+            });
         } catch (err) {
             console.log(err);
             throw err;
