@@ -55,27 +55,42 @@ describe('Presentation Module', () => {
 
             let newSlide = presentation.addSlide();
 
-            expect(newSlide.rId).toBeDefined();
-            expect(newSlide.rId).not.toBeNull();
+            expect(newSlide.content).toBeDefined();
+            expect(newSlide.content).not.toBeNull();
 
-            let newImage = newSlide.addImage(`${__dirname}/images/image1.png`, { x: 200, y: 200 });
-            newImage
-                .x(25)
+            newSlide.addImage(`${__dirname}/images/image1.png`);
+            presentation.addSlide('slideLayout3').addImage(`${__dirname}/images/pizza.jpg`);
+
+            presentation
+                .addSlide('slideLayout4')
+                .addImage(`${__dirname}/images/pizza.jpg`)
+                .x(50)
                 .y(50)
-                .cx(800)
-                .cy(300); // reposition
+                .cx(500)
+                .cy(300);
 
-            console.log('Image x = ', newImage.x());
-            console.log('Image y = ', newImage.y());
-            console.log('Image cx = ', newImage.cx());
-            console.log('Image cy = ', newImage.cy());
-
-            presentation.addSlide('slideLayout3');
-            presentation.addSlide('slideLayout4');
             presentation.addSlide('slideLayout5');
             presentation.addSlide('slideLayout6');
             presentation.addSlide('slideLayout7');
             presentation.addSlide('slideLayout8');
+
+            // since we always start with a blank slide by default, addSlide will always return slide #2 or more;
+            // must grab slide 1 from the existing presentation
+            let defaultSlide = presentation.getSlide('slide1');
+
+            defaultSlide
+                .addImage(`${__dirname}/images/pizza.jpg`)
+                .x(100)
+                .y(200)
+                .cx(166)
+                .cy(100);
+
+            defaultSlide
+                .addImage(`${__dirname}/images/image1.png`)
+                .x(400)
+                .y(250)
+                .cx(250)
+                .cy(150);
 
             presentation.save(`${tmpDir}/multiple_slides.pptx`);
 
