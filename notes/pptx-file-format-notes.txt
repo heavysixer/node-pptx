@@ -81,3 +81,199 @@ The r:id="rId2" references the following XML in slide1.xml.rels:
           <Slides>1</Slides>
 
         -This is the slide count - increment it by one.
+
+
+-----------
+
+Notes on file format differences when adding a single image to a brand new PPTX (new PPTX just had one blank slide and I clicked "insert image" and saved, that's it):
+
+-[Content_Types].xml:
+
+    -A new entry was added under the root node <Types> for a png content type. Here's the node:
+        <Default Extension="png" ContentType="image/png"/>
+
+
+-No changes to the root _rels folder or .rels file.
+
+
+-Changes to docProps folder:
+
+    -That default thumbnail.jpeg which is normally a blank white image changed into a thumbnail of the image I inserted into the first slide (notice how it's jpeg and not png).
+        -So I guess PowerPoint is taking the first image of a pptx, shrinking it, saving it as jpeg, and using that as the thumbnail.
+        -(Although I doubt this is necessary for the file format to work. We could probably just leave the original one there.)
+
+    -In app.xml:
+        -The <TotalTime> node (under the <Properties> root node) got its value changed from "0" to "1"... wonder what this means? It now looks like:
+            <TotalTime>1</TotalTime>
+
+    -In core.xml:
+        -Under the <cp:coreProperties> root node, the following two child nodes changed (only the values changed, no attributes were affected):
+            <dcterms:created xsi:type="dcterms:W3CDTF">2017-12-12T03:55:06Z</dcterms:created>
+            <dcterms:modified xsi:type="dcterms:W3CDTF">2017-12-12T03:56:51Z</dcterms:modified>
+
+
+-In the ppt folder:
+
+    -No changes to any of the root files (so presentation.xml, presProps.xml, tableStyles.xml, and viewProps.xml are the same).
+
+    -No changes to ppt/_rels.
+
+    -NEW folder added called "media":
+        -This contains one file called image1.png (and it is the original image I inserted on slide 1 - same size and everything).
+
+    -In slideLayouts:
+        -No changes to slideLayouts/_rels.
+
+        -slideLayout1 - 11.xml: all of them had some weird timestamp and GUID change to a couple <a:fld> nodes which matched my last save timestamp.
+            -UPDATE (12/12/2017): the FIRST <a:fld> node is a default date placeholder for a slide layout. The second is used for auto generated slide numbers.
+             The GUID id attribute value seems like it can be any GUID as long as it is consistent across the entire document (after looking at pptxgenjs source,
+             they are using just one hard-coded GUID, but he has a FIXME comment in there saying the slide numbers weren't showing by default; so I don't know
+             how accurate my assumptions can be. Pptxgenjs was NOT writing out the first date layout placeholder node, so maybe this isn't needed.)
+
+    -In slideMasters:
+        -No changes to slideMasters/_rels.
+
+        -In slideMaster1.xml: same <a:fld> nodes as in slideLayout1 - 11.xml described above.
+
+    -In slides:
+        -In slides/_rels/slide1.xml.rels:
+            -A <Relationship> node was added under the root <Relationships> node which gives my png image an ID. The node looks like:
+
+            <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="../media/image1.png"/>
+
+            (There's only one other relationship node in that file, which is for slideLayout1.xml [same as the blank pptx], which has ID "rId1" - so looks like the PowerPoint just uses a
+             "rId"+<increment last number> ID naming scheme. I've noticed this in many other files too. It probably doesn't have to start with "rId" as long as the names you use to
+             reference is the same.)
+
+        -In slides/slide1.xml:
+            -A big <p:pic> node was added under <p:sld> -> <p:cSld> -> <p:spTree>. It looks like:
+
+            <p:pic>
+                <p:nvPicPr>
+                    <p:cNvPr id="4" name="Picture 3" descr="ComputerLanguagesChart.png"/>
+                    <p:cNvPicPr>
+                        <a:picLocks noChangeAspect="1"/>
+                    </p:cNvPicPr>
+                    <p:nvPr/>
+                </p:nvPicPr>
+                <p:blipFill>
+                    <a:blip r:embed="rId2" cstate="print"/>
+                    <a:stretch>
+                        <a:fillRect/>
+                    </a:stretch>
+                </p:blipFill>
+                <p:spPr>
+                    <a:xfrm>
+                        <a:off x="0" y="591502"/>
+                        <a:ext cx="9144000" cy="5674995"/>
+                    </a:xfrm>
+                    <a:prstGeom prst="rect">
+                        <a:avLst/>
+                    </a:prstGeom>
+                </p:spPr>
+            </p:pic>
+
+    -In theme: no changes.
+
+    DONE.
+
+-----------------------
+
+
+Another test: from looking at those x/y and cx/cy values above (in the last <p:pic> node), something looks weird. They seem way too big. Maybe this is some special default number PowerPoint uses
+when you don't specify a starting x/y and width/height (in the test above I simply did "insert image" but didn't move the image or resize it). So I opened that last test file, made the image a bit
+smaller, and moved it a little to the left and up. Let's see how the pptx format changes now:
+
+-[Content_Types].xml: no changes.
+
+-No changes to the root _rels folder or .rels file.
+
+-Changes to docProps folder:
+
+    -thumbnail.jpeg: Aaaaahhhh!!!! Forget what I said in my previous test. This thumbnail is like a minified screenshot of whatever is on the first slide.
+
+    -In app.xml: no changes.
+
+    -In core.xml:
+        -Under the <cp:coreProperties> root node, the following two child nodes changed (only the values changed, no attributes were affected):
+            <cp:revision>2</cp:revision>
+            <dcterms:modified xsi:type="dcterms:W3CDTF">2017-12-12T07:41:40Z</dcterms:modified>
+
+            So it looks like the revision number changed and the modified date. (The created date node in my previous test stayed the same.)
+
+
+-In the ppt folder:
+
+    -No changes to any of the root files (so presentation.xml, presProps.xml, tableStyles.xml, and viewProps.xml are the same).
+
+    -No changes to ppt/_rels.
+
+    -No changes to "media" folder.
+
+    -In slideLayouts:
+        -No changes to slideLayouts/_rels.
+
+        -slideLayout1 - 11.xml: OK, weird shit going on like in the last test. But it gets weirder: these two <a:fld> nodes are now exactly the same with ONE EXCEPTION:
+            -There's an extra <a:pPr> node under both of them (NOT "rPr" but "pPr"). The node is completely empty. Looks like:
+            <a:pPr/>
+
+    -In slideMasters:
+        -No changes to slideMasters/_rels.
+
+        -In slideMaster1.xml: EXACT same weird <a:pPr> node thing described above as in slideLayout1 - 11.xml.
+
+
+    -In slides:
+        -In slides/_rels/slide1.xml.rels: no changes.
+
+        -In slides/slide1.xml: the <p:pic> node looks very similar to the test above, except (as you would expect) the coordinates changed. Now underneath the <a:xfrm> node it looks like:
+
+            <a:off x="533400" y="914400"/>
+            <a:ext cx="8077200" cy="5012912"/>
+
+    -In theme: no changes.
+
+    DONE.
+
+
+OK, very strange... Those coordinates are still huge. Let's compare the last test to this one.
+
+In the last test (no image resizing or positioning):
+
+
+<a:off x="0" y="591502"/>
+<a:ext cx="9144000" cy="5674995"/>
+
+
+And now we have (after image resize and repositioning):
+
+
+<a:off x="533400" y="914400"/>
+<a:ext cx="8077200" cy="5012912"/>
+
+
+----------------------
+
+OK, after googling, looks like these are DXA coordinates and Mark already had some code to do the conversions.
+Here's some more info about it: https://startbigthinksmall.wordpress.com/2010/01/04/points-inches-and-emus-measuring-units-in-office-open-xml/
+
+
+----------------------
+
+The (minimal) steps to add a new image:
+
+-Add a node to [Content_Types].xml IF the content-type of the image doesn't already exist in the file.
+-Update docProps/core.xml:
+    <dcterms:created> and <dcterms:modified> nodes with timestamps if appropriate.
+
+-Add image file to ppt/media folder.
+-In slides/_rels/slide1.xml.rels (or whatever slide you're adding to): add a <Relationship> node. Save the ID.
+
+-In slides/slide1.xml (or whatever slide you're adding to):
+
+    -Add a <p:pic> node (put in the ID from above in the <a:blip> "r:embed" attribute).
+        -Fill in the coordinates (under the <a:xfrm> node).
+        -<p:cNvPr> node has the following attributes:
+            -"id" = seems like an id relative to the slide itself (so it can just be the object count)
+            -"name" = in my pptx, it was named "Picture 3" when the id was "4" (in pptxgenjs code, they use an "id" of <object count>+2 and "name" of "Object <object count>+1")
+            -"descr" = can just be the image named

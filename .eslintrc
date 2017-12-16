@@ -54,6 +54,7 @@
     "prettier"
   ],
   "rules": {
+    "indent": ["error",4],
     "complexity": ["error", 15],
     "no-console": "off",
     "prefer-template": "warn",
