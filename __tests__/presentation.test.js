@@ -67,6 +67,31 @@ describe('Presentation Module', () => {
         }
     });
 
+    test('should be able to create a pptx file from scratch and add some links to other slides', () => {
+        try {
+            let presentation = new PPTX.Presentation();
+
+            presentation.buildPowerPoint();
+
+            let slide1 = presentation.getSlide('slide1');
+
+            expect(slide1.content).toBeDefined();
+            expect(slide1.content).not.toBeNull();
+
+            slide1.addText('Link to slide 3', { url: '#3' });
+
+            presentation.addSlide().addText('This is slide #2.');
+            presentation.addSlide().addText('Go back to slide 1', { url: '#1' });
+            presentation.getSlide('slide3').addText('Go to slide 2', { y: 25, url: '#2' });
+
+            presentation.save(`${tmpDir}/slide-links.pptx`);
+            expect(fs.existsSync(`${tmpDir}/slide-links.pptx`)).toBe(true);
+        } catch (err) {
+            console.log(err);
+            throw err;
+        }
+    });
+
     test('should be able to create a pptx file from scratch', () => {
         try {
             let presentation = new PPTX.Presentation();
