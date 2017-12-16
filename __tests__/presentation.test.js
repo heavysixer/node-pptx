@@ -78,11 +78,27 @@ describe('Presentation Module', () => {
             expect(slide1.content).toBeDefined();
             expect(slide1.content).not.toBeNull();
 
-            slide1.addText('Link to slide 3', { url: '#3' });
+            slide1
+                .addText('This is slide 1')
+                .addText('Link to slide 3', { url: '#3', y: 25 })
+                .addText('Link to slide 4', { url: '#4', y: 50 });
 
-            presentation.addSlide().addText('This is slide #2.');
-            presentation.addSlide().addText('Go back to slide 1', { url: '#1' });
-            presentation.getSlide('slide3').addText('Go to slide 2', { y: 25, url: '#2' });
+            presentation
+                .addSlide()
+                .addText('This is slide 2.')
+                .addText('Go to slide 5', { url: '#5', y: 25 })
+                .addSlide()
+                .addText('This is slide 3')
+                .addText('Go back to slide 1', { url: '#1', y: 25 })
+                .addText('Go to slide 2', { y: 50, url: '#2' })
+                .addSlide()
+                .addText('This is slide 4.')
+                .addText('Go to slide 1', { url: '#1', x: 25, y: 25 })
+                .addSlide()
+                .addText('This is slide 5.')
+                .x(200)
+                .y(200)
+                .addText('Go back to slide 3', { url: '#3' });
 
             presentation.save(`${tmpDir}/slide-links.pptx`);
             expect(fs.existsSync(`${tmpDir}/slide-links.pptx`)).toBe(true);
@@ -142,11 +158,12 @@ describe('Presentation Module', () => {
                 .cy(150);
 
             defaultSlide
-                .addText('Non latin char test: Привет мир!')
+                .addText('Non-Latin (Cyrillic) character test: Привет мир!')
                 .x(300)
                 .y(150)
                 .cx(400)
-                .cy(150);
+                .cy(150)
+                .addText("Let's go crazy: оалмгцнйукрлмьтсмщфзйудлтлваывувыаитыбюяй", { x: 300, y: 175, cx: 400 });
 
             defaultSlide
                 .addImage(`${__dirname}/images/pizza.jpg`)
