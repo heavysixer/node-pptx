@@ -100,22 +100,40 @@ describe('Presentation Module', () => {
 
             defaultSlide.addText('Hello world!');
 
-            // works with just text on the slide, but when adding images, the xml generator has weird behavior
-            // which prevents objects from getting counted (some nodes should be in arrays when they aren't,
-            // but this doesn't happen without the text, so something is confusion the xml generator...)
-            // defaultSlide
-            //     .addImage(`${__dirname}/images/pizza.jpg`)
-            //     .x(100)
-            //     .y(200)
-            //     .cx(166)
-            //     .cy(100);
+            defaultSlide
+                .addText('Another piece of text, non-default position, wide block.')
+                .x(100)
+                .y(100)
+                .cx(500)
+                .cy(50);
 
-            // defaultSlide
-            //     .addImage(`${__dirname}/images/image1.png`)
-            //     .x(400)
-            //     .y(250)
-            //     .cx(250)
-            //     .cy(150);
+            defaultSlide
+                .addText('Text in skinny block, this should wrap.')
+                .x(20)
+                .y(150)
+                .cx(200)
+                .cy(150);
+
+            defaultSlide
+                .addText('Non latin char test: Привет мир!')
+                .x(300)
+                .y(150)
+                .cx(400)
+                .cy(150);
+
+            defaultSlide
+                .addImage(`${__dirname}/images/pizza.jpg`)
+                .x(100)
+                .y(200)
+                .cx(166)
+                .cy(100);
+
+            defaultSlide
+                .addImage(`${__dirname}/images/image1.png`)
+                .x(400)
+                .y(250)
+                .cx(250)
+                .cy(150);
 
             presentation.save(`${tmpDir}/multiple_slides.pptx`);
 
