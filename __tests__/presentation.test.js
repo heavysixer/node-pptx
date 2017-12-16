@@ -108,6 +108,62 @@ describe('Presentation Module', () => {
         }
     });
 
+    test('should be able to create a pptx file from scratch and make a TOC', () => {
+        try {
+            let presentation = new PPTX.Presentation();
+
+            presentation.buildPowerPoint();
+
+            let slide1 = presentation.getSlide('slide1');
+
+            expect(slide1.content).toBeDefined();
+            expect(slide1.content).not.toBeNull();
+
+            slide1
+                .addText('Table of Contents', { x: 200 })
+                .addText('Introduction ............. 2', { url: '#2', x: 20, y: 50 })
+                .addText('Getting Started ...... 3', { url: '#3', x: 40, y: 75 })
+                .addText('Some More Info ..... 4', { url: '#4', x: 40, y: 100 })
+                .addText('Slide 5', { url: '#5', x: 20, y: 125 })
+                .addText('Slide 6', { url: '#6', x: 20, y: 150 })
+                .addText('Slide 7', { url: '#7', x: 20, y: 175 })
+                .addText('A bunch of links ..... 8', { url: '#8', x: 20, y: 200 })
+                .addSlide()
+                .addText('This is slide 2 (Introduction).', { x: 20 })
+                .addText('Go back to TOC.', { url: '#1', x: 20, y: 25 })
+                .addSlide()
+                .addText('This is slide 3 (Getting Started).', { x: 20, cx: 400 })
+                .addText('Go back to TOC.', { url: '#1', x: 20, y: 25 })
+                .addSlide()
+                .addText('This is slide 4 (Some More Info).', { x: 20, cx: 400 })
+                .addText('Go back to TOC.', { url: '#1', x: 20, y: 25 })
+                .addSlide()
+                .addSlide()
+                .addSlide();
+
+            presentation.getSlide('slide5').addText('This is slide 5. Click to go back to the TOC.', { url: '#1' });
+            presentation.getSlide('slide6').addText('This is slide 6. Click to go back to the TOC.', { url: '#1' });
+            presentation.getSlide('slide7').addText('This is slide 7. Click to go back to the TOC.', { url: '#1' });
+
+            presentation
+                .addSlide()
+                .addText('Random Links', { x: 100 })
+                .addText('Link to slide 1', { x: 25, y: 50, url: '#1' })
+                .addText('Link to slide 2', { x: 25, y: 75, url: '#2' })
+                .addText('Link to slide 3', { x: 25, y: 100, url: '#3' })
+                .addText('Link to slide 4', { x: 25, y: 125, url: '#4' })
+                .addText('Link to slide 5', { x: 25, y: 150, url: '#5' })
+                .addText('Link to slide 6', { x: 25, y: 175, url: '#6' })
+                .addText('Link to slide 7', { x: 25, y: 200, url: '#7' });
+
+            presentation.save(`${tmpDir}/table-of-contents.pptx`);
+            expect(fs.existsSync(`${tmpDir}/table-of-contents.pptx`)).toBe(true);
+        } catch (err) {
+            console.log(err);
+            throw err;
+        }
+    });
+
     test('should be able to create a pptx file from scratch', () => {
         try {
             let presentation = new PPTX.Presentation();
