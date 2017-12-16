@@ -99,6 +99,8 @@ describe('Presentation Module', () => {
             let defaultSlide = presentation.getSlide('slide1');
 
             defaultSlide.addText('Hello world!');
+            defaultSlide.addText('This is a hyperlink! Will this go to google?', { x: 0, y: 25, cx: 400, url: 'http://www.google.com' });
+            defaultSlide.addText('Will this go to slide 3?', { x: 0, y: 50, url: '#3' });
 
             defaultSlide
                 .addText('Another piece of text, non-default position, wide block.')
@@ -135,6 +137,7 @@ describe('Presentation Module', () => {
                 .cx(250)
                 .cy(150);
 
+            presentation.getSlide('slide3').addText('OMFG!!! The link worked!');
             presentation.save(`${tmpDir}/multiple_slides.pptx`);
 
             expect(fs.existsSync(`${tmpDir}/multiple_slides.pptx`)).toBe(true);
