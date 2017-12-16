@@ -128,6 +128,8 @@ describe('Presentation Module', () => {
                 .addText('Slide 6', { url: '#6', x: 20, y: 150 })
                 .addText('Slide 7', { url: '#7', x: 20, y: 175 })
                 .addText('A bunch of links ..... 8', { url: '#8', x: 20, y: 200 })
+                .addText('Click the pizza to go to slide 3:', { x: 100, y: 350, cx: 300 })
+                .addImage(`${__dirname}/images/pizza.jpg`, { url: '#3', x: 100, y: 385, cx: 166, cy: 100 })
                 .addSlide()
                 .addText('This is slide 2 (Introduction).', { x: 20 })
                 .addText('Go back to TOC.', { url: '#1', x: 20, y: 25 })
@@ -175,7 +177,7 @@ describe('Presentation Module', () => {
             expect(newSlide.content).toBeDefined();
             expect(newSlide.content).not.toBeNull();
 
-            newSlide.addImage(`${__dirname}/images/image1.png`);
+            newSlide.addImage(`${__dirname}/images/image1.png`, { url: 'www.github.com' });
             presentation.addSlide('slideLayout3').addImage(`${__dirname}/images/pizza.jpg`);
 
             presentation
@@ -222,7 +224,7 @@ describe('Presentation Module', () => {
                 .addText("Let's go crazy: оалмгцнйукрлмьтсмщфзйудлтлваывувыаитыбюяй", { x: 300, y: 175, cx: 400 });
 
             defaultSlide
-                .addImage(`${__dirname}/images/pizza.jpg`)
+                .addImage(`${__dirname}/images/pizza.jpg`, { url: '#3' })
                 .x(100)
                 .y(200)
                 .cx(166)
