@@ -198,6 +198,7 @@ describe('Presentation Module', () => {
             let defaultSlide = presentation.getSlide('slide1');
 
             defaultSlide.addText('Hello world!');
+            defaultSlide.addShape('triangle', { x: 400, cx: 100, cy: 100, url: 'http://www.google.com' });
             defaultSlide.addText('This is a hyperlink! Will this go to google?', { x: 0, y: 25, cx: 400, url: 'http://www.google.com' });
             defaultSlide.addText('Will this go to slide 3?', { x: 0, y: 50, url: '#3' });
 
