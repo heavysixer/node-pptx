@@ -1,17 +1,8 @@
 const PPTX = require('../index.js');
 const fs = require('fs');
-//const path = require('path');
 const tmpDir = `${__dirname}/tmp`;
 
 describe('Presentation Module', () => {
-    beforeAll(() => {
-        //prepareTmpDir(tmpDir);
-    });
-
-    afterAll(() => {
-        // emptyDir(tmpDir);
-    });
-
     test('should be able to create a pptx file from scratch and add some shapes', () => {
         try {
             let presentation = new PPTX.Presentation();
@@ -42,19 +33,3 @@ describe('Presentation Module', () => {
         }
     });
 });
-
-// function prepareTmpDir(dir) {
-//     if (!fs.existsSync(dir)) {
-//         fs.mkdirSync(dir);
-//     } else {
-//         emptyDir(dir);
-//     }
-// }
-//
-// function emptyDir(dir) {
-//     for (const file of fs.readdirSync(dir)) {
-//         fs.unlink(path.join(dir, file), err => {
-//             if (err) throw err;
-//         });
-//     }
-// }
