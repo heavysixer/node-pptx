@@ -10,9 +10,8 @@ describe('Presentation Module', () => {
 
             presentation.loadExistingPPTX(function(err) {
                 if (err) fail(err);
-
-                presentation.save(`${tmpDir}/process-map.pptx`);
-                expect(fs.existsSync(`${tmpDir}/process-map.pptx`)).toBe(true);
+                presentation.save(`${tmpDir}/process-map-rewrite.pptx`);
+                expect(fs.existsSync(`${tmpDir}/process-map-rewrite.pptx`)).toBe(true);
             });
         } catch (err) {
             console.log(err);

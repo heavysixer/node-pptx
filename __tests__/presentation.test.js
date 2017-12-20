@@ -49,24 +49,6 @@ describe('Presentation Module', () => {
         }
     });
 
-    test('should be able to load an existing pptx file and add another slide', () => {
-        try {
-            let fulltemplateFilePath = `${__dirname}/fixtures/basic.pptx`;
-            let presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
-
-            presentation.loadExistingPPTX(function(err) {
-                if (err) fail(err);
-
-                presentation.addSlide();
-                presentation.save(`${tmpDir}/add-slide-to-existing.pptx`);
-                expect(fs.existsSync(`${tmpDir}/add-slide-to-existing.pptx`)).toBe(true);
-            });
-        } catch (err) {
-            console.log(err);
-            throw err;
-        }
-    });
-
     test('should be able to create a pptx file from scratch and add some links to other slides', () => {
         try {
             let presentation = new PPTX.Presentation();
