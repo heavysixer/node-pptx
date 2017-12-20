@@ -10,6 +10,16 @@ describe('Presentation Module', () => {
 
             presentation.loadExistingPPTX(function(err) {
                 if (err) fail(err);
+
+                let slide1 = presentation.getSlide('slide1');
+
+                expect(slide1.content).toBeDefined();
+                expect(slide1.content).not.toBeNull();
+
+                slide1.addShape(PPTX.ShapeTypes.TRIANGLE, { x: 50, y: 50, cx: 50, cy: 50 });
+
+                let slide2 = presentation.addSlide();
+
                 presentation.save(`${tmpDir}/process-map-rewrite.pptx`);
                 expect(fs.existsSync(`${tmpDir}/process-map-rewrite.pptx`)).toBe(true);
             });
