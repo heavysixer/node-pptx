@@ -38,7 +38,7 @@ describe('Presentation Module', () => {
                     .cx(166)
                     .cy(100);
 
-                presentation.addSlide('slideLayout6').addImage(`${__dirname}/images/image1.png`);
+                presentation.addSlide('slideLayout1').addImage(`${__dirname}/images/image1.png`);
 
                 presentation.save(`${tmpDir}/add-image-to-basic2.pptx`);
                 expect(fs.existsSync(`${tmpDir}/add-image-to-basic2.pptx`)).toBe(true);
@@ -178,20 +178,15 @@ describe('Presentation Module', () => {
             expect(newSlide.content).not.toBeNull();
 
             newSlide.addImage(`${__dirname}/images/image1.png`, { url: 'www.github.com' });
-            presentation.addSlide('slideLayout3').addImage(`${__dirname}/images/pizza.jpg`);
+            presentation.addSlide('slideLayout1').addImage(`${__dirname}/images/pizza.jpg`);
 
             presentation
-                .addSlide('slideLayout4')
+                .addSlide('slideLayout1')
                 .addImage(`${__dirname}/images/pizza.jpg`)
                 .x(50)
                 .y(50)
                 .cx(500)
                 .cy(300);
-
-            presentation.addSlide('slideLayout5');
-            presentation.addSlide('slideLayout6');
-            presentation.addSlide('slideLayout7');
-            presentation.addSlide('slideLayout8');
 
             // since we always start with a blank slide by default, addSlide will always return slide #2 or more;
             // must grab slide 1 from the existing presentation
