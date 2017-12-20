@@ -21,8 +21,8 @@ describe('Presentation Module', () => {
                 presentation.loadExistingPPTX(function(err) {
                     if (err) fail(err);
 
-                    presentation.save(`${tmpDir}/rewrite-of-existing.pptx`);
-                    expect(fs.existsSync(`${tmpDir}/rewrite-of-existing.pptx`)).toBe(true);
+                    presentation.save(`${tmpDir}/presentation-existing-rewrite.pptx`);
+                    expect(fs.existsSync(`${tmpDir}/presentation-existing-rewrite.pptx`)).toBe(true);
                 });
 
                 fulltemplateFilePath = `${__dirname}/fixtures/basic2.pptx`;
@@ -39,10 +39,10 @@ describe('Presentation Module', () => {
                         .cx(166)
                         .cy(100);
 
-                    presentation.addSlide('slideLayout1').addImage(`${__dirname}/images/image1.png`);
+                    presentation.addSlide().addImage(`${__dirname}/images/image1.png`);
 
-                    presentation.save(`${tmpDir}/add-image-to-basic2.pptx`);
-                    expect(fs.existsSync(`${tmpDir}/add-image-to-basic2.pptx`)).toBe(true);
+                    presentation.save(`${tmpDir}/presentation-existing-add-image.pptx`);
+                    expect(fs.existsSync(`${tmpDir}/presentation-existing-add-image.pptx`)).toBe(true);
                 });
             } catch (err) {
                 console.log(err);
@@ -59,8 +59,8 @@ describe('Presentation Module', () => {
                     if (err) fail(err);
 
                     presentation.addSlide();
-                    presentation.save(`${tmpDir}/add-slide-to-existing.pptx`);
-                    expect(fs.existsSync(`${tmpDir}/add-slide-to-existing.pptx`)).toBe(true);
+                    presentation.save(`${tmpDir}/presentation-existing-add-slide.pptx`);
+                    expect(fs.existsSync(`${tmpDir}/presentation-existing-add-slide.pptx`)).toBe(true);
                 });
             } catch (err) {
                 console.log(err);
@@ -105,8 +105,8 @@ describe('Presentation Module', () => {
                     .y(200)
                     .addText('Go back to slide 3', { url: '#3' });
 
-                presentation.save(`${tmpDir}/slide-links.pptx`);
-                expect(fs.existsSync(`${tmpDir}/slide-links.pptx`)).toBe(true);
+                presentation.save(`${tmpDir}/presentation-new-add-slide-links.pptx`);
+                expect(fs.existsSync(`${tmpDir}/presentation-new-add-slide-links.pptx`)).toBe(true);
             } catch (err) {
                 console.log(err);
                 throw err;
@@ -163,8 +163,8 @@ describe('Presentation Module', () => {
                     .addText('Link to slide 6', { x: 25, y: 175, url: '#6' })
                     .addText('Link to slide 7', { x: 25, y: 200, url: '#7' });
 
-                presentation.save(`${tmpDir}/table-of-contents.pptx`);
-                expect(fs.existsSync(`${tmpDir}/table-of-contents.pptx`)).toBe(true);
+                presentation.save(`${tmpDir}/presentation-new-table-of-contents.pptx`);
+                expect(fs.existsSync(`${tmpDir}/presentation-new-table-of-contents.pptx`)).toBe(true);
             } catch (err) {
                 console.log(err);
                 throw err;
@@ -183,10 +183,10 @@ describe('Presentation Module', () => {
                 expect(newSlide.content).not.toBeNull();
 
                 newSlide.addImage(`${__dirname}/images/image1.png`, { url: 'www.github.com' });
-                presentation.addSlide('slideLayout1').addImage(`${__dirname}/images/pizza.jpg`);
+                presentation.addSlide().addImage(`${__dirname}/images/pizza.jpg`);
 
                 presentation
-                    .addSlide('slideLayout1')
+                    .addSlide()
                     .addImage(`${__dirname}/images/pizza.jpg`)
                     .x(50)
                     .y(50)
@@ -239,9 +239,9 @@ describe('Presentation Module', () => {
                     .cy(150);
 
                 presentation.getSlide('slide3').addText('OMFG!!! The link worked!');
-                presentation.save(`${tmpDir}/multiple_slides.pptx`);
+                presentation.save(`${tmpDir}/presentation-new-multiple-slides.pptx`);
 
-                expect(fs.existsSync(`${tmpDir}/multiple_slides.pptx`)).toBe(true);
+                expect(fs.existsSync(`${tmpDir}/presentation-new-multiple-slides.pptx`)).toBe(true);
             } catch (err) {
                 console.log(err);
                 throw err;
