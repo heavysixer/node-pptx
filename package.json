@@ -25,6 +25,9 @@
 		"lint": "./node_modules/eslint/bin/eslint.js --ext .js src",
 		"test-with-coverage": "nyc jest"
 	},
+  "jest": {
+    "verbose": true
+  },
 	"files": [
 		"index.js"
 	],
