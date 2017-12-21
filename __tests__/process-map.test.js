@@ -16,64 +16,102 @@ describe('Presentation Module', () => {
                 expect(slide1.content).toBeDefined();
                 expect(slide1.content).not.toBeNull();
 
-                slide1.addShape(PPTX.ShapeTypes.TRIANGLE, { x: 50, y: 50, cx: 50, cy: 50 });
-                slide1.addText('Hello world!');
-                slide1.addShape(PPTX.ShapeTypes.TRIANGLE, { x: 150, y: 50, cx: 50, cy: 50, color: '00FF00' });
-                slide1.addShape(PPTX.ShapeTypes.OVAL, { x: 100, y: 200, cx: 200, cy: 100, text: 'hello world!' });
-                slide1.addShape(PPTX.ShapeTypes.ELLIPSE, { x: 450, y: 200, cx: 200, cy: 100, text: 'hello world!', color: '00FF00' }); // testing alias (ELLIPSE == OVAL)
-                slide1.addShape(PPTX.ShapeTypes.TRAPEZOID, { x: 320, y: 200, cx: 150, cy: 150, color: 'FF0000' });
-                slide1.addShape(PPTX.ShapeTypes.LEFT_ARROW, { x: 500, y: 340, cx: 100, cy: 50, color: 'FF00FF' });
+                //                slide1.addShape(PPTX.ShapeTypes.TRIANGLE, { x: 50, y: 50, cx: 50, cy: 50 });
+                //                slide1.addText('Hello world!');
 
-                slide1
-                    .addShape(PPTX.ShapeTypes.RIGHT_ARROW, { x: 500, y: 440, cx: 100, cy: 50, color: '0000FF' })
-                    .addShape(PPTX.ShapeTypes.UP_ARROW, { x: 500, y: 140, cx: 100, cy: 50, color: '0000FF', url: 'www.google.com' });
-
+                // slide1.addShape(PPTX.ShapeTypes.TRIANGLE, { x: 150, y: 50, cx: 50, cy: 50, color: '00FF00' });
+                // slide1.addShape(PPTX.ShapeTypes.OVAL, { x: 100, y: 200, cx: 200, cy: 100, text: 'hello world!' });
+                // slide1.addShape(PPTX.ShapeTypes.ELLIPSE, { x: 450, y: 200, cx: 200, cy: 100, text: 'hello world!', color: '00FF00' }); // testing alias (ELLIPSE == OVAL)
+                // slide1.addShape(PPTX.ShapeTypes.TRAPEZOID, { x: 320, y: 200, cx: 150, cy: 150, color: 'FF0000' });
+                // slide1.addShape(PPTX.ShapeTypes.LEFT_ARROW, { x: 500, y: 340, cx: 100, cy: 50, color: 'FF00FF' });
+                //
+                // slide1
+                //     .addShape(PPTX.ShapeTypes.RIGHT_ARROW, { x: 500, y: 440, cx: 100, cy: 50, color: '0000FF' })
+                //     .addShape(PPTX.ShapeTypes.UP_ARROW, { x: 500, y: 140, cx: 100, cy: 50, color: '0000FF', url: 'www.google.com' });
+                //
+                // //----------------------------------------------------------------------------------------------------------------------------
+                // // copied from anotehr test, let's see if we can overlay everything and not get a corrupt file...
+                // // (and, yes, the resulting first slide will look stupid...)
+                // slide1.addText('Hello world!');
+                // slide1.addShape(PPTX.ShapeTypes.TRIANGLE, { x: 400, cx: 100, cy: 100, url: 'http://www.google.com' });
+                // slide1.addText('This is a hyperlink! Will this go to google?', { x: 0, y: 25, cx: 400, url: 'http://www.google.com' });
+                // slide1.addText('Will this go to slide 3?', { x: 0, y: 50, url: '#3' });
+                //
+                // slide1
+                //     .addText('Another piece of text, non-default position, wide block.')
+                //     .x(100)
+                //     .y(100)
+                //     .cx(500)
+                //     .cy(50);
+                //
+                // slide1
+                //     .addText('Text in skinny block, this should wrap.')
+                //     .x(20)
+                //     .y(150)
+                //     .cx(200)
+                //     .cy(150);
+                //
+                // slide1
+                //     .addText('Non-Latin (Cyrillic) character test: Привет мир!')
+                //     .x(300)
+                //     .y(150)
+                //     .cx(400)
+                //     .cy(150)
+                //     .addText("Let's go crazy: оалмгцнйукрлмьтсмщфзйудлтлваывувыаитыбюяй", { x: 300, y: 175, cx: 400 });
+                //
+                // slide1
+                //     .addImage(`${__dirname}/images/pizza.jpg`, { url: '#3' })
+                //     .x(100)
+                //     .y(200)
+                //     .cx(166)
+                //     .cy(100);
+                //
+                // slide1
+                //     .addImage(`${__dirname}/images/image1.png`)
+                //     .x(400)
+                //     .y(250)
+                //     .cx(250)
+                //     .cy(150);
                 //----------------------------------------------------------------------------------------------------------------------------
-                // copied from anotehr test, let's see if we can overlay everything and not get a corrupt file...
-                // (and, yes, the resulting first slide will look stupid...)
-                slide1.addText('Hello world!');
-                slide1.addShape(PPTX.ShapeTypes.TRIANGLE, { x: 400, cx: 100, cy: 100, url: 'http://www.google.com' });
-                slide1.addText('This is a hyperlink! Will this go to google?', { x: 0, y: 25, cx: 400, url: 'http://www.google.com' });
-                slide1.addText('Will this go to slide 3?', { x: 0, y: 50, url: '#3' });
 
-                slide1
-                    .addText('Another piece of text, non-default position, wide block.')
-                    .x(100)
-                    .y(100)
-                    .cx(500)
-                    .cy(50);
+                // trying to access the process template data via our object tree and some direct XML injection:
+                // let shape = slide1.getShapeObject(0);
+                //
+                // console.log('shape = ', shape.content);
+                // console.log('slide 1 all elements = ', slide1.elements);
+                //
+                // if (shape.content['p:txBody'][0]['a:p'][0]['a:r']) {
+                //     console.log('inside new text');
+                //     shape.content['p:txBody'][0]['a:p'][0]['a:r'][0]['a:t'] = "Shape's new text!";
+                // } else {
+                //     console.log('inside new shape block text');
+                //     shape.content['p:txBody'][0]['a:p'][0]['a:r'] = [
+                //         { 'a:rPr': [{ $: { lang: 'en-US', smtClean: '0' } }], 'a:t': 'Mod our own shape' },
+                //     ];
+                //
+                //     // major problem: this node is NOT being written out last in the node order! Causes a corrupt file.
+                //     shape.content['p:txBody'][0]['a:p'][0]['a:endParaRPr'] = [{ $: { lang: 'en-US' } }]; // this MUST go last!
+                // }
 
-                slide1
-                    .addText('Text in skinny block, this should wrap.')
-                    .x(20)
-                    .y(150)
-                    .cx(200)
-                    .cy(150);
+                let shapeContent = slide1.getShapeRawContent(5);
 
-                slide1
-                    .addText('Non-Latin (Cyrillic) character test: Привет мир!')
-                    .x(300)
-                    .y(150)
-                    .cx(400)
-                    .cy(150)
-                    .addText("Let's go crazy: оалмгцнйукрлмьтсмщфзйудлтлваывувыаитыбюяй", { x: 300, y: 175, cx: 400 });
+                if (shapeContent) {
+                    if (shapeContent['p:txBody'] && shapeContent['p:txBody'][0]['a:p']) {
+                        if (shapeContent['p:txBody'][0]['a:p'][0]['a:r']) {
+                            shapeContent['p:txBody'][0]['a:p'][0]['a:r'][0]['a:t'] = "Shape's new text!";
+                            shapeContent['p:txBody'][0]['a:p'][0]['a:endParaRPr'] = [{ $: { lang: 'en-US' } }]; // this MUST go last!
+                        } else {
+                            shapeContent['p:txBody'][0]['a:p'][0]['a:r'] = [
+                                { 'a:rPr': [{ $: { lang: 'en-US', smtClean: '0' } }], 'a:t': 'Mod our own shape' },
+                            ];
 
-                slide1
-                    .addImage(`${__dirname}/images/pizza.jpg`, { url: '#3' })
-                    .x(100)
-                    .y(200)
-                    .cx(166)
-                    .cy(100);
-
-                slide1
-                    .addImage(`${__dirname}/images/image1.png`)
-                    .x(400)
-                    .y(250)
-                    .cx(250)
-                    .cy(150);
-                //----------------------------------------------------------------------------------------------------------------------------
-                let slide3 = presentation.addSlide().addSlide();
-                slide3.addText('The linked worked...');
+                            // major problem: this node is NOT being written out last in the node order! Causes a corrupt file.
+                            shapeContent['p:txBody'][0]['a:p'][0]['a:endParaRPr'] = [{ $: { lang: 'en-US' } }]; // this MUST go last!
+                        }
+                    }
+                } else {
+                    console.log('Cound not find any shapes!');
+                }
 
                 presentation.save(`${tmpDir}/process-map-rewrite.pptx`);
                 expect(fs.existsSync(`${tmpDir}/process-map-rewrite.pptx`)).toBe(true);
