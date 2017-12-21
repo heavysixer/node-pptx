@@ -2,8 +2,8 @@ const PPTX = require('../index.js');
 const fs = require('fs');
 const tmpDir = `${__dirname}/tmp`;
 
-describe('Presentation Module', () => {
-    test('should be able to create a pptx file from scratch and add some shapes', () => {
+describe('Shape Module', () => {
+    test('should be add shapes', () => {
         try {
             let presentation = new PPTX.Presentation();
 
