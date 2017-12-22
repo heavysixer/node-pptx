@@ -123,7 +123,9 @@ describe('Presentation Module', () => {
     test('should be able to create the process map from scratch', () => {
         try {
             let presentation = new PPTX.Presentation();
+
             presentation.buildPowerPoint();
+            presentation.setSlideSize(PptxUnitHelper.fromInches(13.33), PptxUnitHelper.fromInches(7.5));
 
             let slide1 = presentation.getSlide('slide1');
 
