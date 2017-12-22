@@ -142,14 +142,21 @@ describe('Presentation Module', () => {
             // -Add line color to shapes (this is the same as the border color)
             // -Need to control font size
             // -Text alignment in shapes
+            // -Need margins and wrap-text for text boxes/shapes
 
-            slide1.addText('Process map template', { x: 100, y: 50, cx: 500, cy: 20 });
+            slide1.addText('Process map template', {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(2.12)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.52)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.43)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.34)),
+            });
+
             slide1.addShape(PPTX.ShapeTypes.GREGS_CHEVRON_PENTAGON, {
                 x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(3.75)),
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
-                color: 'C5F484',
+                color: 'C5E0B4', //'C5F484',
                 text: 'x',
                 textColor: PPTX.SchemeColors.ACCENT6,
             });
@@ -169,7 +176,7 @@ describe('Presentation Module', () => {
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
-                color: 'C5F484',
+                color: 'C5E0B4',
                 text: 'x',
                 textColor: PPTX.SchemeColors.TEXT1,
             });
@@ -189,7 +196,7 @@ describe('Presentation Module', () => {
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
-                color: 'C5F484',
+                color: 'C5E0B4',
                 text: 'x',
                 textColor: 'FF0000',
             });
@@ -208,7 +215,7 @@ describe('Presentation Module', () => {
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
-                color: 'C5F484',
+                color: 'C5E0B4',
                 text: 'test',
             });
 
@@ -361,6 +368,66 @@ describe('Presentation Module', () => {
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.32)),
                 color: '70AD47',
                 text: '8',
+                textColor: 'FFFFFF',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(4.13)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(2.64)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.4)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.4)),
+                color: 'FFC000',
+                text: 'R,A',
+                textColor: 'FFFFFF',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(4.13)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(3.31)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.4)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.4)),
+                color: 'FFC000',
+                text: 'I',
+                textColor: 'FFFFFF',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(4.13)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(3.98)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.4)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.4)),
+                color: 'FFC000',
+                text: 'I',
+                textColor: 'FFFFFF',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(5.08)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(3.98)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.4)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.4)),
+                color: 'FFC000',
+                text: 'R',
+                textColor: 'FFFFFF',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(6.03)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(3.98)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.4)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.4)),
+                color: 'FFC000',
+                text: 'I',
+                textColor: 'FFFFFF',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(6.98)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(3.98)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.4)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.4)),
+                color: 'FFC000',
+                text: 'R,A',
                 textColor: 'FFFFFF',
             });
 
