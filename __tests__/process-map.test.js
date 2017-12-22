@@ -142,7 +142,7 @@ describe('Presentation Module', () => {
             // -Add line color to shapes (this is the same as the border color)
 
             slide1.addText('Process map template', { x: 100, y: 50, cx: 500, cy: 20 });
-            slide1.addShape(PPTX.ShapeTypes.PENTAGON, {
+            slide1.addShape(PPTX.ShapeTypes.GREGS_CHEVRON_PENTAGON, {
                 x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(3.75)),
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
