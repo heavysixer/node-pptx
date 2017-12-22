@@ -140,6 +140,7 @@ describe('Presentation Module', () => {
             // -Need to add ability to center text
             // -Optional: theme color support would be nice
             // -Add line color to shapes (this is the same as the border color)
+            // -Need to control font size
 
             slide1.addText('Process map template', { x: 100, y: 50, cx: 500, cy: 20 });
             slide1.addShape(PPTX.ShapeTypes.GREGS_CHEVRON_PENTAGON, {
@@ -148,6 +149,75 @@ describe('Presentation Module', () => {
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
                 color: 'C5F484',
+                text: 'x',
+                textColor: PPTX.SchemeColors.ACCENT6,
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.GREGS_CHEVRON_PENTAGON, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(4.69)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
+                color: 'C5F484',
+                text: 'xx',
+                textColor: PPTX.SchemeColors.ACCENT5,
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.GREGS_CHEVRON_PENTAGON, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(5.66)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
+                color: 'C5F484',
+                text: 'x',
+                textColor: PPTX.SchemeColors.TEXT1,
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.GREGS_CHEVRON_PENTAGON, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(6.63)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
+                color: 'C5F484',
+                text: 'x',
+                textColor: 'FF0000',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.GREGS_CHEVRON_PENTAGON, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(7.6)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
+                color: 'C5F484',
+                text: 'x',
+                textColor: 'FF0000',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.GREGS_CHEVRON_PENTAGON, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(8.58)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
+                color: 'C5F484',
+                text: 'xxxx',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.GREGS_CHEVRON_PENTAGON, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.55)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
+                color: 'C5F484',
+                text: 'test',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.GREGS_CHEVRON_PENTAGON, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(10.51)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
+                color: 'C5F484',
+                text: 'x',
             });
 
             presentation.save(`${tmpDir}/new-process-map.pptx`);
