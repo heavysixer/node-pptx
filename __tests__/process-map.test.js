@@ -141,6 +141,7 @@ describe('Presentation Module', () => {
             // -Optional: theme color support would be nice
             // -Add line color to shapes (this is the same as the border color)
             // -Need to control font size
+            // -Text alignment in shapes
 
             slide1.addText('Process map template', { x: 100, y: 50, cx: 500, cy: 20 });
             slide1.addShape(PPTX.ShapeTypes.GREGS_CHEVRON_PENTAGON, {
@@ -218,6 +219,149 @@ describe('Presentation Module', () => {
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
                 color: 'C5F484',
                 text: 'x',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.99)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(2.53)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.68)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.61)),
+                color: 'DCDADA',
+                text: 'x',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.99)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(3.2)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.68)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.61)),
+                color: 'DCDADA',
+                text: 'x',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.99)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(3.87)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.68)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.61)),
+                color: 'DCDADA',
+                text: 'x',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.99)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(4.54)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.68)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.61)),
+                color: 'DCDADA',
+                text: 'x',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.99)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(5.21)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.68)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.61)),
+                color: 'DCDADA',
+                text: 'x',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.99)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(5.88)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.68)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.61)),
+                color: 'DCDADA',
+                text: 'x',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.99)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(6.55)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.68)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.61)),
+                color: 'DCDADA',
+                text: 'x',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(4.13)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.11)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.32)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.32)),
+                color: '70AD47',
+                text: '1',
+                textColor: 'FFFFFF',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(5.05)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.11)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.32)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.32)),
+                color: '70AD47',
+                text: '2',
+                textColor: 'FFFFFF',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(5.97)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.11)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.32)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.32)),
+                color: '70AD47',
+                text: '3',
+                textColor: 'FFFFFF',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(6.89)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.11)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.32)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.32)),
+                color: '70AD47',
+                text: '4',
+                textColor: 'FFFFFF',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(7.81)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.11)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.32)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.32)),
+                color: '70AD47',
+                text: '5',
+                textColor: 'FFFFFF',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(8.73)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.11)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.32)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.32)),
+                color: '70AD47',
+                text: '6',
+                textColor: 'FFFFFF',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.65)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.11)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.32)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.32)),
+                color: '70AD47',
+                text: '7',
+                textColor: 'FFFFFF',
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(10.57)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.11)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.32)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.32)),
+                color: '70AD47',
+                text: '8',
+                textColor: 'FFFFFF',
             });
 
             presentation.save(`${tmpDir}/new-process-map.pptx`);
