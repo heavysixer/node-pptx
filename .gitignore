@@ -8,3 +8,5 @@ bower_components/
 *.icloud
 package-lock.json
 /__tests__/tmp
+.nyc_output/
+PowerPoint\ Unzipped\ File\ Experiments/
