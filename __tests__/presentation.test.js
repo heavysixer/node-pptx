@@ -9,7 +9,7 @@ describe('Presentation Module', () => {
     });
 
     afterAll(() => {
-        // emptyDir(tmpDir);
+        //emptyDir(tmpDir);
     });
 
     test('should be able to load an existing pptx file', () => {
@@ -240,11 +240,11 @@ function prepareTmpDir(dir) {
 }
 
 function emptyDir(dir) {
-    // for (const file of fs.readdirSync(dir)) {
-    //     fs.unlink(path.join(dir, file), err => {
-    //         if (err) throw err;
-    //     });
-    // }
+    for (const file of fs.readdirSync(dir)) {
+        fs.unlink(path.join(dir, file), err => {
+            if (err) throw err;
+        });
+    }
 }
 
 function fail(err) {
