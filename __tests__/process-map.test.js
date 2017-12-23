@@ -431,6 +431,16 @@ describe('Presentation Module', () => {
                 textColor: 'FFFFFF',
             });
 
+            slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.53)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.6)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.17)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.17)),
+                color: PPTX.SchemeColors.ACCENT4,
+                text: 'R',
+                textColor: PPTX.SchemeColors.BACKGROUND1,
+            });
+
             presentation.save(`${tmpDir}/new-process-map.pptx`);
             expect(fs.existsSync(`${tmpDir}/new-process-map.pptx`)).toBe(true);
         } catch (err) {
