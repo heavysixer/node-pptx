@@ -276,4 +276,143 @@ The (minimal) steps to add a new image:
         -<p:cNvPr> node has the following attributes:
             -"id" = seems like an id relative to the slide itself (so it can just be the object count)
             -"name" = in my pptx, it was named "Picture 3" when the id was "4" (in pptxgenjs code, they use an "id" of <object count>+2 and "name" of "Object <object count>+1")
-            -"descr" = can just be the image named
+            -"descr" = can just be the image name
+
+
+---------------------------------------------------------------------------
+
+
+Some good info on what some of the XML nodes represent - taken from MSDN:
+
+Shape Tree:
+
+Remarks
+The following table lists the possible child types:
+
+NonVisualGroupShapeProperties <p:nvGrpSpPr>
+
+GroupShapeProperties <p:grpSpPr>
+
+Shape <p:sp>
+
+GroupShape <p:grpSp>
+
+GraphicFrame <p:graphicFrame>
+
+ConnectionShape <p:cxnSp>
+
+Picture <p:pic>
+
+ContentPart <p:contentPart>
+
+ExtensionListWithModification <p:extLst>
+
+
+[ISO/IEC 29500-1 1st Edition]
+
+19.3.1.45 spTree (Shape Tree)
+
+This element specifies all shape-based objects, either grouped or not, that can be referenced on a given slide. As most objects within a slide are shapes, this represents the majority of
+content within a slide. Text and effects are attached to shapes that are contained within the spTree element.
+
+[Example: Consider the following PresentationML slide
+
+<p:sld>
+  <p:cSld>
+    <p:spTree>
+      <p:nvGrpSpPr>
+        …
+      </p:nvGrpSpPr>
+      <p:grpSpPr>
+        …
+      </p:grpSpPr>
+      <p:sp>
+        …
+      </p:sp>
+    </p:spTree>
+  </p:cSld>
+  …
+</p:sld>
+
+In the above example the shape tree specifies all the shape properties for this slide. end example]
+
+Each shape-based object within the shape tree, whether grouped or not, shall represent one unique level of z-ordering on the slide. The z-order for each shape-based object shall be determined
+by the lexical ordering of each shape-based object within the shape tree: the first shape-based object shall have the lowest z-order, while the last shape-based object shall have the highest z-order.
+
+The z-ordering of shape-based objects within the shape tree shall also determine the navigation (tab) order of the shape-based objects: the shape-based object with the lowest z-order (the first
+ shape in lexical order) shall be first in navigation order, with objects being navigated in ascending z-order.
+
+[Example: Consider the following PresentationML slide with two shapes
+
+<p:sld>
+  <p:cSld>
+    <p:spTree>
+      …
+      <p:sp>
+        <p:nvSpPr>
+          <p:cNvPr id="5" name="Oval 4" />
+          …
+        </p:nvSpPr>
+        …
+      </p:sp>
+      <p:sp>
+        <p:nvSpPr>
+          <p:cNvPr id="4" name="Isosceles Triangle 3" />
+          …
+        </p:nvSpPr>
+        …
+      </p:sp>
+    </p:spTree>
+  </p:cSld>
+  …
+</p:sld>
+
+In the above example the shape with name Oval 4 has the lowest z-order value since that shape is the first shape in the shape tree. Oval 4 is also the first shape in navigation order.
+The shape with name Isosceles Triangle 3 has the highest z positioning value since that shape is the last shape in the shape tree. Isosceles Triangle 3 is also the last shape in navigation order.
+ end example]
+
+Parent Elements
+
+cSld (§19.3.1.16)
+
+Child Elements
+
+Subclause
+
+contentPart (Content Part)
+
+§19.3.1.14
+
+cxnSp (Connection Shape)
+
+§19.3.1.19
+
+extLst (Extension List with Modification Flag)
+
+§19.3.1.20
+
+graphicFrame (Graphic Frame)
+
+§19.3.1.21
+
+grpSp (Group Shape)
+
+§19.3.1.22
+
+grpSpPr (Group Shape Properties)
+
+§19.3.1.23
+
+nvGrpSpPr (Non-Visual Properties for a Group Shape)
+
+§19.3.1.31
+
+pic (Picture)
+
+§19.3.1.37
+
+sp (Shape)
+
+§19.3.1.43
+
+[Note: The W3C XML Schema definition of this element’s content model (CT_GroupShape) is located in §A.3. end note]
