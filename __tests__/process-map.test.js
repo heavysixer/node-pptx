@@ -73,25 +73,6 @@ describe('Presentation Module', () => {
                     .cx(250)
                     .cy(150);
 
-                // trying to access the process template data via our object tree and some direct XML injection:
-                // let shape = slide1.getShapeObject(0);
-                //
-                // console.log('shape = ', shape.content);
-                // console.log('slide 1 all elements = ', slide1.elements);
-                //
-                // if (shape.content['p:txBody'][0]['a:p'][0]['a:r']) {
-                //     console.log('inside new text');
-                //     shape.content['p:txBody'][0]['a:p'][0]['a:r'][0]['a:t'] = "Shape's new text!";
-                // } else {
-                //     console.log('inside new shape block text');
-                //     shape.content['p:txBody'][0]['a:p'][0]['a:r'] = [
-                //         { 'a:rPr': [{ $: { lang: 'en-US', smtClean: '0' } }], 'a:t': 'Mod our own shape' },
-                //     ];
-                //
-                //     // major problem: this node is NOT being written out last in the node order! Causes a corrupt file.
-                //     shape.content['p:txBody'][0]['a:p'][0]['a:endParaRPr'] = [{ $: { lang: 'en-US' } }]; // this MUST go last!
-                // }
-
                 let shapeContent = slide1.getShapeRawContent(5);
 
                 if (shapeContent) {
