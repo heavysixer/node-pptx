@@ -132,7 +132,7 @@ describe('Presentation Module', () => {
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.34)),
             });
 
-            slide1.addShape(PPTX.ShapeTypes.GREGS_CHEVRON_PENTAGON, {
+            slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
                 x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(3.75)),
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
@@ -142,7 +142,7 @@ describe('Presentation Module', () => {
                 textColor: PPTX.SchemeColors.ACCENT6,
             });
 
-            slide1.addShape(PPTX.ShapeTypes.GREGS_CHEVRON_PENTAGON, {
+            slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
                 x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(4.69)),
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
@@ -152,7 +152,7 @@ describe('Presentation Module', () => {
                 textColor: PPTX.SchemeColors.ACCENT5,
             });
 
-            slide1.addShape(PPTX.ShapeTypes.GREGS_CHEVRON_PENTAGON, {
+            slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
                 x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(5.66)),
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
@@ -162,7 +162,7 @@ describe('Presentation Module', () => {
                 textColor: PPTX.SchemeColors.TEXT1,
             });
 
-            slide1.addShape(PPTX.ShapeTypes.GREGS_CHEVRON_PENTAGON, {
+            slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
                 x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(6.63)),
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
@@ -172,7 +172,7 @@ describe('Presentation Module', () => {
                 textColor: 'FF0000',
             });
 
-            slide1.addShape(PPTX.ShapeTypes.GREGS_CHEVRON_PENTAGON, {
+            slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
                 x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(7.6)),
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
@@ -182,7 +182,7 @@ describe('Presentation Module', () => {
                 textColor: 'FF0000',
             });
 
-            slide1.addShape(PPTX.ShapeTypes.GREGS_CHEVRON_PENTAGON, {
+            slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
                 x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(8.58)),
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
@@ -191,7 +191,7 @@ describe('Presentation Module', () => {
                 text: 'xxxx',
             });
 
-            slide1.addShape(PPTX.ShapeTypes.GREGS_CHEVRON_PENTAGON, {
+            slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
                 x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.55)),
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
@@ -200,7 +200,7 @@ describe('Presentation Module', () => {
                 text: 'test',
             });
 
-            slide1.addShape(PPTX.ShapeTypes.GREGS_CHEVRON_PENTAGON, {
+            slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
                 x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(10.51)),
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),

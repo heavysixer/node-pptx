@@ -21,41 +21,38 @@ describe('Presentation Module', () => {
             expect(slide1.content).toBeDefined();
             expect(slide1.content).not.toBeNull();
 
-            let barChartData = {
-                title: 'Sample bar chart',
-                renderType: 'bar',
-                data: [
-                    {
-                        name: 'Series 1',
-                        labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'],
-                        values: [4.3, 2.5, 3.5, 4.5],
-                    },
-                    {
-                        name: 'Series 2',
-                        labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'],
-                        values: [2.4, 4.4, 1.8, 2.8],
-                    },
-                    {
-                        name: 'Series 3',
-                        labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'],
-                        values: [2.0, 2.0, 3.0, 5.0],
-                    },
-                ],
-            };
+            let barChartData = [
+                {
+                    name: 'Series 1',
+                    labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'],
+                    values: [4.3, 2.5, 3.5, 4.5],
+                },
+                {
+                    name: 'Series 2',
+                    labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'],
+                    values: [2.4, 4.4, 1.8, 2.8],
+                },
+                {
+                    name: 'Series 3',
+                    labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'],
+                    values: [2.0, 2.0, 3.0, 5.0],
+                },
+            ];
 
-            await slide1.addChart(barChartData, { x: 100, y: 100, cx: 400, cy: 300 });
+            await slide1.addChart('bar', barChartData, { x: 100, y: 100, cx: 400, cy: 300 });
 
             let slide2 = presentation.addSlide();
 
-            barChartData.title = 'Sample chart #2';
-            barChartData.data = [
+            barChartData = [
                 {
                     name: 'Series 1',
+                    color: 'FF0000',
                     labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'],
                     values: [1.3, 4.5, 3.5, 4.5],
                 },
                 {
                     name: 'Series 2',
+                    color: PPTX.SchemeColors.ACCENT6,
                     labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'],
                     values: [6.4, 2.4, 3.8, 5.8],
                 },
@@ -76,7 +73,7 @@ describe('Presentation Module', () => {
                 },
             ];
 
-            await slide2.addChart(barChartData, { x: 0, y: 0, cx: 600, cy: 400 });
+            await slide2.addChart('bar', barChartData);
 
             presentation.save(`${tmpDir}/chart.pptx`);
             expect(fs.existsSync(`${tmpDir}/chart.pptx`)).toBe(true);
@@ -89,10 +86,6 @@ describe('Presentation Module', () => {
         console.log('TODO...');
     });
 });
-
-function fail(err) {
-    expect(err).toBeNull();
-}
 
 function prepareTmpDir(dir) {
     if (!fs.existsSync(dir)) {
