@@ -4,7 +4,7 @@ const tmpDir = `${__dirname}/tmp`;
 
 let { PptxUnitHelper } = require('../lib/helpers/unit-helper');
 
-describe('Presentation Module', () => {
+describe('Charts Module', () => {
     beforeAll(() => {
         prepareTmpDir(tmpDir);
     });
@@ -75,15 +75,17 @@ describe('Presentation Module', () => {
 
             await slide2.addChart('bar', barChartData);
 
-            presentation.save(`${tmpDir}/chart.pptx`);
-            expect(fs.existsSync(`${tmpDir}/chart.pptx`)).toBe(true);
+            presentation.save(`${tmpDir}/charts-new-add-chart.pptx`);
+            expect(fs.existsSync(`${tmpDir}/charts-new-add-chart.pptx`)).toBe(true);
         } catch (err) {
             throw err;
         }
     });
 
-    test('should be able to add a chart to an existing PowerPoint', () => {
-        console.log('TODO...');
+    xtest('should be able to add a chart to an existing PowerPoint', () => {
+        // TODO: test the following:
+        //      1) load existing with no chart, then add a chart
+        //      2) load existing with a chart, then add a chart (you _might_ need to parse out worksheet counts for this)
     });
 });
 
@@ -96,8 +98,8 @@ function prepareTmpDir(dir) {
 }
 
 function emptyDir(dir) {
-    if (fs.existsSync(`${__dirname}/tmp/chart.pptx`)) {
-        fs.unlink(`${__dirname}/tmp/chart.pptx`, err => {
+    if (fs.existsSync(`${__dirname}/tmp/charts-new-add-chart.pptx`)) {
+        fs.unlink(`${__dirname}/tmp/charts-new-add-chart.pptx`, err => {
             if (err) throw err;
         });
     }
