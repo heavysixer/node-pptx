@@ -316,6 +316,7 @@ describe('Presentation Module', () => {
                 textColor: 'FFFFFF',
                 fontFace: 'Calibri',
                 fontSize: 12,
+                fontBold: true,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -410,6 +411,7 @@ describe('Presentation Module', () => {
                 color: 'FFC000',
                 text: 'R,A',
                 textColor: 'FFFFFF',
+                fontFace: 'Calibri',
                 fontSize: 10,
             });
 
@@ -469,7 +471,7 @@ describe('Presentation Module', () => {
                 text: 'R,A',
                 textColor: 'FFFFFF',
                 fontFace: 'Calibri',
-                fontSize: 12,
+                fontSize: 10,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
