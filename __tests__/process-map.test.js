@@ -117,7 +117,9 @@ describe('Presentation Module', () => {
             //
             // DONE -Need to add different slide dimensions (like the 16x9 layout)
             // -Need to add line color and line style support to shapes (so we can make those vertical dotted line separators)
-            // -Need to add font support to text
+            // DONE -Need to add font support to text
+            // DONE -Need to add font size support to text/shapes
+            // -Need to add support for bold font to text/shapes
             // -Need to add ability to center text
             // -Optional: theme color support would be nice
             // -Add line color to shapes (this is the same as the border color)
@@ -131,6 +133,7 @@ describe('Presentation Module', () => {
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.43)),
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.34)),
                 fontFace: 'Alien Encounters', //'Calibri Light',
+                fontSize: 32,
             });
 
             slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
@@ -141,7 +144,8 @@ describe('Presentation Module', () => {
                 color: 'C5E0B4',
                 text: 'x',
                 textColor: PPTX.SchemeColors.ACCENT6,
-                fontFace: 'Alien Encounters',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
@@ -152,6 +156,8 @@ describe('Presentation Module', () => {
                 color: 'C5F484',
                 text: 'xx',
                 textColor: PPTX.SchemeColors.ACCENT5,
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
@@ -162,6 +168,8 @@ describe('Presentation Module', () => {
                 color: 'C5E0B4',
                 text: 'x',
                 textColor: PPTX.SchemeColors.TEXT1,
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
@@ -172,6 +180,8 @@ describe('Presentation Module', () => {
                 color: 'C5F484',
                 text: 'x',
                 textColor: 'FF0000',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
@@ -182,6 +192,8 @@ describe('Presentation Module', () => {
                 color: 'C5E0B4',
                 text: 'x',
                 textColor: 'FF0000',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
@@ -191,6 +203,8 @@ describe('Presentation Module', () => {
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
                 color: 'C5F484',
                 text: 'xxxx',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
@@ -200,6 +214,8 @@ describe('Presentation Module', () => {
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
                 color: 'C5E0B4',
                 text: 'test',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
@@ -209,6 +225,8 @@ describe('Presentation Module', () => {
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
                 color: 'C5F484',
                 text: 'x',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
@@ -218,6 +236,8 @@ describe('Presentation Module', () => {
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.61)),
                 color: 'DCDADA',
                 text: 'x',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
@@ -227,6 +247,8 @@ describe('Presentation Module', () => {
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.61)),
                 color: 'DCDADA',
                 text: 'x',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
@@ -236,6 +258,8 @@ describe('Presentation Module', () => {
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.61)),
                 color: 'DCDADA',
                 text: 'x',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
@@ -245,6 +269,8 @@ describe('Presentation Module', () => {
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.61)),
                 color: 'DCDADA',
                 text: 'x',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
@@ -254,6 +280,8 @@ describe('Presentation Module', () => {
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.61)),
                 color: 'DCDADA',
                 text: 'x',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
@@ -263,6 +291,8 @@ describe('Presentation Module', () => {
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.61)),
                 color: 'DCDADA',
                 text: 'x',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
@@ -272,6 +302,8 @@ describe('Presentation Module', () => {
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.61)),
                 color: 'DCDADA',
                 text: 'x',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -282,6 +314,8 @@ describe('Presentation Module', () => {
                 color: '70AD47',
                 text: '1',
                 textColor: 'FFFFFF',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -292,6 +326,8 @@ describe('Presentation Module', () => {
                 color: '70AD47',
                 text: '2',
                 textColor: 'FFFFFF',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -302,6 +338,8 @@ describe('Presentation Module', () => {
                 color: '70AD47',
                 text: '3',
                 textColor: 'FFFFFF',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -312,6 +350,8 @@ describe('Presentation Module', () => {
                 color: '70AD47',
                 text: '4',
                 textColor: 'FFFFFF',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -322,6 +362,8 @@ describe('Presentation Module', () => {
                 color: '70AD47',
                 text: '5',
                 textColor: 'FFFFFF',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -332,6 +374,8 @@ describe('Presentation Module', () => {
                 color: '70AD47',
                 text: '6',
                 textColor: 'FFFFFF',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -342,6 +386,8 @@ describe('Presentation Module', () => {
                 color: '70AD47',
                 text: '7',
                 textColor: 'FFFFFF',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -352,6 +398,8 @@ describe('Presentation Module', () => {
                 color: '70AD47',
                 text: '8',
                 textColor: 'FFFFFF',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -362,6 +410,7 @@ describe('Presentation Module', () => {
                 color: 'FFC000',
                 text: 'R,A',
                 textColor: 'FFFFFF',
+                fontSize: 10,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -372,6 +421,7 @@ describe('Presentation Module', () => {
                 color: 'FFC000',
                 text: 'I',
                 textColor: 'FFFFFF',
+                fontSize: 10,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -382,6 +432,8 @@ describe('Presentation Module', () => {
                 color: 'FFC000',
                 text: 'I',
                 textColor: 'FFFFFF',
+                fontFace: 'Calibri',
+                fontSize: 10,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -392,6 +444,8 @@ describe('Presentation Module', () => {
                 color: 'FFC000',
                 text: 'R',
                 textColor: 'FFFFFF',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -402,6 +456,8 @@ describe('Presentation Module', () => {
                 color: 'FFC000',
                 text: 'I',
                 textColor: 'FFFFFF',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -412,6 +468,8 @@ describe('Presentation Module', () => {
                 color: 'FFC000',
                 text: 'R,A',
                 textColor: 'FFFFFF',
+                fontFace: 'Calibri',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -422,6 +480,44 @@ describe('Presentation Module', () => {
                 color: PPTX.SchemeColors.ACCENT4,
                 text: 'R',
                 textColor: PPTX.SchemeColors.BACKGROUND1,
+                fontFace: 'Calibri',
+                fontSize: 10,
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(10.59)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.6)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.17)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.17)),
+                color: PPTX.SchemeColors.ACCENT4,
+                text: 'A',
+                textColor: PPTX.SchemeColors.BACKGROUND1,
+                fontFace: 'Calibri',
+                fontSize: 10,
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.53)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.81)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.17)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.17)),
+                color: PPTX.SchemeColors.ACCENT4,
+                text: 'C',
+                textColor: PPTX.SchemeColors.BACKGROUND1,
+                fontFace: 'Calibri',
+                fontSize: 10,
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(10.59)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.81)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.17)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.17)),
+                color: PPTX.SchemeColors.ACCENT4,
+                text: 'I',
+                textColor: PPTX.SchemeColors.BACKGROUND1,
+                fontFace: 'Calibri',
+                fontSize: 10,
             });
 
             presentation.save(`${tmpDir}/new-process-map.pptx`);
