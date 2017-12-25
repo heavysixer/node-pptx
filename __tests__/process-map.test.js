@@ -106,7 +106,7 @@ describe('Presentation Module', () => {
             let presentation = new PPTX.Presentation();
 
             presentation.buildPowerPoint();
-            presentation.setSlideSize(PptxUnitHelper.fromInches(13.33), PptxUnitHelper.fromInches(7.5));
+            presentation.setLayout({ width: 13.33, height: 7.5 });
 
             let slide1 = presentation.getSlide('slide1');
 
