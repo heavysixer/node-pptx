@@ -130,7 +130,7 @@ describe('Presentation Module', () => {
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.52)),
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.43)),
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.34)),
-                font_face: 'Calibri Light',
+                fontFace: 'Calibri Light',
             });
 
             slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
@@ -138,9 +138,10 @@ describe('Presentation Module', () => {
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
-                color: 'C5E0B4', //'C5F484',
+                color: 'C5E0B4',
                 text: 'x',
                 textColor: PPTX.SchemeColors.ACCENT6,
+                fontFace: 'Alien Encounters',
             });
 
             slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
