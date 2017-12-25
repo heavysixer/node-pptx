@@ -9,7 +9,7 @@ describe('Presentation Module', () => {
     });
 
     afterAll(() => {
-        // emptyDir(tmpDir);
+        //emptyDir(tmpDir);
     });
 
     describe('with an existing pptx file', () => {
@@ -67,9 +67,7 @@ describe('Presentation Module', () => {
                 throw err;
             }
         });
-
     });
-
 
     describe('when creating a presentation without an existing file', () => {
         test('should be able to add links to other slides', () => {
