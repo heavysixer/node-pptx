@@ -130,7 +130,7 @@ describe('Presentation Module', () => {
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.52)),
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.43)),
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.34)),
-                fontFace: 'Calibri Light',
+                fontFace: 'Alien Encounters', //'Calibri Light',
             });
 
             slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
