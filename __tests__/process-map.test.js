@@ -120,11 +120,11 @@ describe('Presentation Module', () => {
             // DONE -Need to add font support to text
             // DONE -Need to add font size support to text/shapes
             // DONE -Need to add support for bold font to text/shapes
-            // -Need to add ability to center text
-            // -Optional: theme color support would be nice
+            // DONE -Need to add ability to center text
+            // DONE -Optional: theme color support would be nice
             // DONE -Add line color to shapes (this is the same as the border color)
             // DONE -Need to control font size
-            // -Text alignment in shapes
+            // DONE -Text alignment in shapes
             // DONE -Need margins and wrap-text for text boxes/shapes
 
             slide1.addText('Process map template', {
@@ -132,11 +132,25 @@ describe('Presentation Module', () => {
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.52)),
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.43)),
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.34)),
-                fontFace: 'Alien Encounters', //'Calibri Light',
-                fontSize: 32,
+                fontFace: 'Calibri Light',
+                fontSize: 20,
+                textWrap: 'none',
+                textAlign: 'center',
+                textVerticalAlign: 'center',
+            });
+
+            slide1.addText('Cool Font Test', {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.1)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.1)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(2.43)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.34)),
+                fontSize: 15,
+                fontFace: 'Alien Encounters',
                 textColor: 'FF0000',
                 textWrap: 'none',
+                textAlign: 'center',
                 textVerticalAlign: 'center',
+                line: { color: '0000FF', dashType: 'dash', width: 1.0 },
             });
 
             slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
@@ -249,6 +263,8 @@ describe('Presentation Module', () => {
                 text: 'x',
                 fontFace: 'Calibri',
                 fontSize: 12,
+                fontBold: true,
+                textAlign: 'left',
             });
 
             slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
@@ -260,6 +276,8 @@ describe('Presentation Module', () => {
                 text: 'x',
                 fontFace: 'Calibri',
                 fontSize: 12,
+                fontBold: true,
+                textAlign: 'left',
             });
 
             slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
@@ -271,6 +289,8 @@ describe('Presentation Module', () => {
                 text: 'x',
                 fontFace: 'Calibri',
                 fontSize: 12,
+                fontBold: true,
+                textAlign: 'left',
             });
 
             slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
@@ -282,6 +302,8 @@ describe('Presentation Module', () => {
                 text: 'x',
                 fontFace: 'Calibri',
                 fontSize: 12,
+                fontBold: true,
+                textAlign: 'left',
             });
 
             slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
@@ -293,6 +315,8 @@ describe('Presentation Module', () => {
                 text: 'x',
                 fontFace: 'Calibri',
                 fontSize: 12,
+                fontBold: true,
+                textAlign: 'left',
             });
 
             slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
@@ -304,6 +328,8 @@ describe('Presentation Module', () => {
                 text: 'x',
                 fontFace: 'Calibri',
                 fontSize: 12,
+                fontBold: true,
+                textAlign: 'left',
             });
 
             slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
@@ -315,6 +341,8 @@ describe('Presentation Module', () => {
                 text: 'x',
                 fontFace: 'Calibri',
                 fontSize: 12,
+                fontBold: true,
+                textAlign: 'left',
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -516,6 +544,7 @@ describe('Presentation Module', () => {
                 textColor: PPTX.SchemeColors.BACKGROUND1,
                 fontFace: 'Calibri',
                 fontSize: 10,
+                margin: 0,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -528,6 +557,7 @@ describe('Presentation Module', () => {
                 textColor: PPTX.SchemeColors.BACKGROUND1,
                 fontFace: 'Calibri',
                 fontSize: 10,
+                margin: 0,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -540,6 +570,7 @@ describe('Presentation Module', () => {
                 textColor: PPTX.SchemeColors.BACKGROUND1,
                 fontFace: 'Calibri',
                 fontSize: 10,
+                margin: 0,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -552,6 +583,7 @@ describe('Presentation Module', () => {
                 textColor: PPTX.SchemeColors.BACKGROUND1,
                 fontFace: 'Calibri',
                 fontSize: 10,
+                margin: 0,
             });
 
             slide1.addShape(PPTX.ShapeTypes.LINE, {
