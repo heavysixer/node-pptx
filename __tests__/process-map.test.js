@@ -119,11 +119,11 @@ describe('Presentation Module', () => {
             // -Need to add line color and line style support to shapes (so we can make those vertical dotted line separators)
             // DONE -Need to add font support to text
             // DONE -Need to add font size support to text/shapes
-            // -Need to add support for bold font to text/shapes
+            // DONE -Need to add support for bold font to text/shapes
             // -Need to add ability to center text
             // -Optional: theme color support would be nice
-            // -Add line color to shapes (this is the same as the border color)
-            // -Need to control font size
+            // DONE -Add line color to shapes (this is the same as the border color)
+            // DONE -Need to control font size
             // -Text alignment in shapes
             // -Need margins and wrap-text for text boxes/shapes
 
@@ -137,51 +137,39 @@ describe('Presentation Module', () => {
             });
 
             slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
-                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(3.75)),
-                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
-                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
-                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
-                color: 'C5E0B4',
-                text: 'x',
-                textColor: PPTX.SchemeColors.ACCENT6,
-                fontFace: 'Calibri',
-                fontSize: 12,
-            });
-
-            slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
-                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(4.69)),
-                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
-                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
-                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
-                color: 'C5F484',
-                text: 'xx',
-                textColor: PPTX.SchemeColors.ACCENT5,
-                fontFace: 'Calibri',
-                fontSize: 12,
-            });
-
-            slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
-                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(5.66)),
-                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
-                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
-                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
-                color: 'C5E0B4',
-                text: 'x',
-                textColor: PPTX.SchemeColors.TEXT1,
-                fontFace: 'Calibri',
-                fontSize: 12,
-            });
-
-            slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
-                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(6.63)),
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(10.51)),
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
                 color: 'C5F484',
                 text: 'x',
-                textColor: 'FF0000',
                 fontFace: 'Calibri',
                 fontSize: 12,
+                line: { color: 'FFFFFF', width: 1.0 },
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.55)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
+                color: 'C5E0B4',
+                text: 'test',
+                fontFace: 'Calibri',
+                fontSize: 12,
+                line: { color: 'FFFFFF', width: 1.0 },
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(8.58)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
+                color: 'C5F484',
+                text: 'xxxx',
+                fontFace: 'Calibri',
+                fontSize: 12,
+                line: { color: 'FFFFFF', width: 1.0 },
             });
 
             slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
@@ -194,39 +182,59 @@ describe('Presentation Module', () => {
                 textColor: 'FF0000',
                 fontFace: 'Calibri',
                 fontSize: 12,
+                line: { color: 'FFFFFF', width: 1.0 },
             });
 
             slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
-                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(8.58)),
-                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
-                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
-                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
-                color: 'C5F484',
-                text: 'xxxx',
-                fontFace: 'Calibri',
-                fontSize: 12,
-            });
-
-            slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
-                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.55)),
-                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
-                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
-                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
-                color: 'C5E0B4',
-                text: 'test',
-                fontFace: 'Calibri',
-                fontSize: 12,
-            });
-
-            slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
-                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(10.51)),
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(6.63)),
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
                 cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
                 color: 'C5F484',
                 text: 'x',
+                textColor: 'FF0000',
                 fontFace: 'Calibri',
                 fontSize: 12,
+                line: { color: 'FFFFFF', width: 1.0 },
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(5.66)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
+                color: 'C5E0B4',
+                text: 'x',
+                textColor: PPTX.SchemeColors.TEXT1,
+                fontFace: 'Calibri',
+                fontSize: 12,
+                line: { color: 'FFFFFF', width: 1.0 },
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(4.69)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
+                color: 'C5F484',
+                text: 'xx',
+                textColor: PPTX.SchemeColors.ACCENT5,
+                fontFace: 'Calibri',
+                fontSize: 12,
+                line: { color: 'FFFFFF', width: 1.0 },
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(3.75)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.23)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.24)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.16)),
+                color: 'C5E0B4',
+                text: 'x',
+                textColor: PPTX.SchemeColors.ACCENT6,
+                fontFace: 'Calibri',
+                fontSize: 12,
+                line: { color: 'FFFFFF', width: 1.0 },
             });
 
             slide1.addShape(PPTX.ShapeTypes.RECTANGLE, {
@@ -317,6 +325,7 @@ describe('Presentation Module', () => {
                 fontFace: 'Calibri',
                 fontSize: 12,
                 fontBold: true,
+                line: { color: 'FFFFFF', width: 1.5 },
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -329,6 +338,8 @@ describe('Presentation Module', () => {
                 textColor: 'FFFFFF',
                 fontFace: 'Calibri',
                 fontSize: 12,
+                fontBold: true,
+                line: { color: 'FFFFFF', width: 1.5 },
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -341,6 +352,8 @@ describe('Presentation Module', () => {
                 textColor: 'FFFFFF',
                 fontFace: 'Calibri',
                 fontSize: 12,
+                fontBold: true,
+                line: { color: 'FFFFFF', width: 1.5 },
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -353,6 +366,8 @@ describe('Presentation Module', () => {
                 textColor: 'FFFFFF',
                 fontFace: 'Calibri',
                 fontSize: 12,
+                fontBold: true,
+                line: { color: 'FFFFFF', width: 1.5 },
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -365,6 +380,8 @@ describe('Presentation Module', () => {
                 textColor: 'FFFFFF',
                 fontFace: 'Calibri',
                 fontSize: 12,
+                fontBold: true,
+                line: { color: 'FFFFFF', width: 1.5 },
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -377,6 +394,8 @@ describe('Presentation Module', () => {
                 textColor: 'FFFFFF',
                 fontFace: 'Calibri',
                 fontSize: 12,
+                fontBold: true,
+                line: { color: 'FFFFFF', width: 1.5 },
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -389,6 +408,8 @@ describe('Presentation Module', () => {
                 textColor: 'FFFFFF',
                 fontFace: 'Calibri',
                 fontSize: 12,
+                fontBold: true,
+                line: { color: 'FFFFFF', width: 1.5 },
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -401,6 +422,8 @@ describe('Presentation Module', () => {
                 textColor: 'FFFFFF',
                 fontFace: 'Calibri',
                 fontSize: 12,
+                fontBold: true,
+                line: { color: 'FFFFFF', width: 1.5 },
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
