@@ -626,6 +626,7 @@ describe('Presentation Module', () => {
                 fontFace: 'Calibri',
                 fontSize: 10,
                 textWrap: 'none',
+                margin: 0,
             });
 
             slide1.addText('Accountable', {
@@ -636,6 +637,7 @@ describe('Presentation Module', () => {
                 fontFace: 'Calibri',
                 fontSize: 10,
                 textWrap: 'none',
+                margin: { top: 0, bottom: 0, left: 0, right: 0 },
             });
 
             slide1.addText('Consulted', {
@@ -646,7 +648,9 @@ describe('Presentation Module', () => {
                 fontFace: 'Calibri',
                 fontSize: 10,
                 textWrap: 'none',
+                margin: 0,
             });
+
             slide1.addText('Informed', {
                 x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(10.81)),
                 y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.82)),
@@ -655,6 +659,7 @@ describe('Presentation Module', () => {
                 fontFace: 'Calibri',
                 fontSize: 10,
                 textWrap: 'none',
+                margin: 0,
             });
 
             presentation.save(`${tmpDir}/new-process-map.pptx`);
