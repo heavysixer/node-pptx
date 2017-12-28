@@ -136,6 +136,7 @@ describe('Presentation Module', () => {
                 fontSize: 32,
                 textColor: 'FF0000',
                 textWrap: 'none',
+                //line: { color: '000000', width: 2.0 },
             });
 
             slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
