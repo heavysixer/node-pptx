@@ -134,6 +134,8 @@ describe('Presentation Module', () => {
                 cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.34)),
                 fontFace: 'Alien Encounters', //'Calibri Light',
                 fontSize: 32,
+                textColor: 'FF0000',
+                textWrap: 'none',
             });
 
             slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
@@ -434,8 +436,9 @@ describe('Presentation Module', () => {
                 color: 'FFC000',
                 text: 'R,A',
                 textColor: 'FFFFFF',
+                textWrap: 'none',
                 fontFace: 'Calibri',
-                fontSize: 10,
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -446,7 +449,8 @@ describe('Presentation Module', () => {
                 color: 'FFC000',
                 text: 'I',
                 textColor: 'FFFFFF',
-                fontSize: 10,
+                textWrap: 'none',
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -457,8 +461,9 @@ describe('Presentation Module', () => {
                 color: 'FFC000',
                 text: 'I',
                 textColor: 'FFFFFF',
+                textWrap: 'none',
                 fontFace: 'Calibri',
-                fontSize: 10,
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
@@ -469,6 +474,7 @@ describe('Presentation Module', () => {
                 color: 'FFC000',
                 text: 'R',
                 textColor: 'FFFFFF',
+                textWrap: 'none',
                 fontFace: 'Calibri',
                 fontSize: 12,
             });
@@ -481,6 +487,7 @@ describe('Presentation Module', () => {
                 color: 'FFC000',
                 text: 'I',
                 textColor: 'FFFFFF',
+                textWrap: 'none',
                 fontFace: 'Calibri',
                 fontSize: 12,
             });
@@ -493,8 +500,9 @@ describe('Presentation Module', () => {
                 color: 'FFC000',
                 text: 'R,A',
                 textColor: 'FFFFFF',
+                textWrap: 'none',
                 fontFace: 'Calibri',
-                fontSize: 10,
+                fontSize: 12,
             });
 
             slide1.addShape(PPTX.ShapeTypes.FLOWCHART_CONNECTOR, {
