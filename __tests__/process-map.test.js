@@ -125,7 +125,7 @@ describe('Presentation Module', () => {
             // DONE -Add line color to shapes (this is the same as the border color)
             // DONE -Need to control font size
             // -Text alignment in shapes
-            // -Need margins and wrap-text for text boxes/shapes
+            // DONE -Need margins and wrap-text for text boxes/shapes
 
             slide1.addText('Process map template', {
                 x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(2.12)),
@@ -136,7 +136,7 @@ describe('Presentation Module', () => {
                 fontSize: 32,
                 textColor: 'FF0000',
                 textWrap: 'none',
-                //line: { color: '000000', width: 2.0 },
+                textVerticalAlign: 'center',
             });
 
             slide1.addShape(PPTX.ShapeTypes.CHEVRON_PENTAGON, {
