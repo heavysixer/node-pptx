@@ -116,7 +116,7 @@ describe('Presentation Module', () => {
             // TODO's to support everything:
             //
             // DONE -Need to add different slide dimensions (like the 16x9 layout)
-            // -Need to add line color and line style support to shapes (so we can make those vertical dotted line separators)
+            // DONE -Need to add line color and line style support to shapes (so we can make those vertical dotted line separators)
             // DONE -Need to add font support to text
             // DONE -Need to add font size support to text/shapes
             // DONE -Need to add support for bold font to text/shapes
@@ -552,6 +552,109 @@ describe('Presentation Module', () => {
                 textColor: PPTX.SchemeColors.BACKGROUND1,
                 fontFace: 'Calibri',
                 fontSize: 10,
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.LINE, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(4.69)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(2.13)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(5.03)),
+                line: { color: PPTX.SchemeColors.ACCENT4, width: 0.75, dashType: 'dash' },
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.LINE, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(5.65)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(2.13)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(5.03)),
+                line: { color: PPTX.SchemeColors.ACCENT4, width: 0.75, dashType: 'dash' },
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.LINE, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(6.58)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(2.13)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(5.03)),
+                line: { color: PPTX.SchemeColors.ACCENT4, width: 0.75, dashType: 'dash' },
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.LINE, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(7.53)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(2.13)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(5.03)),
+                line: { color: PPTX.SchemeColors.ACCENT4, width: 0.75, dashType: 'dash' },
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.LINE, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(8.62)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(2.13)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(5.03)),
+                line: { color: PPTX.SchemeColors.ACCENT4, width: 0.75, dashType: 'dash' },
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.LINE, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.58)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(2.13)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(5.03)),
+                line: { color: PPTX.SchemeColors.ACCENT4, width: 0.75, dashType: 'dash' },
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.LINE, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(10.53)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(2.13)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(5.03)),
+                line: { color: PPTX.SchemeColors.ACCENT4, width: 0.75, dashType: 'dash' },
+            });
+
+            slide1.addShape(PPTX.ShapeTypes.LINE, {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(1.99)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(2.5)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.68)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0)),
+                line: { width: 1.0 },
+            });
+
+            slide1.addText('Responsible', {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.74)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.61)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.68)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.17)),
+                fontFace: 'Calibri',
+                fontSize: 10,
+                textWrap: 'none',
+            });
+
+            slide1.addText('Accountable', {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(10.81)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.61)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.71)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.17)),
+                fontFace: 'Calibri',
+                fontSize: 10,
+                textWrap: 'none',
+            });
+
+            slide1.addText('Consulted', {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.74)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.82)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.57)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.17)),
+                fontFace: 'Calibri',
+                fontSize: 10,
+                textWrap: 'none',
+            });
+            slide1.addText('Informed', {
+                x: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(10.81)),
+                y: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.82)),
+                cx: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.53)),
+                cy: PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.17)),
+                fontFace: 'Calibri',
+                fontSize: 10,
+                textWrap: 'none',
             });
 
             presentation.save(`${tmpDir}/new-process-map.pptx`);
