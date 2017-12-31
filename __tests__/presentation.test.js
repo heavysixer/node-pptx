@@ -199,14 +199,14 @@ describe('Presentation Module', () => {
                     .cy(50);
 
                 defaultSlide
-                    .addText('Text in skinny block, this should wrap.')
+                    .addText('Text in skinny block, this should wrap.', { textVerticalAlign: 'top' })
                     .x(20)
                     .y(150)
                     .cx(200)
                     .cy(150);
 
                 defaultSlide
-                    .addText('Non-Latin (Cyrillic) character test: Привет мир!')
+                    .addText('Non-Latin (Cyrillic) character test: Привет мир!', { textVerticalAlign: 'top' })
                     .x(300)
                     .y(150)
                     .cx(400)
