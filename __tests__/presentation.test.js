@@ -73,9 +73,6 @@ describe('Presentation Module', () => {
         test('should be able to add links to other slides', () => {
             try {
                 let presentation = new PPTX.Presentation();
-
-                presentation.buildPowerPoint();
-
                 let slide1 = presentation.getSlide('slide1');
 
                 expect(slide1.content).toBeDefined();
@@ -114,9 +111,6 @@ describe('Presentation Module', () => {
         test('should be able to make a TOC', () => {
             try {
                 let presentation = new PPTX.Presentation();
-
-                presentation.buildPowerPoint();
-
                 let slide1 = presentation.getSlide('slide1');
 
                 expect(slide1.content).toBeDefined();
@@ -172,9 +166,6 @@ describe('Presentation Module', () => {
         test('should be able successfully create the file', () => {
             try {
                 let presentation = new PPTX.Presentation();
-
-                presentation.buildPowerPoint(); // TODO: this function is needed for init, but is also used for building after adding objects to a pptx. Separate into two different functions...
-
                 let newSlide = presentation.addSlide();
 
                 expect(newSlide.content).toBeDefined();
@@ -208,14 +199,14 @@ describe('Presentation Module', () => {
                     .cy(50);
 
                 defaultSlide
-                    .addText('Text in skinny block, this should wrap.')
+                    .addText('Text in skinny block, this should wrap.', { textVerticalAlign: 'top' })
                     .x(20)
                     .y(150)
                     .cx(200)
                     .cy(150);
 
                 defaultSlide
-                    .addText('Non-Latin (Cyrillic) character test: Привет мир!')
+                    .addText('Non-Latin (Cyrillic) character test: Привет мир!', { textVerticalAlign: 'top' })
                     .x(300)
                     .y(150)
                     .cx(400)
