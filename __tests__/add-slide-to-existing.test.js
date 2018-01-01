@@ -7,7 +7,7 @@ describe('Presentation Module', () => {
         test('should be able to add another slide', () => {
             try {
                 if (fs.existsSync(`${tmpDir}/presentation-existing-add-slide.pptx`)) {
-                    fs.unlink(`${tmpDir}/presentation-existing-add-slide.pptx`);
+                    fs.unlinkSync(`${tmpDir}/presentation-existing-add-slide.pptx`);
                 }
 
                 let fulltemplateFilePath = `${__dirname}/fixtures/basic.pptx`;
