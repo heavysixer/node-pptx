@@ -25,9 +25,9 @@
 		"lint": "./node_modules/eslint/bin/eslint.js --ext .js src",
 		"test-with-coverage": "nyc jest"
 	},
-  "jest": {
-    "verbose": true
-  },
+	"jest": {
+		"verbose": true
+	},
 	"files": [
 		"index.js"
 	],
@@ -54,7 +54,7 @@
 	],
 	"dependencies": {
 		"async": "^1.5.2",
-		"jszip": "^2.6.1",
+		"jszip": "^3.1.5",
 		"xml-js": "^1.5.2",
 		"xml2js": "^0.4.19"
 	},

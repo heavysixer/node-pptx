@@ -3,12 +3,11 @@ const fs = require('fs');
 const tmpDir = `${__dirname}/tmp`;
 
 describe('Shape Module', () => {
-    test('should be add shapes', () => {
+    test('should be add shapes', async () => {
         try {
+            expect.assertions(3);
+
             let presentation = new PPTX.Presentation();
-
-            presentation.buildPowerPoint();
-
             let slide1 = presentation.getSlide('slide1');
 
             expect(slide1.content).toBeDefined();
@@ -25,10 +24,10 @@ describe('Shape Module', () => {
                 .addShape(PPTX.ShapeTypes.RIGHT_ARROW, { x: 500, y: 440, cx: 100, cy: 50, color: '0000FF' })
                 .addShape(PPTX.ShapeTypes.UP_ARROW, { x: 500, y: 140, cx: 100, cy: 50, color: '0000FF', url: 'www.google.com' });
 
-            presentation.save(`${tmpDir}/shapes-test.pptx`);
+            await presentation.save(`${tmpDir}/shapes-test.pptx`);
             expect(fs.existsSync(`${tmpDir}/shapes-test.pptx`)).toBe(true);
         } catch (err) {
-            console.log(err);
+            console.warn(err);
             throw err;
         }
     });
