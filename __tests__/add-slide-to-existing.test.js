@@ -3,29 +3,26 @@ const fs = require('fs');
 const tmpDir = `${__dirname}/tmp`;
 
 describe('Presentation Module', () => {
-    test('should be able to load an existing pptx file and add another slide', () => {
-        try {
-            if (fs.existsSync(`${tmpDir}/add-slide-to-existing.pptx`)) {
-                fs.unlink(`${tmpDir}/add-slide-to-existing.pptx`);
-            }
+    describe('with an existing pptx file', () => {
+        test('should be able to add another slide', async () => {
+            try {
+                expect.assertions(1);
 
-            let fulltemplateFilePath = `${__dirname}/fixtures/basic.pptx`;
-            let presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
+                if (fs.existsSync(`${tmpDir}/presentation-existing-add-slide.pptx`)) {
+                    fs.unlinkSync(`${tmpDir}/presentation-existing-add-slide.pptx`);
+                }
 
-            presentation.loadExistingPPTX(function(err) {
-                if (err) fail(err);
+                let fulltemplateFilePath = `${__dirname}/fixtures/basic.pptx`;
+                let presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
 
+                await presentation.loadExistingPPTX();
                 presentation.addSlide();
-                presentation.save(`${tmpDir}/add-slide-to-existing.pptx`);
-                expect(fs.existsSync(`${tmpDir}/add-slide-to-existing.pptx`)).toBe(true);
-            });
-        } catch (err) {
-            console.log(err);
-            throw err;
-        }
+                await presentation.save(`${tmpDir}/presentation-existing-add-slide.pptx`);
+                expect(fs.existsSync(`${tmpDir}/presentation-existing-add-slide.pptx`)).toBe(true);
+            } catch (err) {
+                console.warn(err);
+                throw err;
+            }
+        });
     });
 });
-
-function fail(err) {
-    expect(err).toBeNull();
-}

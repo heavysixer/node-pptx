@@ -5,53 +5,54 @@ const tmpDir = `${__dirname}/tmp`;
 let { PptxUnitHelper } = require('../lib/helpers/unit-helper');
 
 describe('Presentation Module', () => {
-    test('should be able to load an existing pptx file', () => {
+    test('should be able to load an existing pptx file', async () => {
         try {
+            expect.assertions(3);
+
             let fulltemplateFilePath = `${__dirname}/fixtures/raci-matrix.pptx`;
             let presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
 
-            presentation.loadExistingPPTX(function(err) {
-                if (err) fail(err);
+            await presentation.loadExistingPPTX();
+            let slide1 = presentation.getSlide('slide1');
 
-                let slide1 = presentation.getSlide('slide1');
+            expect(slide1.content).toBeDefined();
+            expect(slide1.content).not.toBeNull();
 
-                expect(slide1.content).toBeDefined();
-                expect(slide1.content).not.toBeNull();
+            let shapeContent = slide1.getShapeRawContent(5);
 
-                let shapeContent = slide1.getShapeRawContent(5);
+            if (shapeContent) {
+                if (shapeContent['p:txBody'] && shapeContent['p:txBody'][0]['a:p']) {
+                    if (shapeContent['p:txBody'][0]['a:p'][0]['a:r']) {
+                        shapeContent['p:txBody'][0]['a:p'][0]['a:r'][0]['a:t'] = "Shape's new text!";
+                        //shapeContent['p:txBody'][0]['a:p'][0]['a:endParaRPr'] = [{ $: { lang: 'en-US' } }]; // this MUST go last!
+                    } else {
+                        shapeContent['p:txBody'][0]['a:p'][0]['a:r'] = [
+                            { 'a:rPr': [{ $: { lang: 'en-US', smtClean: '0' } }], 'a:t': 'Mod our own shape' },
+                        ];
 
-                if (shapeContent) {
-                    if (shapeContent['p:txBody'] && shapeContent['p:txBody'][0]['a:p']) {
-                        if (shapeContent['p:txBody'][0]['a:p'][0]['a:r']) {
-                            shapeContent['p:txBody'][0]['a:p'][0]['a:r'][0]['a:t'] = "Shape's new text!";
-                            //shapeContent['p:txBody'][0]['a:p'][0]['a:endParaRPr'] = [{ $: { lang: 'en-US' } }]; // this MUST go last!
-                        } else {
-                            shapeContent['p:txBody'][0]['a:p'][0]['a:r'] = [
-                                { 'a:rPr': [{ $: { lang: 'en-US', smtClean: '0' } }], 'a:t': 'Mod our own shape' },
-                            ];
-
-                            //shapeContent['p:txBody'][0]['a:p'][0]['a:endParaRPr'] = [{ $: { lang: 'en-US' } }]; // this MUST go last!
-                        }
+                        //shapeContent['p:txBody'][0]['a:p'][0]['a:endParaRPr'] = [{ $: { lang: 'en-US' } }]; // this MUST go last!
                     }
-                } else {
-                    console.log('Cound not find any shapes!');
                 }
+            } else {
+                console.log('Cound not find any shapes!');
+            }
 
-                let slide2 = presentation.addSlide('slideLayout7');
+            let slide2 = presentation.addSlide('slideLayout7');
 
-                makeProcessMapOnSlide(slide2);
+            makeProcessMapOnSlide(slide2);
 
-                presentation.save(`${tmpDir}/process-map-rewrite.pptx`);
-                expect(fs.existsSync(`${tmpDir}/process-map-rewrite.pptx`)).toBe(true);
-            });
+            await presentation.save(`${tmpDir}/process-map-rewrite.pptx`);
+            expect(fs.existsSync(`${tmpDir}/process-map-rewrite.pptx`)).toBe(true);
         } catch (err) {
-            console.log(err);
+            console.warn(err);
             throw err;
         }
     });
 
-    test('should be able to create the process map from scratch', () => {
+    test('should be able to create the process map from scratch', async () => {
         try {
+            expect.assertions(3);
+
             let presentation = new PPTX.Presentation();
 
             presentation.buildPowerPoint();
@@ -78,10 +79,10 @@ describe('Presentation Module', () => {
 
             makeProcessMapOnSlide(slide1);
 
-            presentation.save(`${tmpDir}/new-process-map.pptx`);
+            await presentation.save(`${tmpDir}/new-process-map.pptx`);
             expect(fs.existsSync(`${tmpDir}/new-process-map.pptx`)).toBe(true);
         } catch (err) {
-            console.log(err);
+            console.warn(err);
             throw err;
         }
     });
@@ -665,6 +666,3 @@ function makeProcessMapOnSlide(slide) {
     });
 }
 
-function fail(err) {
-    expect(err).toBeNull();
-}

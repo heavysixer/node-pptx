@@ -9,6 +9,8 @@ describe('Charts Module', () => {
 
     test('should be able to create a simple chart from scratch', async () => {
         try {
+            expect.assertions(3);
+
             let presentation = new PPTX.Presentation();
 
             presentation.buildPowerPoint();
@@ -72,10 +74,11 @@ describe('Charts Module', () => {
             ];
 
             await slide2.addChart('bar', barChartData);
+            await presentation.save(`${tmpDir}/charts-new-add-chart.pptx`);
 
-            presentation.save(`${tmpDir}/charts-new-add-chart.pptx`);
             expect(fs.existsSync(`${tmpDir}/charts-new-add-chart.pptx`)).toBe(true);
         } catch (err) {
+            console.warn(err);
             throw err;
         }
     });
