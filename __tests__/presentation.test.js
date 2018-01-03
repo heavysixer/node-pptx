@@ -27,7 +27,6 @@ describe('Presentation Module', () => {
                 presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
 
                 await presentation.loadExistingPPTX();
-
                 presentation
                     .getSlide('slide1')
                     .addImage(`${__dirname}/images/pizza.jpg`)
@@ -54,7 +53,7 @@ describe('Presentation Module', () => {
                 expect.assertions(3);
 
                 let presentation = new PPTX.Presentation();
-                let slide1 = presentation.getSlide('slide1');
+                let slide1 = presentation.addSlide();
 
                 expect(slide1.content).toBeDefined();
                 expect(slide1.content).not.toBeNull();
@@ -94,7 +93,7 @@ describe('Presentation Module', () => {
                 expect.assertions(3);
 
                 let presentation = new PPTX.Presentation();
-                let slide1 = presentation.getSlide('slide1');
+                let slide1 = presentation.addSlide();
 
                 expect(slide1.content).toBeDefined();
                 expect(slide1.content).not.toBeNull();
@@ -151,7 +150,8 @@ describe('Presentation Module', () => {
                 expect.assertions(4);
 
                 let presentation = new PPTX.Presentation();
-                let newSlide = presentation.addSlide();
+                presentation.addSlide(); // this will be "slide1", which we'll grab later
+                let newSlide = presentation.addSlide(); // slide #2
 
                 expect(newSlide.content).toBeDefined();
                 expect(newSlide.content).not.toBeNull();
@@ -167,8 +167,6 @@ describe('Presentation Module', () => {
                     .cx(500)
                     .cy(300);
 
-                // since we always start with a blank slide by default, addSlide will always return slide #2 or more;
-                // must grab slide 1 from the existing presentation
                 let defaultSlide = presentation.getSlide('slide1');
 
                 defaultSlide.addText('Hello world!');
@@ -244,4 +242,3 @@ function emptyDir(dir) {
         });
     }
 }
-

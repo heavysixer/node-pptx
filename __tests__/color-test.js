@@ -48,7 +48,7 @@ describe('Presentation Module', () => {
                 }
 
                 let presentation = new PPTX.Presentation();
-                let slide = presentation.getSlide('slide1');
+                let slide = presentation.addSlide();
 
                 expect(slide.content).toBeDefined();
                 expect(slide.content).not.toBeNull();
@@ -69,4 +69,3 @@ describe('Presentation Module', () => {
         });
     });
 });
-
