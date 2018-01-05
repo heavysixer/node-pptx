@@ -8,7 +8,7 @@ describe('Shape Module', () => {
             expect.assertions(3);
 
             let presentation = new PPTX.Presentation();
-            let slide1 = presentation.getSlide('slide1');
+            let slide1 = presentation.addSlide();
 
             expect(slide1.content).toBeDefined();
             expect(slide1.content).not.toBeNull();

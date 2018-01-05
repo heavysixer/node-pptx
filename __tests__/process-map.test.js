@@ -58,7 +58,7 @@ describe('Presentation Module', () => {
             presentation.buildPowerPoint();
             presentation.setLayout({ width: 13.33, height: 7.5 });
 
-            let slide1 = presentation.getSlide('slide1');
+            let slide1 = presentation.addSlide();
 
             expect(slide1.content).toBeDefined();
             expect(slide1.content).not.toBeNull();
@@ -665,4 +665,3 @@ function makeProcessMapOnSlide(slide) {
         margin: 0,
     });
 }
-
