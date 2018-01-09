@@ -26,11 +26,10 @@
 		"test-with-coverage": "nyc jest"
 	},
 	"jest": {
-		"verbose": true
+		"verbose": true,
+		"collectCoverage": true
 	},
-	"files": [
-		"index.js"
-	],
+	"files": ["index.js"],
 	"keywords": [
 		"javascript",
 		"javascript-create-powerpoint",
