@@ -53,4 +53,4 @@ This project builds off the hard work of several other PPTX libraries namely:
 
 ## License
 
-MIT © [Mark Daggett](https://github.com/heavysixer)
+MIT © [Mark Daggett](https://github.com/heavysixer) & Greg Dolley
