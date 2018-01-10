@@ -116,14 +116,17 @@ new pptx.Presentation()
 ##### Removing Slides
 If you've assigned a name to your slide you can reference it by name otherwise
 you will need to remove it based on index.
+
 ```javascript
 new pptx.Presentation()
   .compose(pres => {
     pres
     .addSlide(slide => {
-      slide.name = 'my-slide'
+      slide.name('my-slide')
     })
     .removeSlide('my-slide')
+    .addSlide()
+    .removeSlide(0) // Remove the first slide (zero-based index)
   })
 ```
 ##### Reordering Slides
@@ -134,7 +137,10 @@ TBD
 Applying Background Colors
 
 ```javascript
-slide.setBackgroundColor('C5E0B4');
+pres
+.addSlide(slide => {
+  slide.backgroundColor('my-slide')
+})
 ```
 
 ##### Applying Master Slides
@@ -170,12 +176,32 @@ let barChartData = [
     },
 ];
 
-slide1.addChart('bar', barChartData, { x: 100, y: 100, cx: 400, cy: 300 });
+slide.addChart(chart => {
+  chart
+    .type('bar')
+    .data(barChartData)
+    .x(100)
+    .y(100)
+    .cx(400)
+    .cy(300)
+});
 ```
 
 ##### Images
 ```javascript
-presentation.addSlide().addImage(`${__dirname}/images/pizza.jpg`);
+// You can add an image by specifying a remote source
+slide.addImage(image => {
+  image.src(`${__dirname}/images/pizza.jpg`)
+})
+
+// Images can also be created using base64 encoded strings.
+slide.addImage(image => {
+  image.data(
+    data:image/gif;base64,R0lGODlhPQBEAPeoAJosM...
+    ...
+    ...
+  )
+});
 ```
 ##### Text Boxes
 ```javascript
@@ -187,10 +213,10 @@ For a full list of the supported shapes check the
 [shape-types](https://github.com/heavysixer/node-pptx/blob/master/lib/shape-types.js) file.
 
 ```javascript
-slide1.addShape(PPTX.ShapeTypes.TRIANGLE, { x: 50, y: 50, cx: 50, cy: 50 });
-slide1.addShape(PPTX.ShapeTypes.TRIANGLE, { x: 150, y: 50, cx: 50, cy: 50, color: '00FF00' });
-slide1.addShape(PPTX.ShapeTypes.OVAL, { x: 100, y: 200, cx: 200, cy: 100, text: 'hello world!' });
-slide1.addShape(PPTX.ShapeTypes.UP_ARROW, { x: 500, y: 140, cx: 100, cy: 50, color: '0000FF', url: 'www.google.com' });
+slide.addShape(PPTX.ShapeTypes.TRIANGLE, { x: 50, y: 50, cx: 50, cy: 50 });
+slide.addShape(PPTX.ShapeTypes.TRIANGLE, { x: 150, y: 50, cx: 50, cy: 50, color: '00FF00' });
+slide.addShape(PPTX.ShapeTypes.OVAL, { x: 100, y: 200, cx: 200, cy: 100, text: 'hello world!' });
+slide.addShape(PPTX.ShapeTypes.UP_ARROW, { x: 500, y: 140, cx: 100, cy: 50, color: '0000FF', url: 'www.google.com' });
 ```
 
 ## Contributing
