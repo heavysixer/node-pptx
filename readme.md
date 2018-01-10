@@ -4,44 +4,127 @@
 
 Generate PPTX files on the server-side with JavaScript.
 
-## Install
+## Features
 
-```
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+  - [Presentation Object](#presentation-object)
+    - [Creating a Presentation From Scratch](#creating-a-presentation-from-scratch)
+    - [Modifying an existing Presentation](#modifying-an-existing-presentation)
+  - [Slides](#slides)
+    - [Adding, Removing, and Reordering Slides](#adding-removing-and-reordering-slides)
+    - [Formatting Slides](#formatting-slides)
+      - [Applying Master Slides](#applying-master-slides)
+      - [Adding Slide Numbers](#adding-slide-numbers)
+    - [Adding Content to Slides](#adding-content-to-slides)
+      - [TextBoxes](#textboxes)
+      - [Charts](#charts)
+        - [Bar Charts](#bar-charts)
+      - [Images](#images)
+- [Contributing](#contributing)
+- [Special Thanks](#special-thanks)
+- [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## Getting Started
+
+```bash
 $ npm install node-pptx
 ```
 
-## Usage
+Let's create a very simple presentation with one slide.
 
 ```javascript
 const pptx = require('node-pptx');
 
-// In the futures presentations will also be able to composed through the DSL
 new pptx.Presentation()
-  .compose(pres => {
-
-    pres.title('My Presentation')
-    .addSlide(slide => {
-
-      slide
-      .addText(text => {
-
-        text
-        .value('Hello world')
-        .x(10)
-        .y(0);
-      })
-      .addShape(shape => {
-
-        shape.type('circle');
-      })
-      .addImage(image => {
-
-        image.src('http://www.someurl.com/some-image.jpg');
-      });
-    });
-})
-.save('/tmp/my-presentation.pptx');
+	.compose(pres => {
+		pres.title('My Presentation').addSlide(slide => {
+			slide
+				.addText(text => {
+					text
+						.value('Hello world')
+						.x(10)
+						.y(0);
+				})
+				.addShape(shape => {
+					shape.type('circle');
+				})
+				.addImage(image => {
+					image.src('http://www.someurl.com/some-image.jpg');
+				});
+		});
+	})
+	.save('/tmp/my-presentation.pptx');
 ```
+
+## Usage
+
+### Presentation Object
+
+#### Creating a Presentation From Scratch
+
+#### Modifying an existing Presentation
+
+### Slides
+
+#### Adding, Removing, and Reordering Slides
+
+#### Formatting Slides
+
+Applying Background Colors
+
+```javascript
+slide.setBackgroundColor('C5E0B4');
+```
+
+##### Applying Master Slides
+
+##### Adding Slide Numbers
+
+#### Adding Content to Slides
+
+##### TextBoxes
+
+##### Charts
+Charts have very minimal support right now, think of it mostly as a proof of concept at this point.
+
+###### Bar Charts
+
+```javascript
+let barChartData = [
+    {
+        name: 'Series 1',
+        labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'],
+        values: [4.3, 2.5, 3.5, 4.5],
+    },
+    {
+        name: 'Series 2',
+        labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'],
+        values: [2.4, 4.4, 1.8, 2.8],
+    },
+    {
+        name: 'Series 3',
+        labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'],
+        values: [2.0, 2.0, 3.0, 5.0],
+    },
+];
+
+slide1.addChart('bar', barChartData, { x: 100, y: 100, cx: 400, cy: 300 });
+```
+
+##### Images
+
+## Contributing
+
+Send issues and pull requests with your ideas.
+
+[Good First Issue](https://github.com/heavysixer/node-pptx/labels/Good%20First%20Issue) is a great starting point for PRs.
 
 ## Special Thanks
 
