@@ -15,6 +15,7 @@ Generate PPTX files on the server-side with JavaScript.
   - [Presentation Object](#presentation-object)
     - [Creating a Presentation From Scratch](#creating-a-presentation-from-scratch)
     - [Modifying an existing Presentation](#modifying-an-existing-presentation)
+    - [Saving A Presentation](#saving-a-presentation)
   - [Slides](#slides)
     - [Adding, Removing, and Reordering Slides](#adding-removing-and-reordering-slides)
     - [Formatting Slides](#formatting-slides)
