@@ -53,7 +53,7 @@ new pptx.Presentation()
         .value('Hello world')
         .x(10)
         .y(0);
-			})
+      })
       .addShape(shape => {
         shape.type('circle');
       })
