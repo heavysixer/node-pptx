@@ -45,24 +45,24 @@ Let's create a very simple presentation with one slide.
 const pptx = require('node-pptx');
 
 new pptx.Presentation()
-	.compose(pres => {
-		pres.title('My Presentation').addSlide(slide => {
-			slide
-				.addText(text => {
-					text
-						.value('Hello world')
-						.x(10)
-						.y(0);
-				})
-				.addShape(shape => {
-					shape.type('circle');
-				})
-				.addImage(image => {
-					image.src('http://www.someurl.com/some-image.jpg');
-				});
-		});
-	})
-	.save('/tmp/my-presentation.pptx');
+  .compose(pres => {
+    pres.title('My Presentation').addSlide(slide => {
+      slide
+      .addText(text => {
+        text
+        .value('Hello world')
+        .x(10)
+        .y(0);
+			})
+      .addShape(shape => {
+        shape.type('circle');
+      })
+      .addImage(image => {
+        image.src('http://www.someurl.com/some-image.jpg');
+      });
+    });
+  })
+  .save('/tmp/my-presentation.pptx');
 ```
 
 ## Usage
