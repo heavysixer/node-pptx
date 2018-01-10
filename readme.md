@@ -17,8 +17,10 @@ Generate PPTX files on the server-side with JavaScript.
     - [Modifying an existing Presentation](#modifying-an-existing-presentation)
     - [Saving A Presentation](#saving-a-presentation)
   - [Slides](#slides)
-    - [Adding, Removing, and Reordering Slides](#adding-removing-and-reordering-slides)
-    - [Formatting Slides](#formatting-slides)
+      - [Adding Slides](#adding-slides)
+      - [Removing Slides](#removing-slides)
+      - [Reordering Slides](#reordering-slides)
+      - [Formatting Options](#formatting-options)
       - [Applying Master Slides](#applying-master-slides)
       - [Adding Slide Numbers](#adding-slide-numbers)
     - [Adding Content to Slides](#adding-content-to-slides)
@@ -68,28 +70,66 @@ new pptx.Presentation()
 ## Usage
 
 ### Presentation Object
+The following sections defines the various ways to read, compose, and write pptx files.
 
 #### Creating a Presentation From Scratch
+```javascript
+new pptx.Presentation()
+  .compose(pres => {
+    pres.title('My Presentation')
+  })
+  .save('/tmp/my-presentation.pptx');
+```
 
 #### Modifying an existing Presentation
+If you would like to use an modify an existing pptx file, simply load it first.
 ```javascript
-let fulltemplateFilePath = `${__dirname}/fixtures/basic.pptx`;
-let presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
-await presentation.loadExistingPPTX();
-presentation.addSlide();
-await presentation.save(`${tmpDir}/presentation-existing-add-slide.pptx`);
+new pptx.Presentation()
+  .load(`${__dirname}/fixtures/basic.pptx`)
+  .compose(pres => {
+    pres.title('My Presentation')
+  })
+  .save('/tmp/my-presentation.pptx');
 ```
 
 #### Saving A Presentation
 ```javascript
-await presentation.save(`${tmpDir}/presentation-existing-add-slide.pptx`);
+new pptx.Presentation()
+.save(`${tmpDir}/some-file.pptx`);
 ```
 
 ### Slides
+Slides are are by far the most complex feature of this library because they are
+the backbone for all presentations.
 
-#### Adding, Removing, and Reordering Slides
+##### Adding Slides
+```javascript
+new pptx.Presentation()
+  .compose(pres => {
+    pres
+    .title('My Presentation')
+    .addSlide(slide => {
+      // design your slide here.
+    })
+  })
+```
+##### Removing Slides
+If you've assigned a name to your slide you can reference it by name otherwise
+you will need to remove it based on index.
+```javascript
+new pptx.Presentation()
+  .compose(pres => {
+    pres
+    .addSlide(slide => {
+      slide.name = 'my-slide'
+    })
+    .removeSlide('my-slide')
+  })
+```
+##### Reordering Slides
+TBD
 
-#### Formatting Slides
+##### Formatting Options
 
 Applying Background Colors
 
