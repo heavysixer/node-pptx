@@ -11,12 +11,15 @@ Generate PPTX files on the server-side with JavaScript.
 
 
 - [Getting Started](#getting-started)
-- [Usage](#usage)
   - [General Conventions](#general-conventions)
+- [Usage](#usage)
   - [Presentation Object](#presentation-object)
     - [Creating a Presentation From Scratch](#creating-a-presentation-from-scratch)
     - [Modifying an existing Presentation](#modifying-an-existing-presentation)
     - [Saving A Presentation](#saving-a-presentation)
+    - [Setting Properties](#setting-properties)
+    - [Setting Layouts](#setting-layouts)
+    - [Setting Text Direction](#setting-text-direction)
   - [Slides](#slides)
       - [Adding Slides](#adding-slides)
       - [Removing Slides](#removing-slides)
@@ -28,6 +31,7 @@ Generate PPTX files on the server-side with JavaScript.
       - [Charts](#charts)
         - [Bar Charts](#bar-charts)
       - [Images](#images)
+      - [Media Objects](#media-objects)
       - [Text Boxes](#text-boxes)
       - [Shapes](#shapes)
 - [Contributing](#contributing)
@@ -67,11 +71,8 @@ new pptx.Presentation()
   })
   .save('/tmp/my-presentation.pptx');
 ```
-
-## Usage
-
 ### General Conventions
-`node-pptx` has a friendly declarative DSL to quickly design a pptx file. This makes your JavaScript code very readable because allows you to visually segment and compartmentalize your code to the presentation element you are trying to edit. Here is a simple example of adding a text box to a slide:
+`node-pptx` has a friendly declarative DSL to quickly design a pptx file. This makes your JavaScript code very readable because, it allows you to visually segment and compartmentalize your code to the presentation element you are trying to edit. Here is a simple example of adding a text box to a slide:
 
 ```javascript
 slide.addText(text => {
@@ -86,6 +87,9 @@ You can also achieve the same result using the more terse object-only format ins
 ```javascript
 slide.addText({ value:'Hello world', x: 10, y: 0 })
 ```
+
+## Usage
+The following sections gives a detailed run through of the core features of this library as it relates to creating pptx files.
 
 ### Presentation Object
 The following sections defines the various ways to read, compose, and write pptx files.
@@ -116,6 +120,25 @@ new pptx.Presentation()
 .save(`${tmpDir}/some-file.pptx`);
 ```
 
+#### Setting Properties
+```javascript
+new pptx.Presentation()
+  .compose(pres => {
+    pres
+      .title('My Presentation')
+      .author('Mark Daggett')
+      .company('Humansized Inc.')
+      .revision('20')
+      .subject('My Presentation')
+  })
+```
+
+#### Setting Layouts
+TODO
+
+#### Setting Text Direction
+TODO
+
 ### Slides
 Slides are are by far the most complex feature of this library because they are the backbone for all presentations.
 
@@ -130,6 +153,7 @@ new pptx.Presentation()
     })
   })
 ```
+
 ##### Removing Slides
 If you've assigned a `name` which is a special internal property to your slide
 you can reference it by name otherwise you will need to remove it based on index.
@@ -147,7 +171,7 @@ new pptx.Presentation()
   })
 ```
 ##### Reordering Slides
-TBD
+TODO
 
 ##### Formatting Options
 
@@ -161,9 +185,10 @@ pres
 ```
 
 ##### Applying Master Slides
-TBD
+TODO
+
 ##### Adding Slide Numbers
-TBD
+TODO
 
 #### Adding Content to Slides
 This library supports charts, images, text boxes, and shapes. The following section describes the ways in which you can add these elements. to a slide.
@@ -212,13 +237,11 @@ slide.addImage(image => {
 
 // Images can also be created using base64 encoded strings.
 slide.addImage(image => {
-  image.data(
-    data:image/gif;base64,R0lGODlhPQBEAPeoAJosM...
-    ...
-    ...
-  )
+  image.data('data:image/gif;base64,R0lGODlhPQBEAP[...]=')
 });
 ```
+##### Media Objects
+The pptx spec calls for support of media objects (video & audio) however presently `node-pptx` doesn't support these objects.
 ##### Text Boxes
 ```javascript
 defaultSlide.addText('This is a hyperlink!', { x: 0, y: 25, cx: 400, url: 'http://www.google.com' });
