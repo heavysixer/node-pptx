@@ -12,6 +12,7 @@ Generate PPTX files on the server-side with JavaScript.
 
 - [Getting Started](#getting-started)
 - [Usage](#usage)
+  - [General Conventions](#general-conventions)
   - [Presentation Object](#presentation-object)
     - [Creating a Presentation From Scratch](#creating-a-presentation-from-scratch)
     - [Modifying an existing Presentation](#modifying-an-existing-presentation)
@@ -69,6 +70,23 @@ new pptx.Presentation()
 
 ## Usage
 
+### General Conventions
+`node-pptx` has a friendly declarative DSL to quickly design a pptx file. This makes your JavaScript code very readable because allows you to visually segment and compartmentalize your code to the presentation element you are trying to edit. Here is a simple example of adding a text box to a slide:
+
+```javascript
+slide.addText(text => {
+  text
+  .value('Hello world')
+  .x(10)
+  .y(0);
+})
+```
+You can also achieve the same result using the more terse object-only format instead of a function.
+
+```javascript
+slide.addText({ value:'Hello world', x: 10, y: 0 })
+```
+
 ### Presentation Object
 The following sections defines the various ways to read, compose, and write pptx files.
 
@@ -85,7 +103,7 @@ new pptx.Presentation()
 If you would like to use an modify an existing pptx file, simply load it first.
 ```javascript
 new pptx.Presentation()
-  .load(`${__dirname}/fixtures/basic.pptx`)
+  .load('/tmp/fixtures/basic.pptx')
   .compose(pres => {
     pres.title('My Presentation')
   })
@@ -99,8 +117,7 @@ new pptx.Presentation()
 ```
 
 ### Slides
-Slides are are by far the most complex feature of this library because they are
-the backbone for all presentations.
+Slides are are by far the most complex feature of this library because they are the backbone for all presentations.
 
 ##### Adding Slides
 ```javascript
@@ -114,8 +131,8 @@ new pptx.Presentation()
   })
 ```
 ##### Removing Slides
-If you've assigned a name to your slide you can reference it by name otherwise
-you will need to remove it based on index.
+If you've assigned a `name` which is a special internal property to your slide
+you can reference it by name otherwise you will need to remove it based on index.
 
 ```javascript
 new pptx.Presentation()
@@ -149,8 +166,7 @@ TBD
 TBD
 
 #### Adding Content to Slides
-This library supports charts, images, text boxes, and shapes. The following section
-describes the ways in which you can add these elements. to a slide.
+This library supports charts, images, text boxes, and shapes. The following section describes the ways in which you can add these elements. to a slide.
 
 ##### Charts
 Charts have very minimal support right now, think of it mostly as a proof of concept at this point.
@@ -213,10 +229,17 @@ For a full list of the supported shapes check the
 [shape-types](https://github.com/heavysixer/node-pptx/blob/master/lib/shape-types.js) file.
 
 ```javascript
-slide.addShape(PPTX.ShapeTypes.TRIANGLE, { x: 50, y: 50, cx: 50, cy: 50 });
-slide.addShape(PPTX.ShapeTypes.TRIANGLE, { x: 150, y: 50, cx: 50, cy: 50, color: '00FF00' });
-slide.addShape(PPTX.ShapeTypes.OVAL, { x: 100, y: 200, cx: 200, cy: 100, text: 'hello world!' });
-slide.addShape(PPTX.ShapeTypes.UP_ARROW, { x: 500, y: 140, cx: 100, cy: 50, color: '0000FF', url: 'www.google.com' });
+//Creating a shape using the object-only syntax.
+slide.addShape({ type: PPTX.ShapeTypes.TRIANGLE, x: 50, y: 50, cx: 50, cy: 50 });
+
+//Creating a shape using the composable DSL.
+slide.addShape(shape=> {
+  shape
+    .type(PPTX.ShapeTypes.TRIANGLE)
+    .x(150)
+    .y(50);
+});
+
 ```
 
 ## Contributing
