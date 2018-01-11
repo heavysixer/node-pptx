@@ -82,7 +82,9 @@ slide.addText(text => {
   .y(0);
 })
 ```
-You can also achieve the same result using the more terse object-only format instead of a function.
+You can also achieve the same result using the more terse object-only format by supplying a configuration object instead of a function.
+
+*Note*: Not all presentation elements support the object-only format.
 
 ```javascript
 slide.addText({ value:'Hello world', x: 10, y: 0 })
@@ -91,8 +93,8 @@ slide.addText({ value:'Hello world', x: 10, y: 0 })
 ## Usage
 The following sections gives a detailed run through of the core features of this library as it relates to creating pptx files.
 
-### Presentation Object
-The following sections defines the various ways to read, compose, and write pptx files.
+### Presentation Element
+The following sections defines the various ways to read, compose, and write pptx files. `node-pptx` allows you to either create a brand new file, or modify an existing pptx file.
 
 #### Creating a Presentation From Scratch
 ```javascript
@@ -193,6 +195,8 @@ TODO
 #### Adding Content to Slides
 This library supports charts, images, text boxes, and shapes. The following section describes the ways in which you can add these elements. to a slide.
 
+Objects are layered on top of one another in the order in which they are added. Therefore you'll want to add background items first and gradually work your way towards the top of the composition.
+
 ##### Charts
 Charts have very minimal support right now, think of it mostly as a proof of concept at this point.
 
@@ -237,15 +241,23 @@ slide.addImage(image => {
 
 // Images can also be created using base64 encoded strings.
 slide.addImage(image => {
-  image.data('data:image/gif;base64,R0lGODlhPQBEAP[...]=')
+  image.data('iVBORw0KGgoAAAANSUhEUgAAACAAAA[...]iVBORw0K')
 });
 ```
 ##### Media Objects
 The pptx spec calls for support of media objects (video & audio) however presently `node-pptx` doesn't support these objects.
+
 ##### Text Boxes
+As the name suggests text can be added to the slide using `addText`.  The text box element also supports the creation of external links (which open a web browser) and internal linking (which link to another slide in the same presentation).
+
+To create an external link specify the full URI path as the value for the `url` key.
 ```javascript
-defaultSlide.addText('This is a hyperlink!', { x: 0, y: 25, cx: 400, url: 'http://www.google.com' });
-defaultSlide.addText('This go to slide 3', { x: 0, y: 50, url: '#3' });
+defaultSlide.addText({ value: 'This is a hyperlink!', x: 0, y: 25, cx: 400, url: 'http://www.google.com' });
+```
+
+To link to another slide specify the slide number preceded with a hash like so:
+```javascript
+defaultSlide.addText({value: 'This go to slide 3', x: 0, y: 50, url: '#3' });
 ```
 ##### Shapes
 For a full list of the supported shapes check the
@@ -262,7 +274,6 @@ slide.addShape(shape=> {
     .x(150)
     .y(50);
 });
-
 ```
 
 ## Contributing
