@@ -27,14 +27,7 @@ describe('Presentation Module', () => {
                 presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
 
                 await presentation.loadExistingPPTX();
-                presentation
-                    .getSlide('slide1')
-                    .addImage(`${__dirname}/images/pizza.jpg`)
-                    .x(500)
-                    .y(100)
-                    .cx(166)
-                    .cy(100);
-
+                presentation.getSlide('slide1').addImage(`${__dirname}/images/pizza.jpg`, { x: 500, y: 100, cx: 166, cy: 100 });
                 presentation.addSlide().addImage(`${__dirname}/images/image1.png`);
                 await presentation.save(`${tmpDir}/presentation-existing-add-image.pptx`);
 
@@ -108,7 +101,9 @@ describe('Presentation Module', () => {
                     .addText('Slide 7', { url: '#7', x: 20, y: 175 })
                     .addText('A bunch of links ..... 8', { url: '#8', x: 20, y: 200 })
                     .addText('Click the pizza to go to slide 3:', { x: 100, y: 350, cx: 300 })
-                    .addImage(`${__dirname}/images/pizza.jpg`, { url: '#3', x: 100, y: 385, cx: 166, cy: 100 })
+                    .addImage(`${__dirname}/images/pizza.jpg`, { url: '#3', x: 100, y: 385, cx: 166, cy: 100 });
+
+                slide1
                     .addSlide()
                     .addText('This is slide 2 (Introduction).', { x: 20 })
                     .addText('Go back to TOC.', { url: '#1', x: 20, y: 25 })
@@ -165,14 +160,7 @@ describe('Presentation Module', () => {
                 );
 
                 presentation.addSlide().addImage(`${__dirname}/images/pizza.jpg`);
-
-                presentation
-                    .addSlide()
-                    .addImage(`${__dirname}/images/pizza.jpg`)
-                    .x(50)
-                    .y(50)
-                    .cx(500)
-                    .cy(300);
+                presentation.addSlide().addImage(`${__dirname}/images/pizza.jpg`, { x: 50, y: 50, cx: 500, cy: 300 });
 
                 let defaultSlide = presentation.getSlide('slide1');
 
@@ -209,28 +197,16 @@ describe('Presentation Module', () => {
                     .cy(150)
                     .addText("Let's go crazy: оалмгцнйукрлмьтсмщфзйудлтлваывувыаитыбюяй", { x: 300, y: 175, cx: 400 });
 
-                defaultSlide
-                    .addImage(`${__dirname}/images/pizza.jpg`, { url: '#3' })
-                    .x(100)
-                    .y(200)
-                    .cx(166)
-                    .cy(100);
-
-                defaultSlide
-                    .addImage(`${__dirname}/images/image1.png`)
-                    .x(400)
-                    .y(250)
-                    .cx(250)
-                    .cy(150);
-
+                defaultSlide.addImage(`${__dirname}/images/pizza.jpg`, { url: '#3', x: 100, y: 200, cx: 166, cy: 100 });
+                defaultSlide.addImage(`${__dirname}/images/image1.png`, { x: 400, y: 250, cx: 250, cy: 150 });
                 presentation.getSlide('slide3').addText('OMFG!!! The link worked!');
-                await presentation.save(`${tmpDir}/presentation-new-multiple-slides.pptx`);
-                expect(fs.existsSync(`${tmpDir}/presentation-new-multiple-slides.pptx`)).toBe(true);
 
+                await presentation.save(`${tmpDir}/presentation-new-multiple-slides.pptx`);
                 await presentation.save(function(content) {
                     fs.writeFileSync(`${tmpDir}/presentation-new-multiple-slides-buffered.pptx`, content);
                 });
 
+                expect(fs.existsSync(`${tmpDir}/presentation-new-multiple-slides.pptx`)).toBe(true);
                 expect(fs.existsSync(`${tmpDir}/presentation-new-multiple-slides-buffered.pptx`)).toBe(true);
             } catch (err) {
                 console.warn(err);
