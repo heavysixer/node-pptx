@@ -9,19 +9,9 @@ describe('Charts Module', () => {
 
     test('should be able to create a simple chart from scratch', async () => {
         try {
-            expect.assertions(3);
+            expect.assertions(1);
 
-            let presentation = new PPTX.Presentation();
-
-            presentation.buildPowerPoint();
-            presentation.setLayout({ width: 13.33, height: 7.5 });
-
-            let slide1 = presentation.addSlide();
-
-            expect(slide1.content).toBeDefined();
-            expect(slide1.content).not.toBeNull();
-
-            let barChartData = [
+            let barChartData1 = [
                 {
                     name: 'Series 1',
                     labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'],
@@ -39,11 +29,7 @@ describe('Charts Module', () => {
                 },
             ];
 
-            await slide1.addChart('bar', barChartData, { x: 100, y: 100, cx: 400, cy: 300 });
-
-            let slide2 = presentation.addSlide();
-
-            barChartData = [
+            let barChartData2 = [
                 {
                     name: 'Series 1',
                     color: 'FF0000',
@@ -73,8 +59,28 @@ describe('Charts Module', () => {
                 },
             ];
 
-            await slide2.addChart('bar', barChartData);
-            await presentation.save(`${tmpDir}/charts-new-add-chart.pptx`);
+            let pptx = new PPTX.Composer();
+            let promise = (await pptx.compose(async pres => {
+                await pres.layout('LAYOUT_4x3').addSlide(async slide => {
+                    await slide.addChart(chart => {
+                        chart
+                            .type('bar')
+                            .data(barChartData1)
+                            .x(100)
+                            .y(100)
+                            .cx(400)
+                            .cy(300);
+                    });
+                });
+
+                await pres.addSlide(async slide => {
+                    await slide.addChart(chart => {
+                        chart.data(barChartData2);
+                    });
+                });
+            })).save(`${tmpDir}/charts-new-add-chart.pptx`);
+
+            await promise;
 
             expect(fs.existsSync(`${tmpDir}/charts-new-add-chart.pptx`)).toBe(true);
         } catch (err) {

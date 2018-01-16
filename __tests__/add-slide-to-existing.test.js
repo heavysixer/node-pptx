@@ -16,8 +16,9 @@ describe('Presentation Module', () => {
                 let presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
 
                 await presentation.loadExistingPPTX();
-                presentation.addSlide();
+                await presentation.addSlide();
                 await presentation.save(`${tmpDir}/presentation-existing-add-slide.pptx`);
+
                 expect(fs.existsSync(`${tmpDir}/presentation-existing-add-slide.pptx`)).toBe(true);
             } catch (err) {
                 console.warn(err);
