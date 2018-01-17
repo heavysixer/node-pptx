@@ -19,15 +19,17 @@ describe('Presentation Module', () => {
 
                 let slide = presentation.getSlide('slide1');
 
-                slide.setTextColor('00AAFF');
-                slide.setBackgroundColor('C5E0B4');
-                slide.addText('Hello world!', { x: 450, y: 100, cx: 400, cy: 25, fontSize: 24 });
+                slide.textColor('00AAFF');
+                slide.backgroundColor('C5E0B4');
+                slide.addText({ value: 'Hello world!', x: 450, y: 100, cx: 400, cy: 25, fontSize: 24 });
 
-                slide = presentation.addSlide();
-
-                slide.setBackgroundColor('FFD777');
-                slide.setTextColor('FF0000');
-                slide.addText('Hello world!');
+                await presentation.addSlide(slide => {
+                    slide.backgroundColor('FFD777');
+                    slide.textColor('FF0000');
+                    slide.addText(text => {
+                        text.value('Hello world!');
+                    });
+                });
 
                 await presentation.save(`${tmpDir}/presentation-existing-non-default-colors.pptx`);
                 expect(fs.existsSync(`${tmpDir}/presentation-existing-non-default-colors.pptx`)).toBe(true);
@@ -41,26 +43,29 @@ describe('Presentation Module', () => {
     describe('when creating a presentation without an existing file', () => {
         test('should be able to create a slide with a non-default background color and set a default text foreground color', async () => {
             try {
-                expect.assertions(3);
+                expect.assertions(1);
 
                 if (fs.existsSync(`${tmpDir}/presentation-new-non-default-colors.pptx`)) {
                     fs.unlinkSync(`${tmpDir}/presentation-new-non-default-colors.pptx`);
                 }
 
-                let presentation = new PPTX.Presentation();
-                let slide = presentation.addSlide();
+                let pptx = new PPTX.Composer();
 
-                expect(slide.content).toBeDefined();
-                expect(slide.content).not.toBeNull();
+                await pptx.compose(async pres => {
+                    await pres.addSlide(slide => {
+                        slide.textColor('00AAFF');
+                        slide.backgroundColor('FFD777');
+                        slide.addText(text => {
+                            text.value('Hello World!');
+                        });
+                    });
 
-                slide.setTextColor('00AAFF');
-                slide.setBackgroundColor('FFD777');
-                slide.addText('Hello World!');
+                    await pres.addSlide(slide => {
+                        slide.backgroundColor('C5E0B4');
+                    });
+                });
 
-                slide = presentation.addSlide();
-                slide.setBackgroundColor('C5E0B4');
-
-                await presentation.save(`${tmpDir}/presentation-new-non-default-colors.pptx`);
+                await pptx.save(`${tmpDir}/presentation-new-non-default-colors.pptx`);
                 expect(fs.existsSync(`${tmpDir}/presentation-new-non-default-colors.pptx`)).toBe(true);
             } catch (err) {
                 console.warn(err);

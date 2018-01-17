@@ -12,17 +12,16 @@ describe('Presentation Module', () => {
                     fs.unlinkSync(`${tmpDir}/presentation-existing-blank-add-slide.pptx`);
                 }
 
-                let fulltemplateFilePath = `${__dirname}/fixtures/blank.pptx`;
-                let presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
+                let pptx = new PPTX.Composer();
 
-                await presentation.loadExistingPPTX();
+                await pptx.load(`${__dirname}/fixtures/blank.pptx`);
 
-                let slide = presentation.addSlide();
+                let slide = await pptx.presentation.addSlide();
 
                 expect(slide.content).toBeDefined();
                 expect(slide.content).not.toBeNull();
 
-                await presentation.save(`${tmpDir}/presentation-existing-blank-add-slide.pptx`);
+                await pptx.save(`${tmpDir}/presentation-existing-blank-add-slide.pptx`);
                 expect(fs.existsSync(`${tmpDir}/presentation-existing-blank-add-slide.pptx`)).toBe(true);
             } catch (err) {
                 console.warn(err);
@@ -35,10 +34,7 @@ describe('Presentation Module', () => {
         test('should be able to create a pptx with NO slides', async () => {
             try {
                 expect.assertions(1);
-
-                let presentation = new PPTX.Presentation();
-
-                await presentation.save(`${tmpDir}/presentation-new-no-slides.pptx`);
+                await new PPTX.Composer().save(`${tmpDir}/presentation-new-no-slides.pptx`);
                 expect(fs.existsSync(`${tmpDir}/presentation-new-no-slides.pptx`)).toBe(true);
             } catch (err) {
                 console.warn(err);

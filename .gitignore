@@ -9,5 +9,6 @@ bower_components/
 package-lock.json
 /__tests__/tmp
 .nyc_output/
+coverage/
 PowerPoint\ Unzipped\ File\ Experiments/
 coverage/
