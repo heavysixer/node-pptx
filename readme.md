@@ -61,7 +61,7 @@ await pptx.compose(pres => {
 
 await pptx.save(`./hello-world.pptx`);
 ```
-### General Conventions
+## General Conventions
 `node-pptx` has a friendly declarative DSL to quickly design a pptx file. This makes your JavaScript code very readable because, it allows you to visually segment and compartmentalize your code to the presentation element you are trying to edit. Here is a simple example of adding a text box to a slide:
 
 ```javascript
@@ -92,10 +92,10 @@ You can also achieve the same result using the more terse object-only format by 
 slide.addText({ value: 'Link to google.com', x: 100, y: 50, href: 'http://www.google.com' });
 ```
 
-### Presentations
+## Presentations
 The following sections defines the various ways to read, compose, and write pptx files. `node-pptx` allows you to either create a brand new file, or modify an existing pptx file.
 
-#### Creating a Presentation From Scratch
+### Creating a Presentation From Scratch
 ```javascript
 const PPTX = require('node-pptx');
 let pptx = new PPTX.Composer();
@@ -112,7 +112,7 @@ await pptx.compose(pres => {
 await pptx.save(`./hello-world.pptx`);
 ```
 
-#### Modifying an existing Presentation
+### Modifying an existing Presentation
 If you would like to use an modify an existing pptx file, simply load it first.
 ```javascript
 const PPTX = require('node-pptx');
@@ -132,7 +132,7 @@ await pptx.compose(async pres => {
 await pptx.save(`./existing.pptx`);
 ```
 
-#### Saving A Presentation
+### Saving A Presentation
 ```javascript
 const PPTX = require('node-pptx');
 let pptx = new PPTX.Composer();
@@ -140,7 +140,7 @@ let pptx = new PPTX.Composer();
 await pptx.save(`./blank.pptx`);
 ```
 
-#### Setting Properties
+### Setting Properties
 ```javascript
 const PPTX = require('node-pptx');
 let pptx = new PPTX.Composer();
@@ -155,7 +155,7 @@ await pptx.compose(async pres => {
 });
 ```
 
-#### Setting Layouts
+### Setting Layouts
 To control the layout of a presentation you choose one of the available defaults.
 To see a list of provided layouts view the [layouts](https://github.com/heavysixer/node-pptx/blob/master/lib/layout-types.js) file.
 
@@ -168,13 +168,13 @@ await pptx.compose(async pres => {
 });
 ```
 
-#### Setting Text Direction
+### Setting Text Direction
 TODO
 
-### Slides
+## Slides
 Slides are are by far the most complex feature of this library because they are the backbone for all presentations.
 
-#### Adding Slides
+### Adding Slides
 ```javascript
 const PPTX = require('node-pptx');
 let pptx = new PPTX.Composer();
@@ -190,13 +190,13 @@ await pptx.compose(pres => {
 
 ```
 
-#### Removing Slides
+### Removing Slides
 TODO
 
-#### Reordering Slides
+### Reordering Slides
 TODO
 
-#### Formatting Options
+### Formatting Options
 
 Applying background and text colors:
 
@@ -216,21 +216,21 @@ await pptx.compose(async pres => {
 await pptx.save(`./colors.pptx`);
 ```
 
-#### Applying Master Slides
+### Applying Master Slides
 TODO
 
-#### Adding Slide Numbers
+### Adding Slide Numbers
 TODO
 
-### Adding Content to Slides
+## Adding Content to Slides
 This library supports charts, images, text boxes, and shapes. The following section describes the ways in which you can add these elements. to a slide.
 
 Objects are layered on top of one another in the order in which they are added. Therefore you'll want to add background items first and gradually work your way towards the top of the composition.
 
-#### Charts
+### Charts
 Charts have very minimal support right now, think of it mostly as a proof of concept at this point.
 
-##### Bar Charts
+#### Bar Charts
 
 ```javascript
 const PPTX = require('node-pptx');
@@ -269,7 +269,7 @@ await pptx.compose(async pres => {
 }).save('./chart.pptx');
 ```
 
-#### Images
+### Images
 ```javascript
 const PPTX = require('node-pptx');
 let pptx = new PPTX.Composer();
@@ -306,10 +306,10 @@ await pptx.compose(async pres => {
 });
 ```
 
-#### Media Objects
+### Media Objects
 The pptx spec calls for support of media objects (video & audio) however presently `node-pptx` doesn't support these objects.
 
-##### Text Boxes
+### Text Boxes
 As the name suggests text can be added to the slide using `addText`.  The text box element also supports the creation of external links (which open a web browser) and internal linking (which link to another slide in the same presentation).
 
 ```javascript
@@ -352,7 +352,7 @@ To link to another slide specify the slide number preceded with a hash like so:
 ```javascript
 defaultSlide.addText({value: 'This go to slide 3', x: 0, y: 50, url: '#3' });
 ```
-##### Shapes
+### Shapes
 For a full list of the supported shapes check the
 [shape-types](https://github.com/heavysixer/node-pptx/blob/master/lib/shape-types.js) file.
 
