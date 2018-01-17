@@ -1,6 +1,6 @@
 # node-pptx [![Build Status](https://travis-ci.org/heavysixer/node-pptx.svg?branch=master)](https://travis-ci.org/heavysixer/node-pptx)
 
-A well tested, and friendly library to create, edit, and update PPTX files on the server-side with JavaScript.
+A well-tested, and friendly library to create, edit, and update PPTX files on the server-side with JavaScript.
 
 ## Features
 
@@ -113,7 +113,8 @@ await pptx.save(`./hello-world.pptx`);
 ```
 
 ### Modifying an existing Presentation
-If you would like to use an modify an existing pptx file, simply load it first.
+If you would like to use or modify an existing pptx file, simply load it first.
+
 ```javascript
 const PPTX = require('node-pptx');
 let pptx = new PPTX.Composer();
@@ -133,6 +134,8 @@ await pptx.save(`./existing.pptx`);
 ```
 
 ### Saving A Presentation
+Saving a presentation is easy to do but because it's asynchronous by design we recommend awaiting the result before moving on.
+
 ```javascript
 const PPTX = require('node-pptx');
 let pptx = new PPTX.Composer();
@@ -141,6 +144,8 @@ await pptx.save(`./blank.pptx`);
 ```
 
 ### Setting Properties
+You can set the presentation's properties using the DSL only.
+
 ```javascript
 const PPTX = require('node-pptx');
 let pptx = new PPTX.Composer();
@@ -213,7 +218,7 @@ await pptx.compose(async pres => {
         });
     });
 });
-await pptx.save(`./colors.pptx`);
+await pptx.save('./colors.pptx');
 ```
 
 ### Applying Master Slides
@@ -394,7 +399,7 @@ You can also see the code coverage metrics as well which will be written to the 
 
 ## Contributing
 
-Send issues and pull requests with your ideas.
+Like many other open source projects `node-pptx` was created to service the kinds of use cases we needed to support for our own work. This means that the project itself is far from feature-complete. Send issues and pull requests with your ideas!
 
 [Good First Issue](https://github.com/heavysixer/node-pptx/labels/Good%20First%20Issue) is a great starting point for PRs.
 
