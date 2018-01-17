@@ -276,6 +276,13 @@ slide.addShape(shape=> {
 });
 ```
 
+## Testing
+To run the unit tests for `node-pptx` simply type this into your commandline:
+
+`yarn test`
+
+You can also see the code coverage metrics as well which will be written to the `coverage/` directory.
+
 ## Contributing
 
 Send issues and pull requests with your ideas.
