@@ -309,6 +309,38 @@ await pptx.compose(async pres => {
 ### Media Objects
 The pptx spec calls for support of media objects (video & audio) however presently `node-pptx` doesn't support these objects.
 
+### Shapes
+For a full list of the supported shapes check the
+[shape-types](https://github.com/heavysixer/node-pptx/blob/master/lib/shape-types.js) file.
+
+```javascript
+const PPTX = require('node-pptx');
+let pptx = new PPTX.Composer();
+
+await pptx.compose(async pres => {
+    await pres.addSlide(slide => {
+
+        //Creating a shape using the DSL.
+        slide.addShape(shape => {
+            shape
+                .type(PPTX.ShapeTypes.TRIANGLE)
+                .x(50)
+                .y(50)
+                .cx(50)
+                .cy(50);
+        });
+
+        //Creating a shape using the object-only syntax.
+        slide.addShape({ type: PPTX.ShapeTypes.TRIANGLE, x: 150, y: 50, cx: 50, cy: 50, color: '00FF00' });
+
+        // Adding a hyperlink to the shape.
+        slide.addShape({ type: PPTX.ShapeTypes.UP_ARROW, x: 500, y: 140, cx: 100, cy: 50, color: '0000FF', href: 'www.google.com' });
+    });
+});
+
+await pptx.save(`./shapes-test.pptx`);
+```
+
 ### Text Boxes
 As the name suggests text can be added to the slide using `addText`.  The text box element also supports the creation of external links (which open a web browser) and internal linking (which link to another slide in the same presentation).
 
@@ -351,37 +383,6 @@ defaultSlide.addText({ value: 'This is a hyperlink!', x: 0, y: 25, cx: 400, url:
 To link to another slide specify the slide number preceded with a hash like so:
 ```javascript
 defaultSlide.addText({value: 'This go to slide 3', x: 0, y: 50, url: '#3' });
-```
-### Shapes
-For a full list of the supported shapes check the
-[shape-types](https://github.com/heavysixer/node-pptx/blob/master/lib/shape-types.js) file.
-
-```javascript
-const PPTX = require('node-pptx');
-let pptx = new PPTX.Composer();
-
-await pptx.compose(async pres => {
-    await pres.addSlide(slide => {
-
-        //Creating a shape using the DSL.
-        slide.addShape(shape => {
-            shape
-                .type(PPTX.ShapeTypes.TRIANGLE)
-                .x(50)
-                .y(50)
-                .cx(50)
-                .cy(50);
-        });
-
-        //Creating a shape using the object-only syntax.
-        slide.addShape({ type: PPTX.ShapeTypes.TRIANGLE, x: 150, y: 50, cx: 50, cy: 50, color: '00FF00' });
-
-        // Adding a hyperlink to the shape.
-        slide.addShape({ type: PPTX.ShapeTypes.UP_ARROW, x: 500, y: 140, cx: 100, cy: 50, color: '0000FF', href: 'www.google.com' });
-    });
-});
-
-await pptx.save(`./shapes-test.pptx`);
 ```
 
 ## Testing
