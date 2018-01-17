@@ -10,8 +10,7 @@ A well tested, and friendly library to create, edit, and update PPTX files on th
 
 - [Getting Started](#getting-started)
   - [General Conventions](#general-conventions)
-- [Usage](#usage)
-  - [Presentation Element](#presentation-element)
+  - [Presentations](#presentations)
     - [Creating a Presentation From Scratch](#creating-a-presentation-from-scratch)
     - [Modifying an existing Presentation](#modifying-an-existing-presentation)
     - [Saving A Presentation](#saving-a-presentation)
@@ -19,17 +18,17 @@ A well tested, and friendly library to create, edit, and update PPTX files on th
     - [Setting Layouts](#setting-layouts)
     - [Setting Text Direction](#setting-text-direction)
   - [Slides](#slides)
-      - [Adding Slides](#adding-slides)
-      - [Removing Slides](#removing-slides)
-      - [Reordering Slides](#reordering-slides)
-      - [Formatting Options](#formatting-options)
-      - [Applying Master Slides](#applying-master-slides)
-      - [Adding Slide Numbers](#adding-slide-numbers)
-    - [Adding Content to Slides](#adding-content-to-slides)
-      - [Charts](#charts)
-        - [Bar Charts](#bar-charts)
-      - [Images](#images)
-      - [Media Objects](#media-objects)
+    - [Adding Slides](#adding-slides)
+    - [Removing Slides](#removing-slides)
+    - [Reordering Slides](#reordering-slides)
+    - [Formatting Options](#formatting-options)
+    - [Applying Master Slides](#applying-master-slides)
+    - [Adding Slide Numbers](#adding-slide-numbers)
+  - [Adding Content to Slides](#adding-content-to-slides)
+    - [Charts](#charts)
+      - [Bar Charts](#bar-charts)
+    - [Images](#images)
+    - [Media Objects](#media-objects)
       - [Text Boxes](#text-boxes)
       - [Shapes](#shapes)
 - [Testing](#testing)
@@ -93,10 +92,7 @@ You can also achieve the same result using the more terse object-only format by 
 slide.addText({ value: 'Link to google.com', x: 100, y: 50, href: 'http://www.google.com' });
 ```
 
-## Usage
-The following sections gives a detailed run through of the core features of this library as it relates to creating pptx files.
-
-### Presentation Element
+### Presentations
 The following sections defines the various ways to read, compose, and write pptx files. `node-pptx` allows you to either create a brand new file, or modify an existing pptx file.
 
 #### Creating a Presentation From Scratch
@@ -178,7 +174,7 @@ TODO
 ### Slides
 Slides are are by far the most complex feature of this library because they are the backbone for all presentations.
 
-##### Adding Slides
+#### Adding Slides
 ```javascript
 const PPTX = require('node-pptx');
 let pptx = new PPTX.Composer();
@@ -194,13 +190,13 @@ await pptx.compose(pres => {
 
 ```
 
-##### Removing Slides
+#### Removing Slides
 TODO
 
-##### Reordering Slides
+#### Reordering Slides
 TODO
 
-##### Formatting Options
+#### Formatting Options
 
 Applying background and text colors:
 
@@ -220,21 +216,21 @@ await pptx.compose(async pres => {
 await pptx.save(`./colors.pptx`);
 ```
 
-##### Applying Master Slides
+#### Applying Master Slides
 TODO
 
-##### Adding Slide Numbers
+#### Adding Slide Numbers
 TODO
 
-#### Adding Content to Slides
+### Adding Content to Slides
 This library supports charts, images, text boxes, and shapes. The following section describes the ways in which you can add these elements. to a slide.
 
 Objects are layered on top of one another in the order in which they are added. Therefore you'll want to add background items first and gradually work your way towards the top of the composition.
 
-##### Charts
+#### Charts
 Charts have very minimal support right now, think of it mostly as a proof of concept at this point.
 
-###### Bar Charts
+##### Bar Charts
 
 ```javascript
 const PPTX = require('node-pptx');
@@ -273,7 +269,7 @@ await pptx.compose(async pres => {
 }).save('./chart.pptx');
 ```
 
-##### Images
+#### Images
 ```javascript
 const PPTX = require('node-pptx');
 let pptx = new PPTX.Composer();
@@ -310,7 +306,7 @@ await pptx.compose(async pres => {
 });
 ```
 
-##### Media Objects
+#### Media Objects
 The pptx spec calls for support of media objects (video & audio) however presently `node-pptx` doesn't support these objects.
 
 ##### Text Boxes
