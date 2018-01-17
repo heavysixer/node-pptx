@@ -198,13 +198,22 @@ TODO
 
 ##### Formatting Options
 
-Applying Background Colors
+Applying background and text colors:
 
 ```javascript
-pres
-.addSlide(slide => {
-  slide.backgroundColor('my-slide')
-})
+const PPTX = require('node-pptx');
+let pptx = new PPTX.Composer();
+
+await pptx.compose(async pres => {
+    await pres.addSlide(slide => {
+        slide.textColor('00AAFF');
+        slide.backgroundColor('FFD777');
+        slide.addText(text => {
+            text.value('Hello World!');
+        });
+    });
+});
+await pptx.save(`./colors.pptx`);
 ```
 
 ##### Applying Master Slides
@@ -256,21 +265,45 @@ await pptx.compose(async pres => {
                 .cy(300);
         });
     });
-}).save(`./chart.pptx`);
+}).save('./chart.pptx');
 ```
 
 ##### Images
 ```javascript
-// You can add an image by specifying a remote source
-slide.addImage(image => {
-  image.src(`${__dirname}/images/pizza.jpg`)
-})
+let pptx = new PPTX.Composer();
 
-// Images can also be created using base64 encoded strings.
-slide.addImage(image => {
-  image.data('iVBORw0KGgoAAAANSUhEUgAAACAAAA[...]iVBORw0K')
+await pptx.compose(async pres => {
+  await pres
+    .addSlide(async slide => {
+
+      // Images can be added locally
+      slide.addImage(image => {
+        image
+          .file('./images/pizza.jpg')
+          .x(100)
+          .cx(200);
+        });
+
+        // Images can be downloaded from the internet.
+        await slide.addImage({
+          src: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
+          href: 'https://www.google.com',
+          x: 10,
+          y: 400,
+          cx: 50,
+        });
+
+        // Images can be added inline as a base64 encoded string.
+        slide.addImage(image => {
+          image
+            .data('iVBORw0KGgoA[...]Jggg')
+            .x(350)
+            .y(200);
+        });
+    });
 });
 ```
+
 ##### Media Objects
 The pptx spec calls for support of media objects (video & audio) however presently `node-pptx` doesn't support these objects.
 
@@ -304,7 +337,7 @@ await pptx.compose(async pres => {
     });
 });
 
-await pptx.save(`${tmpDir}/text-box-new-simple.pptx`);
+await pptx.save(`./text-box-new-simple.pptx`);
 ```
 
 To create an external link specify the full URI path as the value for the `url` key.
