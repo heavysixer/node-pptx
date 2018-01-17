@@ -50,7 +50,6 @@ Let's create a very simple presentation with one slide.
 
 ```javascript
 const PPTX = require('node-pptx');
-
 let pptx = new PPTX.Composer();
 
 await pptx.compose(pres => {
@@ -104,7 +103,6 @@ The following sections defines the various ways to read, compose, and write pptx
 #### Creating a Presentation From Scratch
 ```javascript
 const PPTX = require('node-pptx');
-
 let pptx = new PPTX.Composer();
 
 await pptx.compose(pres => {
@@ -143,6 +141,7 @@ await pptx.save(`./existing.pptx`);
 ```javascript
 const PPTX = require('node-pptx');
 let pptx = new PPTX.Composer();
+
 await pptx.save(`./blank.pptx`);
 ```
 
@@ -150,6 +149,7 @@ await pptx.save(`./blank.pptx`);
 ```javascript
 const PPTX = require('node-pptx');
 let pptx = new PPTX.Composer();
+
 await pptx.compose(async pres => {
   pres
   .title('My Presentation')
@@ -166,6 +166,8 @@ To see a list of provided layouts view the [layouts](https://github.com/heavysix
 
 ```javascript
 const PPTX = require('node-pptx');
+let pptx = new PPTX.Composer();
+
 await pptx.compose(async pres => {
   await pres.layout('LAYOUT_4x3')
 });
@@ -180,14 +182,17 @@ Slides are are by far the most complex feature of this library because they are 
 ##### Adding Slides
 ```javascript
 const PPTX = require('node-pptx');
-new pptx.Presentation()
-  .compose(pres => {
-    pres
-    .title('My Presentation')
-    .addSlide(slide => {
-      // design your slide here.
-    })
-  })
+let pptx = new PPTX.Composer();
+
+await pptx.compose(pres => {
+    pres.addSlide(slide => {
+        slide
+            .addText(text => {
+                text.value('Hello World');
+            });
+    });
+});
+
 ```
 
 ##### Removing Slides
@@ -234,6 +239,8 @@ Charts have very minimal support right now, think of it mostly as a proof of con
 
 ```javascript
 const PPTX = require('node-pptx');
+let pptx = new PPTX.Composer();
+
 let barChartData1 = [
     {
         name: 'Series 1',
@@ -252,7 +259,6 @@ let barChartData1 = [
     },
 ];
 
-let pptx = new PPTX.Composer();
 await pptx.compose(async pres => {
     await pres.layout('LAYOUT_4x3').addSlide(async slide => {
         await slide.addChart(chart => {
@@ -270,6 +276,7 @@ await pptx.compose(async pres => {
 
 ##### Images
 ```javascript
+const PPTX = require('node-pptx');
 let pptx = new PPTX.Composer();
 
 await pptx.compose(async pres => {
@@ -311,6 +318,7 @@ The pptx spec calls for support of media objects (video & audio) however present
 As the name suggests text can be added to the slide using `addText`.  The text box element also supports the creation of external links (which open a web browser) and internal linking (which link to another slide in the same presentation).
 
 ```javascript
+const PPTX = require('node-pptx');
 let pptx = new PPTX.Composer();
 
 await pptx.compose(async pres => {
@@ -354,7 +362,7 @@ For a full list of the supported shapes check the
 [shape-types](https://github.com/heavysixer/node-pptx/blob/master/lib/shape-types.js) file.
 
 ```javascript
-
+const PPTX = require('node-pptx');
 let pptx = new PPTX.Composer();
 
 await pptx.compose(async pres => {
