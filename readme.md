@@ -382,12 +382,12 @@ await pptx.save(`./text-box-new-simple.pptx`);
 
 To create an external link specify the full URI path as the value for the `url` key.
 ```javascript
-defaultSlide.addText({ value: 'This is a hyperlink!', x: 0, y: 25, cx: 400, url: 'http://www.google.com' });
+defaultSlide.addText({ value: 'This is a hyperlink!', x: 0, y: 25, cx: 400, href: 'http://www.google.com' });
 ```
 
 To link to another slide specify the slide number preceded with a hash like so:
 ```javascript
-defaultSlide.addText({value: 'This go to slide 3', x: 0, y: 50, url: '#3' });
+defaultSlide.addText({value: 'This go to slide 3', x: 0, y: 50, href: '#3' });
 ```
 
 ## Testing
