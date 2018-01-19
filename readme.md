@@ -392,11 +392,11 @@ defaultSlide.addText({value: 'This go to slide 3', x: 0, y: 50, href: '#3' });
 ```
 
 ## Understanding Async and Await
-`node-pptx` is synchronous by design, which means commands execute one step at a time and do not move on until the previous state completes. However, there are certain cases where synchronous flow is undesirable. For example when adding an image from the internet which must first be downloaded. In these cases you can use Javascript's native `async` and `await` functions to turn the previous synchronous flow into one that allows for asynchronous operations. Consider these two examples:
+`node-pptx` is synchronous by design, which means commands execute one step at a time and do not move on until the previous step completes. However, there are certain cases where synchronous flow is undesirable. For example when adding an image from the internet which must first be downloaded. In these cases you can use Javascript's native `async` and `await` functions to turn the previous synchronous flow into one that allows for asynchronous operations. Consider these two examples:
 
 ```javascript
 // Synchronous example:
-await pptx.compose(pres => {
+pptx.compose(pres => {
     pres
         .addSlide(slide => {
             slide.addImage(image => {
