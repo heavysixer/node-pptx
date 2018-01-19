@@ -31,6 +31,7 @@ A well-tested, and friendly library to create, edit, and update PPTX files on th
   - [Media Objects](#media-objects)
   - [Shapes](#shapes)
   - [Text Boxes](#text-boxes)
+- [Understanding Async and Await](#understanding-async-and-await)
 - [Testing](#testing)
 - [Contributing](#contributing)
 - [Special Thanks](#special-thanks)
