@@ -9,8 +9,8 @@ describe('TextBox Module', () => {
 
             let pptx = new PPTX.Composer();
 
-            await pptx.compose(async pres => {
-                await pres.addSlide(slide => {
+            pptx.compose(pres => {
+                pres.addSlide(slide => {
                     // declarative way of adding an object
                     slide.addText(text => {
                         text

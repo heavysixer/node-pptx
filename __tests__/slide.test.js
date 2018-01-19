@@ -1,4 +1,5 @@
 const PPTX = require('../index.js');
+// FIXME: These tests are meaningless now.
 describe('Slide Module', () => {
     test('Should assign incoming attributes', () => {
         let opts = {
