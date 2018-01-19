@@ -169,8 +169,8 @@ To see a list of provided layouts view the [layouts](https://github.com/heavysix
 const PPTX = require('node-pptx');
 let pptx = new PPTX.Composer();
 
-await pptx.compose(async pres => {
-  await pres.layout('LAYOUT_4x3')
+pptx.compose(pres => {
+  pres.layout('LAYOUT_4x3')
 });
 ```
 
