@@ -390,6 +390,46 @@ To link to another slide specify the slide number preceded with a hash like so:
 defaultSlide.addText({value: 'This go to slide 3', x: 0, y: 50, href: '#3' });
 ```
 
+## Understanding Async and Await
+`node-pptx` is synchronous by design, which means commands execute one step at a time and do not move on until the previous state completes. However, there are certain cases where synchronous flow is undesirable. For example when adding an image from the internet which must first be downloaded. In these cases you can use Javascript's native `async` and `await` functions to turn the previous synchronous flow into one that allows for asynchronous operations. Consider these two examples:
+
+```javascript
+// Synchronous example:
+await pptx.compose(pres => {
+    pres
+        .addSlide(slide => {
+            slide.addImage(image => {
+                image
+                    .file(`${__dirname}/images/pizza.jpg`)
+                    .x(100)
+                    .cx(200);
+            });
+        });
+});
+
+// Asynchronous example
+
+// We must now specify that the `pres` object is async.
+await pptx.compose(async pres => {
+
+    // we must specify that the slide object is also async.
+    await pres
+        .addSlide(async slide => {
+
+            // because our image is located on a server we must await it's download.
+            await slide.addImage({
+                src: 'https://www.mcdonalds.com/content/dam/usa/logo/m_logo.png',
+                href: 'https://www.mcdonalds.com',
+                x: 10,
+                y: 400,
+                cx: 50,
+            });
+    });
+});
+
+```
+
+
 ## Testing
 To run the unit tests for `node-pptx` simply type this into your command line:
 
