@@ -12,8 +12,6 @@ describe('Presentation Module', () => {
                     fs.unlinkSync(`${tmpDir}/presentation-existing-non-default-colors.pptx`);
                 }
 
-                //let fulltemplateFilePath = `${__dirname}/fixtures/basic.pptx`;
-                //let presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
                 let pptx = new PPTX.Composer();
                 await pptx.load(`${__dirname}/fixtures/basic.pptx`);
 
@@ -23,7 +21,7 @@ describe('Presentation Module', () => {
                 slide.backgroundColor('C5E0B4');
                 slide.addText({ value: 'Hello world!', x: 450, y: 100, cx: 400, cy: 25, fontSize: 24 });
 
-                await pptx.compose(pres => {
+                pptx.compose(pres => {
                     pres.addSlide(slide => {
                         slide.backgroundColor('FFD777');
                         slide.textColor('FF0000');
@@ -32,13 +30,6 @@ describe('Presentation Module', () => {
                         });
                     });
                 });
-                // await pptx.presentation.addSlide(slide => {
-                //     slide.backgroundColor('FFD777');
-                //     slide.textColor('FF0000');
-                //     slide.addText(text => {
-                //         text.value('Hello world!');
-                //     });
-                // });
 
                 await pptx.save(`${tmpDir}/presentation-existing-non-default-colors.pptx`);
                 expect(fs.existsSync(`${tmpDir}/presentation-existing-non-default-colors.pptx`)).toBe(true);
@@ -60,8 +51,8 @@ describe('Presentation Module', () => {
 
                 let pptx = new PPTX.Composer();
 
-                await pptx.compose(async pres => {
-                    await pres.addSlide(slide => {
+                pptx.compose(pres => {
+                    pres.addSlide(slide => {
                         slide.textColor('00AAFF');
                         slide.backgroundColor('FFD777');
                         slide.addText(text => {
@@ -69,7 +60,7 @@ describe('Presentation Module', () => {
                         });
                     });
 
-                    await pres.addSlide(slide => {
+                    pres.addSlide(slide => {
                         slide.backgroundColor('C5E0B4');
                     });
                 });

@@ -9,8 +9,8 @@ describe('Shape Module', () => {
 
             let pptx = new PPTX.Composer();
 
-            await pptx.compose(async pres => {
-                await pres.addSlide(slide => {
+            pptx.compose(pres => {
+                pres.addSlide(slide => {
                     slide.addShape(shape => {
                         shape
                             .type(PPTX.ShapeTypes.TRIANGLE)
