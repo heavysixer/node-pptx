@@ -12,12 +12,14 @@ describe('Presentation Module', () => {
                     fs.unlinkSync(`${tmpDir}/presentation-existing-add-slide.pptx`);
                 }
 
-                let fulltemplateFilePath = `${__dirname}/fixtures/basic.pptx`;
-                let presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
+                //let fulltemplateFilePath = `${__dirname}/fixtures/basic.pptx`;
+                //let presentation = new PPTX.Presentation({ templateFilePath: fulltemplateFilePath });
 
-                await presentation.loadExistingPPTX();
-                await presentation.addSlide();
-                await presentation.save(`${tmpDir}/presentation-existing-add-slide.pptx`);
+                let pptx = new PPTX.Composer();
+
+                await pptx.load(`${__dirname}/fixtures/basic.pptx`);
+                await pptx.presentation.addSlide();
+                await pptx.save(`${tmpDir}/presentation-existing-add-slide.pptx`);
 
                 expect(fs.existsSync(`${tmpDir}/presentation-existing-add-slide.pptx`)).toBe(true);
             } catch (err) {
