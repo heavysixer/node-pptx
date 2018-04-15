@@ -28,7 +28,49 @@ describe('TextBox Module', () => {
                     });
 
                     // plain "config" method of adding an object
-                    slide.addText({ value: 'Link to google.com', x: 200, y: 300, href: 'http://www.google.com' });
+                    slide.addText({ value: 'Link to google.com', x: 200, y: 200, href: 'http://www.google.com' });
+
+                    slide.addText(text => {
+                        text
+                            .value('Italics')
+                            .x(100)
+                            .y(325)
+                            .fontItalic(true);
+                    });
+
+                    slide.addText(text => {
+                        text
+                            .value('Underlined text')
+                            .x(100)
+                            .y(350)
+                            .fontUnderline(true);
+                    });
+
+                    slide.addText(text => {
+                        text
+                            .value('Subscript')
+                            .x(100)
+                            .y(375)
+                            .fontSubscript(true);
+                    });
+
+                    slide.addText(text => {
+                        text
+                            .value('Superscript')
+                            .x(100)
+                            .y(400)
+                            .fontSuperscript(true);
+                    });
+
+                    slide.addText({
+                        value: 'Italic bold underlined text',
+                        x: 100,
+                        y: 425,
+                        cx: 400,
+                        fontItalic: true,
+                        fontBold: true,
+                        fontUnderline: true,
+                    });
                 });
             });
 
