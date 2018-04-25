@@ -71,6 +71,15 @@ describe('TextBox Module', () => {
                         fontBold: true,
                         fontUnderline: true,
                     });
+
+                    slide.addText(text => {
+                        text
+                            .value(['line 1', 'line 2'])
+                            .fontFace('Calibri')
+                            .fontSize(10)
+                            .x(500)
+                            .y(425);
+                    });
                 });
             });
 
