@@ -71,14 +71,51 @@ describe('TextBox Module', () => {
                         fontBold: true,
                         fontUnderline: true,
                     });
+                });
 
+                pres.addSlide(slide => {
                     slide.addText(text => {
                         text
-                            .value(['line 1', 'line 2'])
+                            .value([
+                                'Order Breakfast:',
+                                [
+                                    'Type: Task',
+                                    'Overview: ordering breakfast is important.',
+                                    'Cycle time: 10.5 hours',
+                                    'Responsibility assignments:',
+                                    ['Kitchen Porter (R): blaw.', 'Sous Chef (A): blaw, blaw.', 'Waiter (R)(A): more blaw...', 'Customer (R): blaw.'],
+                                    'Comments: some comments here...',
+                                    'Repeating process: No.',
+                                ],
+                                'Take Order:',
+                                [
+                                    'Type: Task',
+                                    'Overview: Taking orders is very important.',
+                                    'Cycle time: 12.5 hours',
+                                    'Responsibility assignments:',
+                                    ['Kitchen Porter (R): blaw.', 'Sous Chef (A): blaw, blaw.', 'Waiter (R)(A): stuff...'],
+                                    'Comments: some more comments here...',
+                                    'Repeating process: No.',
+                                ],
+                                'Prepare Ingredients:',
+                                [
+                                    'Type: Task',
+                                    'Overview: this is very important to making breakfast.',
+                                    'Cycle time: 3.71 hours',
+                                    'Responsibility assignments:',
+                                    ['Kitchen Porter (R): blaw.', 'Sous Chef (A): blaw, blaw.', 'Waiter (R)(A): Waiter needs to be trained.'],
+                                    'Comments: some more comments here...',
+                                    'Repeating process: Yes.',
+                                ],
+                            ])
                             .fontFace('Calibri')
                             .fontSize(10)
-                            .x(500)
-                            .y(425);
+                            .textVerticalAlign('top')
+                            .backgroundColor('DCE6F2')
+                            .x(25)
+                            .y(25)
+                            .cx(675)
+                            .cy(500);
                     });
                 });
             });
