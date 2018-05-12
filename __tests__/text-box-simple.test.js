@@ -76,36 +76,42 @@ describe('TextBox Module', () => {
                 pres.addSlide(slide => {
                     slide.addText(text => {
                         text
-                            .value([
-                                'Order Breakfast:',
+                            .bulletPoints([
+                                { text: 'Order Breakfast:', fontBold: true },
                                 [
-                                    'Type: Task',
-                                    'Overview: ordering breakfast is important.',
-                                    'Cycle time: 10.5 hours',
-                                    'Responsibility assignments:',
+                                    { textSegments: [{ text: 'Type: ', fontBold: true }, { text: 'Task' }] },
+                                    //{ textSegments: [{ text: 'Overview: ', fontBold: true }, { text: 'ordering breakfast is important.' }] },
+                                    { textSegments: [{ text: 'Overview: ordering breakfast is important.' }] },
+                                    { textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '10.5 hours' }] },
+                                    { text: 'Responsibility assignments:', fontBold: true },
                                     ['Kitchen Porter (R): blaw.', 'Sous Chef (A): blaw, blaw.', 'Waiter (R)(A): more blaw...', 'Customer (R): blaw.'],
-                                    'Comments: some comments here...',
-                                    'Repeating process: No.',
+                                    { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some comments here...' }] },
+                                    { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'No.' }] },
                                 ],
-                                'Take Order:',
+                                { text: 'Take Order:', fontBold: true },
                                 [
-                                    'Type: Task',
-                                    'Overview: Taking orders is very important.',
-                                    'Cycle time: 12.5 hours',
-                                    'Responsibility assignments:',
+                                    { textSegments: [{ text: 'Type: ', fontBold: true }, { text: 'Task' }] },
+                                    { textSegments: [{ text: 'Overview: ', fontBold: true }, { text: 'Taking orders is very important.' }] },
+                                    { textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '12.5 hours' }] },
+                                    { text: 'Responsibility assignments:', fontBold: true },
                                     ['Kitchen Porter (R): blaw.', 'Sous Chef (A): blaw, blaw.', 'Waiter (R)(A): stuff...'],
-                                    'Comments: some more comments here...',
-                                    'Repeating process: No.',
+                                    { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some more comments here...' }] },
+                                    { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'No.' }] },
                                 ],
-                                'Prepare Ingredients:',
+                                { text: 'Prepare Ingredients:', fontBold: true },
                                 [
-                                    'Type: Task',
-                                    'Overview: this is very important to making breakfast.',
-                                    'Cycle time: 3.71 hours',
-                                    'Responsibility assignments:',
+                                    { textSegments: [{ text: 'Type: ', fontBold: true, fontFace: 'Arial' }, { text: 'Task' }] },
+                                    {
+                                        textSegments: [
+                                            { text: 'Overview: ', fontBold: true },
+                                            { text: 'this is very important to making breakfast.' },
+                                        ],
+                                    },
+                                    { textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '3.71 hours' }] },
+                                    { text: 'Responsibility assignments:', fontBold: true },
                                     ['Kitchen Porter (R): blaw.', 'Sous Chef (A): blaw, blaw.', 'Waiter (R)(A): Waiter needs to be trained.'],
-                                    'Comments: some more comments here...',
-                                    'Repeating process: Yes.',
+                                    { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some more comments here...' }] },
+                                    { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'Yes.' }] },
                                 ],
                             ])
                             .fontFace('Calibri')
