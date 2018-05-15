@@ -416,3 +416,54 @@ sp (Shape)
 §19.3.1.43
 
 [Note: The W3C XML Schema definition of this element’s content model (CT_GroupShape) is located in §A.3. end note]
+
+--------------------------
+
+Analysis on text boxes with a hierarchy of bullet points:
+
+-There's one huge shape property (type "rect") with one big <p:txBody> node.
+-Lots of <a:p> tags with a few text runs each:
+    -<a:r> tags containing <a:rPr> and <a:t> nodes
+    -Finally I figured out what the "err" attribute means on the <a:rPr> tag: when there's a word that is spelled wrong and it needs a red "squiggly" under it, this attribute is set to "1" (it's "0" otherwise).
+
+-------------------------
+
+Proposed JSON for new notes feature in the RACI matrix description:
+
+headingLabels: [
+    {
+        text: 'Order Breakfast',
+        textColor: '002960',
+        backgroundColor: 'CCCCCC',
+        stepNumberTextColor: 'FFFFFF',
+        stepNumberBackgroundColor: '808080',
+        taskNotes: [ // <--- this section is NEW! ---------------------------------------------------------------------------------------------------------------------------------
+            // "key" can be a string or object. If it's a string, then that text will get printed as the first phrase of the note before the colon.
+            // If it's an object, it requires a "text" property with one or more optional properties which define the text formatting.
+            //
+            // "value" can be a string, object, or array. If it's a string, then that text will get printed as the second phrase of the note after the colon.
+            // If it's an object, it requires a "text" property with one or more optional properties which define the text formatting (just like the key).
+            // If it's an array, then the array elements will be used as sub-bullet points under the "key" bullet point text. (In this case, the key value
+            // will get printed, then a colon, and nothing else on that line. The _next_ line will be the start of the sub-bullet point values.)
+            //
+            // The text formatting properties are named the same as other elements in this JSON (such as "textColor," "backgroundColor," "fontBold," etc.)
+            { key: 'Type', value: 'Task' },
+            { key: 'Overview', value: 'Order Breakfast is an important step for the process. It has a few pain points: Lorem ipsum dolor sit amet, consectetur adipiscing elit' },
+            { key: 'Cycle Time', value: '10.5 hours' },
+            { key: 'Wait Time', value: '20 hours' },
+            {
+                key: 'Responsibility Assignments',
+                value: [
+                    {
+                        key: 'Kitchen Porter (R)',
+                        value: 'Duis pretium, sem quis feugiat bibendum, lectus magna finibus tortor, et porta mi tellus eu neque. Ut suscipit elit felis, ut vestibulum metus posuere nec',
+                    },
+                    { key: 'Sous Chef (A)', value: 'N/A' },
+                    { key: 'Waiter (R)(A)', value: 'Waiter needs to be trained' },
+                    { key: 'Customer (R)', value: 'N/A' },
+                ],
+            },
+            { key: 'Comments', vale: 'Maecenas ut mauris et libero aliquam posuere. Integer tempus non turpis in tempus.' },
+            { key: 'Repeating Process', value: 'No' },
+        ], //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    },

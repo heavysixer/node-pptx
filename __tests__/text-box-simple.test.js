@@ -72,6 +72,64 @@ describe('TextBox Module', () => {
                         fontUnderline: true,
                     });
                 });
+
+                // how to do a set of bullet points:
+                pres.addSlide(slide => {
+                    slide.addText(text => {
+                        text
+                            .bulletPoints([
+                                { text: 'Order Breakfast:', fontBold: true },
+                                [
+                                    { textSegments: [{ text: 'Type: ', fontBold: true }, { text: 'Task' }] },
+                                    { textSegments: [{ text: 'Overview: ordering breakfast is important.' }] },
+                                    { textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '10.5 hours' }] },
+                                    { text: 'Responsibility assignments:', fontBold: true },
+                                    [
+                                        { text: 'Kitchen Porter (R): blaw.', fontFace: 'Arial', fontSize: 15 },
+                                        'Sous Chef (A): blaw, blaw.',
+                                        'Waiter (R)(A): more blaw...',
+                                        'Customer (R): blaw.',
+                                    ],
+                                    { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some comments here...' }] },
+                                    { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'No.' }] },
+                                ],
+                                { text: 'Take Order:', fontBold: true },
+                                [
+                                    { textSegments: [{ text: 'Type: ', fontBold: true }, { text: 'Task' }] },
+                                    { textSegments: [{ text: 'Overview: ', fontBold: true }, { text: 'Taking orders is very important.' }] },
+                                    { textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '12.5 hours' }] },
+                                    { text: 'Responsibility assignments:', fontBold: true },
+                                    ['Kitchen Porter (R): blaw.', 'Sous Chef (A): blaw, blaw.', 'Waiter (R)(A): stuff...'],
+                                    { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some more comments here...' }] },
+                                    { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'No.' }] },
+                                ],
+                                { text: 'Prepare Ingredients:', fontBold: true },
+                                [
+                                    { textSegments: [{ text: 'Type: ', fontBold: true, fontFace: 'Arial' }, { text: 'Task' }] },
+                                    {
+                                        textSegments: [
+                                            { text: 'Overview: ', fontBold: true },
+                                            { text: 'this is very important to making breakfast.' },
+                                        ],
+                                    },
+                                    { textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '3.71 hours' }] },
+                                    { text: 'Responsibility assignments:', fontBold: true },
+                                    ['Kitchen Porter (R): blaw.', 'Sous Chef (A): blaw, blaw.', 'Waiter (R)(A): Waiter needs to be trained.'],
+                                    { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some more comments here...' }] },
+                                    { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'Yes.' }] },
+                                ],
+                            ])
+                            .fontFace('Calibri')
+                            .textColor('002960')
+                            .fontSize(10)
+                            .textVerticalAlign('top')
+                            .backgroundColor('DCE6F2')
+                            .x(25)
+                            .y(25)
+                            .cx(675)
+                            .cy(500);
+                    });
+                });
             });
 
             await pptx.save(`${tmpDir}/text-box-new-simple.pptx`);
