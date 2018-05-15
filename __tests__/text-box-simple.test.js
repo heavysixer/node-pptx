@@ -73,6 +73,7 @@ describe('TextBox Module', () => {
                     });
                 });
 
+                // how to do a set of bullet points:
                 pres.addSlide(slide => {
                     slide.addText(text => {
                         text
@@ -80,11 +81,15 @@ describe('TextBox Module', () => {
                                 { text: 'Order Breakfast:', fontBold: true },
                                 [
                                     { textSegments: [{ text: 'Type: ', fontBold: true }, { text: 'Task' }] },
-                                    //{ textSegments: [{ text: 'Overview: ', fontBold: true }, { text: 'ordering breakfast is important.' }] },
                                     { textSegments: [{ text: 'Overview: ordering breakfast is important.' }] },
                                     { textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '10.5 hours' }] },
                                     { text: 'Responsibility assignments:', fontBold: true },
-                                    ['Kitchen Porter (R): blaw.', 'Sous Chef (A): blaw, blaw.', 'Waiter (R)(A): more blaw...', 'Customer (R): blaw.'],
+                                    [
+                                        { text: 'Kitchen Porter (R): blaw.', fontFace: 'Arial', fontSize: 15 },
+                                        'Sous Chef (A): blaw, blaw.',
+                                        'Waiter (R)(A): more blaw...',
+                                        'Customer (R): blaw.',
+                                    ],
                                     { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some comments here...' }] },
                                     { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'No.' }] },
                                 ],
@@ -115,6 +120,7 @@ describe('TextBox Module', () => {
                                 ],
                             ])
                             .fontFace('Calibri')
+                            .textColor('002960')
                             .fontSize(10)
                             .textVerticalAlign('top')
                             .backgroundColor('DCE6F2')
