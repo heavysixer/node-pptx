@@ -3,7 +3,7 @@ const fs = require('fs');
 const tmpDir = `${__dirname}/tmp`;
 
 describe('TextBox Module', () => {
-    test('should be able to create a simple text box from scratch', async () => {
+    test('should be able to create some text boxes from scratch', async () => {
         try {
             expect.assertions(1);
 
@@ -93,7 +93,7 @@ describe('TextBox Module', () => {
                                     { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some comments here...' }] },
                                     { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'No.' }] },
                                 ],
-                                { text: 'Take Order:', fontBold: true },
+                                { text: 'Take Order:', fontBold: true, startAt: 5 },
                                 [
                                     { textSegments: [{ text: 'Type: ', fontBold: true }, { text: 'Task' }] },
                                     { textSegments: [{ text: 'Overview: ', fontBold: true }, { text: 'Taking orders is very important.' }] },
@@ -103,7 +103,7 @@ describe('TextBox Module', () => {
                                     { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some more comments here...' }] },
                                     { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'No.' }] },
                                 ],
-                                { text: 'Prepare Ingredients:', fontBold: true },
+                                { text: 'Prepare Ingredients:', fontBold: true, startAt: 6 },
                                 [
                                     { textSegments: [{ text: 'Type: ', fontBold: true, fontFace: 'Arial' }, { text: 'Task' }] },
                                     {
@@ -112,12 +112,13 @@ describe('TextBox Module', () => {
                                             { text: 'this is very important to making breakfast.' },
                                         ],
                                     },
-                                    { textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '3.71 hours' }] },
-                                    { text: 'Responsibility assignments:', fontBold: true },
+                                    { textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '3.71 hours' }], startAt: 9 },
+                                    { text: 'Responsibility assignments:', fontBold: true, startAt: 10 },
                                     ['Kitchen Porter (R): blaw.', 'Sous Chef (A): blaw, blaw.', 'Waiter (R)(A): Waiter needs to be trained.'],
-                                    { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some more comments here...' }] },
-                                    { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'Yes.' }] },
+                                    { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some more comments here...' }], startAt: 9 },
+                                    { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'Yes.' }], startAt: 9 },
                                 ],
+                                [['Level 3 indented']],
                             ])
                             .fontFace('Calibri')
                             .textColor('002960')
