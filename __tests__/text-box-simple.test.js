@@ -80,10 +80,10 @@ describe('TextBox Module', () => {
                             .bulletPoints([
                                 { text: 'Order Breakfast:', fontBold: true },
                                 [
-                                    { textSegments: [{ text: 'Type: ', fontBold: true }, { text: 'Task' }] },
+                                    { textSegments: [{ text: 'Type: ', fontBold: true }, { text: 'Task' }], bulletToTextGapSize: 0 },
                                     { textSegments: [{ text: 'Overview: ordering breakfast is important.' }] },
                                     { textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '10.5 hours' }] },
-                                    { text: 'Responsibility assignments:', fontBold: true },
+                                    { text: 'Responsibility assignments:', fontBold: true, indentSize: 45, bulletToTextGapSize: 0 },
                                     [
                                         { text: 'Kitchen Porter (R): blaw.', fontFace: 'Arial', fontSize: 15 },
                                         'Sous Chef (A): blaw, blaw.',
