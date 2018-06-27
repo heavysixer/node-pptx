@@ -93,19 +93,25 @@ describe('TextBox Module', () => {
                                     { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some comments here...' }] },
                                     { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'No.' }] },
                                 ],
-                                { text: 'Take Order:', fontBold: true, bulletType: 'STAR' },
+                                { text: 'Take Order:', fontBold: true, bulletType: PPTX.BulletTypes.STAR },
                                 [
-                                    { textSegments: [{ text: 'Type: ', fontBold: true }, { text: 'Task' }], bulletType: 'HOLLOW_ROUND' },
+                                    {
+                                        textSegments: [{ text: 'Type: ', fontBold: true }, { text: 'Task' }],
+                                        bulletType: PPTX.BulletTypes.HOLLOW_ROUND,
+                                    },
                                     {
                                         textSegments: [{ text: 'Overview: ', fontBold: true }, { text: 'Taking orders is very important.' }],
-                                        bulletType: 'FILLED_SQUARE',
+                                        bulletType: PPTX.BulletTypes.FILLED_SQUARE,
                                     },
-                                    { textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '12.5 hours' }], bulletType: 'HOLLOW_SQUARE' },
-                                    { text: 'Responsibility assignments:', fontBold: true, bulletType: 'ARROW' },
+                                    {
+                                        textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '12.5 hours' }],
+                                        bulletType: PPTX.BulletTypes.HOLLOW_SQUARE,
+                                    },
+                                    { text: 'Responsibility assignments:', fontBold: true, bulletType: PPTX.BulletTypes.ARROW },
                                     ['Kitchen Porter (R): blaw.', 'Sous Chef (A): blaw, blaw.', 'Waiter (R)(A): stuff...'],
                                     {
                                         textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some more comments here...' }],
-                                        bulletType: 'CHECKMARK',
+                                        bulletType: PPTX.BulletTypes.CHECKMARK,
                                     },
                                     { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'No.' }] },
                                 ],
