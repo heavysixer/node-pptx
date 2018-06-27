@@ -23,8 +23,8 @@ describe('Presentation Module', () => {
                 await pptx.save(`${tmpDir}/presentation-existing-rewrite.pptx`);
 
                 await pptx.load(`${__dirname}/fixtures/basic2.pptx`);
-                await pptx.compose(async pres => {
-                    await pres.getSlide('slide1').addImage(image => {
+                await pptx.compose(pres => {
+                    pres.getSlide('slide1').addImage(image => {
                         image
                             .file(`${__dirname}/images/pizza.jpg`)
                             .x(500)
@@ -33,8 +33,8 @@ describe('Presentation Module', () => {
                             .cy(100);
                     });
 
-                    await pres.addSlide(async slide => {
-                        await slide.addImage(image => {
+                    pres.addSlide(slide => {
+                        slide.addImage(image => {
                             image.file(`${__dirname}/images/image1.png`);
                         });
                     });

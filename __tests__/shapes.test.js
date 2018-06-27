@@ -9,8 +9,8 @@ describe('Shape Module', () => {
 
             let pptx = new PPTX.Composer();
 
-            await pptx.compose(async pres => {
-                await pres.addSlide(slide => {
+            pptx.compose(pres => {
+                pres.addSlide(slide => {
                     slide.addShape(shape => {
                         shape
                             .type(PPTX.ShapeTypes.TRIANGLE)
@@ -27,6 +27,24 @@ describe('Shape Module', () => {
                     slide.addShape({ type: PPTX.ShapeTypes.LEFT_ARROW, x: 500, y: 340, cx: 100, cy: 50, color: 'FF00FF' });
                     slide.addShape({ type: PPTX.ShapeTypes.RIGHT_ARROW, x: 500, y: 440, cx: 100, cy: 50, color: '0000FF' });
                     slide.addShape({ type: PPTX.ShapeTypes.UP_ARROW, x: 500, y: 140, cx: 100, cy: 50, color: '0000FF', href: 'www.google.com' });
+                    slide.addShape({
+                        type: PPTX.ShapeTypes.OVAL,
+                        x: 50,
+                        y: 325,
+                        text:
+                            'Auto-fit test - width and height of shape object should not be specified. This shape should auto-grow to fit this text. ',
+                        autoFit: true,
+                    });
+                    slide.addShape({
+                        type: PPTX.ShapeTypes.TRIANGLE,
+                        x: 250,
+                        y: 400,
+                        cx: 200,
+                        cy: 100,
+                        text: 'auto-shrink text: this text should shrink',
+                        shrinkText: true,
+                        color: 'FF00AA',
+                    });
                 });
             });
 
