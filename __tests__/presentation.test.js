@@ -8,10 +8,6 @@ describe('Presentation Module', () => {
         prepareTmpDir(tmpDir);
     });
 
-    afterAll(() => {
-        //emptyDir(tmpDir);
-    });
-
     describe('with an existing pptx file', () => {
         test('should be able to load it', async () => {
             try {
@@ -363,9 +359,16 @@ function prepareTmpDir(dir) {
 }
 
 function emptyDir(dir) {
-    for (const file of fs.readdirSync(dir)) {
-        fs.unlink(path.join(dir, file), err => {
-            if (err) throw err;
-        });
+    let testFiles = [
+        `${tmpDir}/presentation-existing-rewrite.pptx`,
+        `${tmpDir}/presentation-existing-add-image.pptx`,
+        `${tmpDir}/presentation-new-add-slide-links.pptx`,
+        `${tmpDir}/presentation-new-table-of-contents.pptx`,
+        `${tmpDir}/presentation-new-multiple-slides.pptx`,
+        `${tmpDir}/presentation-new-multiple-slides-buffered.pptx`,
+    ];
+
+    for (let file in testFiles) {
+        if (fs.existsSync(file)) fs.unlinkSync(file);
     }
 }
