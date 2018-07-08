@@ -197,7 +197,30 @@ await pptx.compose(pres => {
 ```
 
 ### Removing Slides
-TODO
+
+Slides are removed by calling removeSlide() on the Presentation object and passing in the object of the slide you want removed. In order to get a slide object, call Presentation.getSlide() passing in the name of the slide you wish to retrieve. Slide names always follow the format of "slideX" where "X" is the slide number. For example, slide #3 will be named "slide3" and slide #10 will be named "slide10."
+
+When calling Presentation.addSlide() _without_ a composition function as the first argument, a slide object will be returned in the promise. This slide object can also be used as a reference for slide removal.
+
+Examples of both:
+
+```javascript
+const PPTX = require('node-pptx');
+let pptx = new PPTX.Composer();
+
+await pptx.load(`./existing.pptx`); // load a pre-existing PPTX
+await pptx.compose(async pres => {
+    pres.removeSlide(pres.getSlide('slide1')); // remove the first slide from the PPTX
+
+    let newSlide = await pres.addSlide(); // add a new slide
+
+    newSlide.addText(text => { // add some text
+        text.value('Hello World')
+    });
+
+    pres.removeSlide(newSlide); // remove the slide we just added using the object reference
+});
+```
 
 ### Reordering Slides
 TODO
