@@ -200,6 +200,8 @@ await pptx.compose(pres => {
 
 Slides are removed by calling removeSlide() on the Presentation object and passing in the object of the slide you want removed. In order to get a slide object, call Presentation.getSlide() passing in the name of the slide you wish to retrieve. Slide names always follow the format of "slideX" where "X" is the slide number. For example, slide #3 will be named "slide3" and slide #10 will be named "slide10."
 
+Presentation.getSlide() also supports integer slide numbers (slide numbers are base-1). For example, to grab the very first slide of a PPTX, you would call "getSlide(1)".
+
 When calling Presentation.addSlide() _without_ a composition function as the first argument, a slide object will be returned in the promise. This slide object can also be used as a reference for slide removal.
 
 Examples of both:
