@@ -131,11 +131,11 @@ describe('Presentation Module', () => {
 
             await pptx.compose(async pres => {
                 let slide1 = await pres.addSlide();
-                let slide2 = await pres.addSlide('slideLayout2');
+                let slide2 = await pres.addSlide();
                 let slide3 = await pres.addSlide();
                 let slide4 = await pres.addSlide();
                 let slide5 = await pres.addSlide();
-                let slide6 = await pres.addSlide('slideLayout6');
+                let slide6 = await pres.addSlide();
 
                 slide1.addText({ value: 'Slide 1', x: 200, y: 100 });
                 slide2.addText({ value: 'Slide 2', x: 200, y: 100 });
