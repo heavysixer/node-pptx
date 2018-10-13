@@ -154,4 +154,31 @@ describe('Presentation Module', () => {
             throw err;
         }
     });
+
+    test('should be able to create a PPTX and attempt an invalid slide move - should throw the correct exception and not crash', async () => {
+        try {
+            let pptx = new PPTX.Composer();
+
+            expect.assertions(1);
+
+            await pptx.compose(async pres => {
+                let slide1 = await pres.addSlide();
+                let slide2 = await pres.addSlide();
+                let slide3 = await pres.addSlide();
+
+                slide1.addText({ value: 'Slide 1', x: 200, y: 100 });
+                slide2.addText({ value: 'Slide 2', x: 200, y: 100 });
+                slide3.addText({ value: 'Slide 3', x: 200, y: 100 });
+
+                try {
+                    slide2.moveTo(10);
+                } catch (err) {
+                    expect(err.message).toContain('Destination slide number does not exist');
+                }
+            });
+        } catch (err) {
+            console.warn(err);
+            throw err;
+        }
+    });
 });
