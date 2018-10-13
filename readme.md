@@ -213,6 +213,7 @@ let pptx = new PPTX.Composer();
 await pptx.load(`./existing.pptx`); // load a pre-existing PPTX
 await pptx.compose(async pres => {
     pres.removeSlide(pres.getSlide('slide1')); // remove the first slide from the PPTX
+    // OR ---> pres.removeSlide(pres.getSlide(1)); <--- example of getting a slide by integer
 
     let newSlide = await pres.addSlide(); // add a new slide
 
@@ -225,7 +226,45 @@ await pptx.compose(async pres => {
 ```
 
 ### Reordering Slides
-TODO
+
+You can move a slide's position by calling moveTo() on a Slide object. See the section above ("Removing Slides") for how to grab a Slide object. The moveTo() function takes one parameter: the destination slide number in which you want the slide to move. Slide numbers are always base-1. For example, to move a slide from its original position to the second slide in the presentation, you would call "moveTo(2)".
+
+Example #1 (to move slide #5 to slide #2 on an existing PPTX):
+
+```javascript
+const PPTX = require('node-pptx');
+let pptx = new PPTX.Composer();
+
+await pptx.load(`./existing.pptx`); // load a pre-existing PPTX
+await pptx.compose(async pres => {
+    let slide = pres.getSlide(5);
+    slide.moveTo(2);
+});
+```
+Example #2 (to move slide #2 to slide #6 on a PPTX created from scratch):
+
+```javascript
+const PPTX = require('node-pptx');
+let pptx = new PPTX.Composer();
+
+await pptx.compose(async pres => {
+    let slide1 = await pres.addSlide();
+    let slide2 = await pres.addSlide();
+    let slide3 = await pres.addSlide();
+    let slide4 = await pres.addSlide();
+    let slide5 = await pres.addSlide();
+    let slide6 = await pres.addSlide();
+
+    slide1.addText({ value: 'Slide 1', x: 200, y: 100 });
+    slide2.addText({ value: 'Slide 2', x: 200, y: 100 });
+    slide3.addText({ value: 'Slide 3', x: 200, y: 100 });
+    slide4.addText({ value: 'Slide 4', x: 200, y: 100 });
+    slide5.addText({ value: 'Slide 5', x: 200, y: 100 });
+    slide6.addText({ value: 'Slide 6', x: 200, y: 100 });
+
+    slide2.moveTo(6);
+});
+```
 
 ### Formatting Options
 
