@@ -2,12 +2,23 @@ const PPTX = require('../index.js');
 const fs = require('fs');
 const tmpDir = `${__dirname}/tmp`;
 
+// given a PPTX object with slides and a PPTX file to compare against, this function will check
+// if the "slideNumber" slide in "pptx" matches the XML of the same slide in "validationFileName"
+async function verifySlideMatch(slideNumber, pptx, validationFileName) {
+    let comparisonPptx = new PPTX.Composer();
+    await comparisonPptx.load(validationFileName);
+    let comparisonXml = comparisonPptx.getSlide(slideNumber).getSlideXmlAsString();
+    let xml = pptx.getSlide(slideNumber).getSlideXmlAsString();
+
+    expect(xml).toEqual(comparisonXml);
+}
+
 describe('Presentation Module', () => {
     test("should be able to load an existing PPTX (containing three slides) and swap slide #'s 2 and 3", async () => {
         try {
             let testFileName = 'presentation-swap-existing-slides-small.pptx';
 
-            expect.assertions(1);
+            expect.assertions(3);
 
             if (fs.existsSync(`${tmpDir}/${testFileName}`)) {
                 fs.unlinkSync(`${tmpDir}/${testFileName}`);
@@ -30,6 +41,9 @@ describe('Presentation Module', () => {
             });
 
             await pptx.save(`${tmpDir}/${testFileName}`);
+            await verifySlideMatch(2, pptx, `${__dirname}/fixtures/verifications/${testFileName}`);
+            await verifySlideMatch(3, pptx, `${__dirname}/fixtures/verifications/${testFileName}`);
+
             expect(fs.existsSync(`${tmpDir}/${testFileName}`)).toBe(true);
         } catch (err) {
             console.warn(err);
@@ -41,7 +55,7 @@ describe('Presentation Module', () => {
         try {
             let testFileName = 'presentation-swap-existing-slides-large-5-to-2.pptx';
 
-            expect.assertions(1);
+            expect.assertions(3);
 
             if (fs.existsSync(`${tmpDir}/${testFileName}`)) {
                 fs.unlinkSync(`${tmpDir}/${testFileName}`);
@@ -56,6 +70,9 @@ describe('Presentation Module', () => {
             });
 
             await pptx.save(`${tmpDir}/${testFileName}`);
+            await verifySlideMatch(5, pptx, `${__dirname}/fixtures/verifications/${testFileName}`);
+            await verifySlideMatch(2, pptx, `${__dirname}/fixtures/verifications/${testFileName}`);
+
             expect(fs.existsSync(`${tmpDir}/${testFileName}`)).toBe(true);
         } catch (err) {
             console.warn(err);
@@ -67,7 +84,7 @@ describe('Presentation Module', () => {
         try {
             let testFileName = 'presentation-swap-existing-slides-large-2-to-6.pptx';
 
-            expect.assertions(1);
+            expect.assertions(3);
 
             if (fs.existsSync(`${tmpDir}/${testFileName}`)) {
                 fs.unlinkSync(`${tmpDir}/${testFileName}`);
@@ -82,6 +99,9 @@ describe('Presentation Module', () => {
             });
 
             await pptx.save(`${tmpDir}/${testFileName}`);
+            await verifySlideMatch(6, pptx, `${__dirname}/fixtures/verifications/${testFileName}`);
+            await verifySlideMatch(2, pptx, `${__dirname}/fixtures/verifications/${testFileName}`);
+
             expect(fs.existsSync(`${tmpDir}/${testFileName}`)).toBe(true);
         } catch (err) {
             console.warn(err);
@@ -94,7 +114,7 @@ describe('Presentation Module', () => {
             let testFileName = 'presentation-create-new-swap-slides-5-to-2.pptx';
             let pptx = new PPTX.Composer();
 
-            expect.assertions(1);
+            expect.assertions(3);
 
             await pptx.compose(async pres => {
                 let slide1 = await pres.addSlide();
@@ -115,6 +135,9 @@ describe('Presentation Module', () => {
             });
 
             await pptx.save(`${tmpDir}/${testFileName}`);
+            await verifySlideMatch(5, pptx, `${__dirname}/fixtures/verifications/${testFileName}`);
+            await verifySlideMatch(2, pptx, `${__dirname}/fixtures/verifications/${testFileName}`);
+
             expect(fs.existsSync(`${tmpDir}/${testFileName}`)).toBe(true);
         } catch (err) {
             console.warn(err);
@@ -127,7 +150,7 @@ describe('Presentation Module', () => {
             let testFileName = 'presentation-create-new-swap-slides-2-to-6.pptx';
             let pptx = new PPTX.Composer();
 
-            expect.assertions(1);
+            expect.assertions(3);
 
             await pptx.compose(async pres => {
                 let slide1 = await pres.addSlide();
@@ -148,6 +171,9 @@ describe('Presentation Module', () => {
             });
 
             await pptx.save(`${tmpDir}/${testFileName}`);
+            await verifySlideMatch(2, pptx, `${__dirname}/fixtures/verifications/${testFileName}`);
+            await verifySlideMatch(6, pptx, `${__dirname}/fixtures/verifications/${testFileName}`);
+
             expect(fs.existsSync(`${tmpDir}/${testFileName}`)).toBe(true);
         } catch (err) {
             console.warn(err);
