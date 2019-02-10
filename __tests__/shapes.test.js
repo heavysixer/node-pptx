@@ -58,7 +58,7 @@ describe('Shape Module', () => {
                         y: 25,
                         cx: 200,
                         cy: 100,
-                        text: { textSegments: [{ text: 'Hello ', fontBold: true }, { text: 'world!' }] },
+                        text: { textSegments: [{ text: 'Greg Dolley\r\n', fontBold: true }, { text: 'CEO' }] },
                         color: 'D9D9D9',
                         textVerticalAlign: 'top',
                     });
