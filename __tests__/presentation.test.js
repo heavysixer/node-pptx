@@ -255,6 +255,16 @@ describe('Presentation Module', () => {
                                 .cy(100)
                                 .href('http://www.google.com');
                         })
+                        .addShape(shape => {
+                            shape
+                                .type(PPTX.ShapeTypes.TRIANGLE)
+                                .x(300)
+                                .y(400)
+                                .cx(250)
+                                .cy(100)
+                                .text('link to slide 2')
+                                .href('#2');
+                        })
                         .addText(text => {
                             text
                                 .value('This is a hyperlink! Will this go to google?')

@@ -35,15 +35,32 @@ describe('Shape Module', () => {
                             'Auto-fit test - width and height of shape object should not be specified. This shape should auto-grow to fit this text. ',
                         autoFit: true,
                     });
+                    // TODO: FIXME: auto-shrink text broke (well, it didn't work perfectly before either - when opening a PPTX with an auto-shrink text shape, the text
+                    //              never auto-shrunk until you changed a property on _any_ other shape manually [this was with an older Office version though]; then
+                    //              PowerPoint would re-render the slide and auto-resize the text.) _Now_, the entire PPTX gets corrupted and it opens up blank. This
+                    //              seems to coincide with a Windows 10 Office update which also broke the slide linking hack of being able to use "#<slide num>" as
+                    //              the URL of a hyperlink to link to another slide. However, the slide link hack doesn't corrupt the PPTX, it simply makes the link
+                    //              not do anything.
+                    // slide.addShape({
+                    //     type: PPTX.ShapeTypes.TRIANGLE,
+                    //     x: 250,
+                    //     y: 400,
+                    //     cx: 200,
+                    //     cy: 100,
+                    //     text: 'auto-shrink text: this text should shrink',
+                    //     shrinkText: true,
+                    //     color: 'FF00AA',
+                    // });
+
                     slide.addShape({
-                        type: PPTX.ShapeTypes.TRIANGLE,
+                        type: PPTX.ShapeTypes.RECTANGLE,
                         x: 250,
-                        y: 400,
+                        y: 25,
                         cx: 200,
                         cy: 100,
-                        text: 'auto-shrink text: this text should shrink',
-                        shrinkText: true,
-                        color: 'FF00AA',
+                        text: { textSegments: [{ text: 'Greg Dolley\r\n', fontBold: true }, { text: 'CEO' }] },
+                        color: 'D9D9D9',
+                        textVerticalAlign: 'top',
                     });
                 });
             });
