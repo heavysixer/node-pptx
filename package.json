@@ -1,19 +1,15 @@
 {
-  "name": "node-pptx",
-  "version": "0.0.1",
+  "name": "nodejs-pptx",
+  "version": "1.0.0",
   "description": "Generate PPTX files on the server-side with JavaScript.",
   "license": "MIT",
-  "repository": "heavysixer/node-pptx",
-  "author": {
-    "name": "Mark Daggett",
-    "email": "mark@humansized.com",
-    "url": "github.com/heavysixer"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heavysixer/node-pptx.git"
   },
+  "author": "Mark Daggett <mark@humansized.com> (github.com/heavysixer)",
   "contributors": [
-    {
-      "name": "Greg Dolley",
-      "url": "github.com/gregdolley"
-    }
+    "Greg Dolley (github.com/gregdolley)"
   ],
   "engines": {
     "node": ">=4"
@@ -79,5 +75,13 @@
     "superagent": "^3.8.1",
     "supertest": "^3.0.0",
     "tar": "^4.4.2"
+  },
+  "bugs": {
+    "url": "https://github.com/heavysixer/node-pptx/issues"
+  },
+  "homepage": "https://github.com/heavysixer/node-pptx#readme",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
   }
 }
