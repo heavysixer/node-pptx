@@ -26,7 +26,8 @@
     "collectCoverage": true
   },
   "files": [
-    "index.js"
+    "index.js",
+    "/lib"
   ],
   "keywords": [
     "javascript",
