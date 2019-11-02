@@ -1,6 +1,6 @@
 {
   "name": "nodejs-pptx",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate PPTX files on the server-side with JavaScript.",
   "license": "MIT",
   "repository": {
