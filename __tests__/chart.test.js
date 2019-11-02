@@ -90,9 +90,9 @@ describe('Charts Module', () => {
     });
 
     xtest('should be able to add a chart to an existing PowerPoint', () => {
-        // TODO: test the following:
-        //      1) load existing with no chart, then add a chart
-        //      2) load existing with a chart, then add a chart (you _might_ need to parse out worksheet counts for this)
+    // TODO: test the following:
+    //      1) load existing with no chart, then add a chart
+    //      2) load existing with a chart, then add a chart (you _might_ need to parse out worksheet counts for this)
     });
 });
 
