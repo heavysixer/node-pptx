@@ -1,4 +1,4 @@
-# node-pptx [![Build Status](https://travis-ci.org/heavysixer/node-pptx.svg?branch=master)](https://travis-ci.org/heavysixer/node-pptx)
+# node-pptx
 
 A well-tested, and friendly library to create, edit, and update PPTX files on the server-side with JavaScript.
 
