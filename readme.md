@@ -49,7 +49,7 @@ $ npm i nodejs-pptx
 Let's create a very simple presentation with one slide.
 
 ```javascript
-const PPTX = require('node-pptx');
+const PPTX = require('nodejs-pptx');
 let pptx = new PPTX.Composer();
 
 await pptx.compose(pres => {
@@ -65,7 +65,7 @@ await pptx.save(`./hello-world.pptx`);
 
 ## General Conventions
 
-`node-pptx` has a friendly declarative DSL to quickly design a pptx file. This makes your JavaScript code very readable because, it allows you to visually segment and compartmentalize your code to the presentation element you are trying to edit. Here is a simple example of adding a text box to a slide:
+`nodejs-pptx` has a friendly declarative DSL to quickly design a pptx file. This makes your JavaScript code very readable because, it allows you to visually segment and compartmentalize your code to the presentation element you are trying to edit. Here is a simple example of adding a text box to a slide:
 
 ```javascript
 await pres.addSlide(slide => {
@@ -102,7 +102,7 @@ The following sections defines the various ways to read, compose, and write pptx
 ### Creating a Presentation From Scratch
 
 ```javascript
-const PPTX = require('node-pptx');
+const PPTX = require('nodejs-pptx');
 let pptx = new PPTX.Composer();
 
 await pptx.compose(pres => {
@@ -121,7 +121,7 @@ await pptx.save(`./hello-world.pptx`);
 If you would like to use or modify an existing pptx file, simply load it first.
 
 ```javascript
-const PPTX = require('node-pptx');
+const PPTX = require('nodejs-pptx');
 let pptx = new PPTX.Composer();
 
 await pptx.load(`./existing.pptx`);
@@ -143,7 +143,7 @@ await pptx.save(`./existing.pptx`);
 Saving a presentation is easy to do but because it's asynchronous by design we recommend awaiting the result before moving on.
 
 ```javascript
-const PPTX = require('node-pptx');
+const PPTX = require('nodejs-pptx');
 let pptx = new PPTX.Composer();
 
 await pptx.save(`./blank.pptx`);
@@ -154,7 +154,7 @@ await pptx.save(`./blank.pptx`);
 You can set the presentation's properties using the DSL only.
 
 ```javascript
-const PPTX = require('node-pptx');
+const PPTX = require('nodejs-pptx');
 let pptx = new PPTX.Composer();
 
 await pptx.compose(async pres => {
@@ -173,7 +173,7 @@ To control the layout of a presentation you choose one of the available defaults
 To see a list of provided layouts view the [layouts](https://github.com/heavysixer/node-pptx/blob/master/lib/layout-types.js) file.
 
 ```javascript
-const PPTX = require('node-pptx');
+const PPTX = require('nodejs-pptx');
 let pptx = new PPTX.Composer();
 
 pptx.compose(pres => {
@@ -192,7 +192,7 @@ Slides are are by far the most complex feature of this library because they are 
 ### Adding Slides
 
 ```javascript
-const PPTX = require('node-pptx');
+const PPTX = require('nodejs-pptx');
 let pptx = new PPTX.Composer();
 
 await pptx.compose(pres => {
@@ -215,7 +215,7 @@ When calling Presentation.addSlide() _without_ a composition function as the fir
 Examples of both:
 
 ```javascript
-const PPTX = require('node-pptx');
+const PPTX = require('nodejs-pptx');
 let pptx = new PPTX.Composer();
 
 await pptx.load(`./existing.pptx`); // load a pre-existing PPTX
@@ -241,7 +241,7 @@ You can move a slide's position by calling moveTo() on a Slide object. See the s
 Example #1 (to move slide #5 to slide #2 on an existing PPTX):
 
 ```javascript
-const PPTX = require('node-pptx');
+const PPTX = require('nodejs-pptx');
 let pptx = new PPTX.Composer();
 
 await pptx.load(`./existing.pptx`); // load a pre-existing PPTX
@@ -254,7 +254,7 @@ await pptx.compose(async pres => {
 Example #2 (to move slide #2 to slide #6 on a PPTX created from scratch):
 
 ```javascript
-const PPTX = require('node-pptx');
+const PPTX = require('nodejs-pptx');
 let pptx = new PPTX.Composer();
 
 await pptx.compose(async pres => {
@@ -281,7 +281,7 @@ await pptx.compose(async pres => {
 Applying background and text colors:
 
 ```javascript
-const PPTX = require('node-pptx');
+const PPTX = require('nodejs-pptx');
 let pptx = new PPTX.Composer();
 
 await pptx.compose(async pres => {
@@ -317,7 +317,7 @@ Charts have very minimal support right now, think of it mostly as a proof of con
 #### Bar Charts
 
 ```javascript
-const PPTX = require('node-pptx');
+const PPTX = require('nodejs-pptx');
 let pptx = new PPTX.Composer();
 
 let barChartData1 = [
@@ -358,7 +358,7 @@ await pptx
 ### Images
 
 ```javascript
-const PPTX = require('node-pptx');
+const PPTX = require('nodejs-pptx');
 let pptx = new PPTX.Composer();
 
 await pptx.compose(async pres => {
@@ -401,7 +401,7 @@ For a full list of the supported shapes check the
 [shape-types](https://github.com/heavysixer/node-pptx/blob/master/lib/shape-types.js) file.
 
 ```javascript
-const PPTX = require('node-pptx');
+const PPTX = require('nodejs-pptx');
 let pptx = new PPTX.Composer();
 
 await pptx.compose(async pres => {
@@ -432,7 +432,7 @@ await pptx.save(`./shapes-test.pptx`);
 As the name suggests text can be added to the slide using `addText`. The text box element also supports the creation of external links (which open a web browser) and internal linking (which link to another slide in the same presentation).
 
 ```javascript
-const PPTX = require('node-pptx');
+const PPTX = require('nodejs-pptx');
 let pptx = new PPTX.Composer();
 
 await pptx.compose(async pres => {
@@ -475,7 +475,7 @@ defaultSlide.addText({ value: 'This go to slide 3', x: 0, y: 50, href: '#3' });
 
 ## Understanding Async and Await
 
-`node-pptx` is synchronous by design, which means commands execute one step at a time and do not move on until the previous step completes. However, there are certain cases where synchronous flow is undesirable. For example when adding an image from the internet which must first be downloaded. In these cases you can use Javascript's native `async` and `await` functions to turn the previous synchronous flow into one that allows for asynchronous operations. Consider these two examples:
+`nodejs-pptx` is synchronous by design, which means commands execute one step at a time and do not move on until the previous step completes. However, there are certain cases where synchronous flow is undesirable. For example when adding an image from the internet which must first be downloaded. In these cases you can use Javascript's native `async` and `await` functions to turn the previous synchronous flow into one that allows for asynchronous operations. Consider these two examples:
 
 ```javascript
 // Synchronous example:
@@ -510,7 +510,7 @@ await pptx.compose(async pres => {
 
 ## Testing
 
-To run the unit tests for `node-pptx` simply type this into your command line:
+To run the unit tests for `nodejs-pptx` simply type this into your command line:
 
 `yarn test`
 
@@ -518,7 +518,7 @@ You can also see the code coverage metrics as well which will be written to the 
 
 ## Contributing
 
-Like many other open source projects `node-pptx` was created to service the kinds of use cases we needed to support for our own work. This means that the project itself is far from feature-complete. Send issues and pull requests with your ideas!
+Like many other open source projects `nodejs-pptx` was created to service the kinds of use cases we needed to support for our own work. This means that the project itself is far from feature-complete. Send issues and pull requests with your ideas!
 
 [Good First Issue](https://github.com/heavysixer/node-pptx/labels/Good%20First%20Issue) is a great starting point for PRs.
 
