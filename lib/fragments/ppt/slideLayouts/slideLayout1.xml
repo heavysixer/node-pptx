@@ -7,17 +7,46 @@
 				<a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm>
 			</p:grpSpPr>
 			<p:sp>
-				<p:nvSpPr><p:cNvPr id="4" name="Slide Number Placeholder 3"/>
-					<p:cNvSpPr><a:spLocks noGrp="1"/></p:cNvSpPr>
-					<p:nvPr><p:ph type="sldNum" sz="quarter" idx="12"/></p:nvPr>
-				</p:nvSpPr><p:spPr/>
-				<p:txBody><a:bodyPr/><a:lstStyle/>
-					<a:p>
-						<a:fld id="{EEA4CB10-01EC-4F0B-B0D3-B7B5571F5409}" type="slidenum"><a:rPr lang="en-US" smtClean="0"/>
-							<a:t>‹#›</a:t>
-						</a:fld><a:endParaRPr lang="en-US"/></a:p>
-				</p:txBody>
-			</p:sp>
+	          <p:nvSpPr>
+	            <p:cNvPr id="4" name="Slide Number Placeholder 1"/>
+	            <p:cNvSpPr>
+	              <a:spLocks noGrp="1"/>
+	            </p:cNvSpPr>
+	            <p:nvPr>
+	              <p:ph type="sldNum" sz="quarter" idx="12"/>
+	            </p:nvPr>
+	          </p:nvSpPr>
+	          <p:spPr>
+	            <a:xfrm>
+	              <a:off x="6553200" y="6356350"/>
+	              <a:ext cx="2133600" cy="365125"/>
+	            </a:xfrm>
+	            <a:prstGeom prst="rect">
+	              <a:avLst/>
+	            </a:prstGeom>
+	          </p:spPr>
+	          <p:txBody>
+	            <a:bodyPr vert="horz" lIns="91440" tIns="45720" rIns="91440" bIns="45720" rtlCol="0" anchor="ctr"/>
+	            <a:lstStyle>
+	              <a:lvl1pPr algn="r">
+	                <a:defRPr sz="1200">
+	                  <a:solidFill>
+	                    <a:schemeClr val="tx1">
+	                      <a:tint val="75000"/>
+	                    </a:schemeClr>
+	                  </a:solidFill>
+	                </a:defRPr>
+	              </a:lvl1pPr>
+	            </a:lstStyle>
+	            <a:p>
+	              <a:fld id="{EEA4CB10-01EC-4F0B-B0D3-B7B5571F5409}" type="slidenum">
+	                <a:rPr lang="en-US" smtClean="0"/>
+	                <a:t>‹#›</a:t>
+	              </a:fld>
+	              <a:endParaRPr lang="en-US"/>
+	            </a:p>
+	          </p:txBody>
+	        </p:sp>
 		</p:spTree>
 	</p:cSld>
 	<p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr>
