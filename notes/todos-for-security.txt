@@ -1,0 +1,26 @@
+4/25/2020:
+
+-Anywhere there is a for-in statement intended to loop through object properties, I use "object_var.hasOwnProperty(prop)" to prevent
+ accidentally looping through properties that are not originally owned by that object (such as inherited properties). Found out today
+ about a clever hack that could exploit this code pattern. Say, for example, a web service receives a JSON object that comes from user
+ input. It would be wrong for that service to immediately loop through the props of that JSON object calling hasOwnProperty() on each
+ iteration because the user could've easily sent this JSON object to the service:
+
+ {
+    "hasOwnProperty": 1
+ }
+
+ When the service executes "if(JSON_input.hasOwnProperty(prop))" it will crash because "hasOwnProperty" is now not a function. The
+ correct way to check prop ownership is through one of these prototype functions in the "Object" object (lol!):
+
+ var hasBarProperty = Object.prototype.hasOwnProperty.call(JSON_input, "prop_name");
+
+ var isPrototypeOfBar = Object.prototype.isPrototypeOf.call(JSON_input, prop);
+
+ var barIsEnumerable = {}.propertyIsEnumerable.call(JSON_input, "prop_name");
+
+ TODO: check this project and ppt-microservice for anywhere that it may be looping through props of JSON objects that come directly
+       from user input and replace the code with one of the patterns above. I don't think there are many places, but double check
+       to make sure. One place I found after a brief check was the "fields" property coming from the payload sent to
+       "/createOrgChartPayload" of the ppt-microservice. It does a for-in loop when merging field properties (see the function
+       called "mergeOptionProperties()" in orgChartPayloadGenerator.js).
