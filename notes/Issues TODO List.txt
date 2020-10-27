@@ -1,0 +1,4 @@
+Issues TODO List
+----------------
+
+-Remove unused media when slides which have ref's to the media are deleted.
