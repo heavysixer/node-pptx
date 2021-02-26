@@ -354,10 +354,9 @@ await pptx
   })
   .save('./chart.pptx');
 ```
+#### Chart Templates
 
 Although, you can use custom chart templates. Those will be imported from any pptx file and applied using an optional callback function. So, you don't have to wait for further chart types to be implemented, but reuse any existing chart. All you need to know is the chart-id inside the pptx file. Please refer to <code>template-chart.test.js</code> for further examples and handling combo chart types.
-
-#### Bar Charts
 
 ```javascript
 const PPTX = require('nodejs-pptx');
