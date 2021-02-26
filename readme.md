@@ -355,6 +355,53 @@ await pptx
   .save('./chart.pptx');
 ```
 
+Although, you can use custom chart templates. Those will be imported from any pptx file and applied using an optional callback function. So, you don't have to wait for further chart types to be implemented, but reuse any existing chart. All you need to know is the chart-id inside the pptx file. Please refer to <code>template-chart.test.js</code> for further examples and handling combo chart types.
+
+#### Bar Charts
+
+```javascript
+const PPTX = require('nodejs-pptx');
+let pptx = new PPTX.Composer();
+
+let barChartData1 = [
+  {
+    name: 'Series 1',
+    labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'],
+    values: [4.3, 2.5, 3.5, 4.5],
+  },
+  {
+    name: 'Series 2',
+    labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'],
+    values: [2.4, 4.4, 1.8, 2.8],
+  },
+  {
+    name: 'Series 3',
+    labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'],
+    values: [2.0, 2.0, 3.0, 5.0],
+  },
+];
+
+await pptx
+  .compose(async pres => {
+    await pres.layout('LAYOUT_4x3').addSlide(async slide => {
+      await slide.addChart(chart => {
+        chart
+          .template({
+            pptxFile: 'path/to/template.pptx',
+            xmlFile: 'ppt/charts/chart1.xml',
+            //callback: (template, { newChartSpaceBlock, TemplateHelper, chart }) => { ... }
+          })
+          .data(barChartData1)
+          .x(100)
+          .y(100)
+          .cx(400)
+          .cy(300)
+      });
+    });
+  })
+  .save('./template-chart.pptx');
+```
+
 ### Images
 
 ```javascript
