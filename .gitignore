@@ -9,6 +9,7 @@ bower_components/
 package-lock.json
 /__tests__/tmp
 .nyc_output/
+.vscode/
 coverage/
 PowerPoint\ Unzipped\ File\ Experiments/
 coverage/
