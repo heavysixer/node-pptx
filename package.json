@@ -1,6 +1,6 @@
 {
   "name": "nodejs-pptx",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Generate PPTX files on the server-side with JavaScript.",
   "license": "MIT",
   "repository": {
@@ -51,15 +51,13 @@
     "presentations"
   ],
   "dependencies": {
-    "async": "^2.6.4",
     "image-size": "^0.6.2",
     "jszip": "^3.1.5",
     "postman-request": "^2.88.1-postman.33",
     "uuid": "^8.3.0",
     "xml-js": "^1.5.2",
     "xml2js": "^0.4.19",
-    "xmlbuilder": "~09.0.1",
-    "yarn": "^1.22.10"
+    "xmlbuilder": "~9.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.14.2",
