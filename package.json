@@ -15,7 +15,10 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "jest"
+    "lint": "eslint --ext .js .",
+    "test": "jest",
+    "prettier": "prettier -w .",
+    "prettier-check": "prettier -c ."
   },
   "jest": {
     "verbose": true,
@@ -56,6 +59,11 @@
     "xmlbuilder": "~9.0.1"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.25.1",
+    "@eslint/js": "^9.8.0",
+    "eslint": "^9.36.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^15.8.0",
     "jest": "^29.7.0",
     "prettier": "^3.6.2"
   },

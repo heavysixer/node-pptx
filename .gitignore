@@ -6,7 +6,7 @@ npm-debug.log
 bower_components/
 .icloud
 *.icloud
-/__tests__/tmp
+/__tests__/tmp*
 .nyc_output/
 .vscode/
 coverage/

@@ -1,6 +1,5 @@
 const PPTX = require('../index.js');
 const fs = require('fs');
-const path = require('path');
 const tmpDir = `${__dirname}/tmp`;
 
 describe('Presentation Module', () => {
