@@ -13,7 +13,7 @@
     "Jonathan Boler (github.com/jboler)"
   ],
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "scripts": {
     "lint": "eslint --ext .js .",
@@ -52,11 +52,10 @@
   ],
   "dependencies": {
     "image-size": "^2.0.2",
-    "jszip": "^3.1.5",
-    "postman-request": "^2.88.1-postman.33",
-    "uuid": "^8.3.0",
-    "xml2js": "^0.5.0",
-    "xmlbuilder": "~9.0.1"
+    "jszip": "^3.10.1",
+    "uuid": "^11.0.0",
+    "xml2js": "^0.6.2",
+    "xmlbuilder": "^11.0.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.25.1",
