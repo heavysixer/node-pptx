@@ -35,7 +35,7 @@ export default [
     },
     rules: {
       complexity: ['error', 15],
-      'prettier/prettier': 'warn',
+      'prettier/prettier': 'error',
       'no-console': 'off',
       'prefer-template': 'warn',
       'array-callback-return': 'warn',

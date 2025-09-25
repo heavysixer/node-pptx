@@ -23,6 +23,5 @@ jobs:
         with:
           node-version-file: .nvmrc
       - run: npm ci
-      - run: npm run prettier-check
       - run: npm run lint
       - run: npm run test
