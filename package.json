@@ -9,7 +9,8 @@
   },
   "author": "Mark Daggett <mark@humansized.com> (github.com/heavysixer)",
   "contributors": [
-    "Greg Dolley (github.com/gregdolley)"
+    "Greg Dolley (github.com/gregdolley)",
+    "Jonathan Boler (github.com/jboler)"
   ],
   "engines": {
     "node": ">=4"
