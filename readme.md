@@ -512,7 +512,7 @@ await pptx.compose(async pres => {
 
 To run the unit tests for `nodejs-pptx` simply type this into your command line:
 
-`yarn test`
+`npm run test`
 
 You can also see the code coverage metrics as well which will be written to the `coverage/` directory.
 

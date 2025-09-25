@@ -1,6 +1,6 @@
 {
   "name": "nodejs-pptx",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Generate PPTX files on the server-side with JavaScript.",
   "license": "MIT",
   "repository": {
@@ -51,20 +51,19 @@
     "presentations"
   ],
   "dependencies": {
-    "async": "^2.6.4",
     "image-size": "^0.6.2",
     "jszip": "^3.1.5",
     "postman-request": "^2.88.1-postman.33",
     "uuid": "^8.3.0",
     "xml-js": "^1.5.2",
-    "xml2js": "^0.4.19",
-    "xmlbuilder": "~09.0.1",
-    "yarn": "^1.22.10"
+    "xml2js": "^0.5.0",
+    "xmlbuilder": "~9.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.14.2",
     "@babel/eslint-parser": "^7.14.2",
     "babel-cli": "^6.18.0",
+    "babel-eslint": "^7",
     "babel-preset-env": "^1.6.1",
     "eslint": "^7.26.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -73,7 +72,6 @@
     "eslint-loader": "^4.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "nodemon": "^1.19.4",
     "prettier": "^1.7.4",

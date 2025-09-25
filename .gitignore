@@ -6,7 +6,6 @@ npm-debug.log
 bower_components/
 .icloud
 *.icloud
-package-lock.json
 /__tests__/tmp
 .nyc_output/
 .vscode/

@@ -27,8 +27,8 @@ describe('Presentation Module', () => {
                             });
 
                             await slide.addImage({
-                                src: 'https://www.mcdonalds.com/content/dam/usa/logo/m_logo.png',
-                                href: 'https://www.mcdonalds.com',
+                                src: 'https://www.kernel.org/theme/images/logos/tux.png',
+                                href: 'https://www.kernel.org',
                                 x: 10,
                                 y: 400,
                                 cx: 50,
@@ -52,8 +52,8 @@ describe('Presentation Module', () => {
                             });
 
                             await slide.addImage({
-                                src: 'https://www.mcdonalds.com/content/dam/usa/logo/m_logo.png',
-                                href: 'https://www.mcdonalds.com',
+                                src: 'https://www.kernel.org/theme/images/logos/tux.png',
+                                href: 'https://www.kernel.org',
                                 x: 350,
                                 y: 350,
                                 cx: 50,
@@ -61,8 +61,8 @@ describe('Presentation Module', () => {
 
                             await slide.addImage(image => {
                                 image
-                                    .src('https://www.mcdonalds.com/content/dam/usa/logo/m_logo.png')
-                                    .href('https://www.mcdonalds.com')
+                                    .src('https://www.kernel.org/theme/images/logos/tux.png')
+                                    .href('https://www.kernel.org')
                                     .x(350)
                                     .y(425)
                                     .cx(50);
@@ -70,14 +70,14 @@ describe('Presentation Module', () => {
 
                             await slide.addImage(image => {
                                 image
-                                    .src('https://www.mcdonalds.com/content/dam/usa/logo/m_logo.png')
+                                    .src('https://www.kernel.org/theme/images/logos/tux.png')
                                     .x(400)
                                     .y(350)
                                     .cy(35);
                             });
 
                             await slide.addImage({
-                                src: 'https://www.mcdonalds.com/content/dam/usa/logo/m_logo.png',
+                                src: 'https://www.kernel.org/theme/images/logos/tux.png',
                                 x: 450,
                                 y: 350,
                                 cy: 75,
