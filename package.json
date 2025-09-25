@@ -15,8 +15,7 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "jest",
-    "test-with-coverage": "nyc jest"
+    "test": "jest"
   },
   "jest": {
     "verbose": true,
@@ -57,8 +56,8 @@
     "xmlbuilder": "~9.0.1"
   },
   "devDependencies": {
-    "jest": "^26.6.3",
-    "prettier": "^1.7.4"
+    "jest": "^29.7.0",
+    "prettier": "^3.6.2"
   },
   "bugs": {
     "url": "https://github.com/heavysixer/node-pptx/issues"
