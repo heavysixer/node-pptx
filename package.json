@@ -13,7 +13,7 @@
     "Jonathan Boler (github.com/jboler)"
   ],
   "engines": {
-    "node": ">=4"
+    "node": ">=16"
   },
   "scripts": {
     "lint": "eslint --ext .js .",
@@ -51,7 +51,7 @@
     "presentations"
   ],
   "dependencies": {
-    "image-size": "^0.6.2",
+    "image-size": "^2.0.2",
     "jszip": "^3.1.5",
     "postman-request": "^2.88.1-postman.33",
     "uuid": "^8.3.0",
