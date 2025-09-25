@@ -12,8 +12,7 @@ describe('TextBox Rotation Module', () => {
             pptx.compose(pres => {
                 pres.addSlide(slide => {
                     slide.addText(text => {
-                        text
-                            .value('Text box rotated counter-clockwise by 25 degrees')
+                        text.value('Text box rotated counter-clockwise by 25 degrees')
                             .x(100)
                             .y(150)
                             .cx(425)
@@ -29,33 +28,19 @@ describe('TextBox Rotation Module', () => {
                     });
 
                     slide.addText(text => {
-                        text
-                            .value('Italics with clockwise rotation by 25 degrees')
-                            .x(100)
-                            .y(325)
-                            .fontItalic(true)
-                            .rotation(25);
+                        text.value('Italics with clockwise rotation by 25 degrees').x(100).y(325).fontItalic(true).rotation(25);
                     });
 
                     slide.addText(text => {
-                        text
-                            .value('45 degree rotation (clockwise)')
-                            .x(20)
-                            .y(150)
-                            .rotation(45);
+                        text.value('45 degree rotation (clockwise)').x(20).y(150).rotation(45);
                     });
 
                     slide.addText(text => {
-                        text
-                            .value('45 degree rotation (counter-clockwise)')
-                            .x(150)
-                            .y(100)
-                            .rotation(-45);
+                        text.value('45 degree rotation (counter-clockwise)').x(150).y(100).rotation(-45);
                     });
 
                     slide.addText(text => {
-                        text
-                            .value('Vertical text read from bottom to top.')
+                        text.value('Vertical text read from bottom to top.')
                             .x(350)
                             .y(250)
                             .cx(375)
@@ -65,8 +50,7 @@ describe('TextBox Rotation Module', () => {
                     });
 
                     slide.addText(text => {
-                        text
-                            .value('Vertical text read from top to bottom.')
+                        text.value('Vertical text read from top to bottom.')
                             .x(400)
                             .y(250)
                             .cx(375)
@@ -79,63 +63,59 @@ describe('TextBox Rotation Module', () => {
                 // bullet points that are rotated as a whole group
                 pres.addSlide(slide => {
                     slide.addText(text => {
-                        text
-                            .bulletPoints([
-                                { text: 'This entire bullet-point panel should be rotated clockwise by 10 degrees', fontUnderline: true },
-                                { text: 'Order Breakfast:', fontBold: true },
+                        text.bulletPoints([
+                            { text: 'This entire bullet-point panel should be rotated clockwise by 10 degrees', fontUnderline: true },
+                            { text: 'Order Breakfast:', fontBold: true },
+                            [
+                                { textSegments: [{ text: 'Type: ', fontBold: true }, { text: 'Task' }], bulletToTextGapSize: 0 },
+                                { textSegments: [{ text: 'Overview: ordering breakfast is important.' }] },
+                                { textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '10.5 hours' }] },
+                                { text: 'Responsibility assignments:', fontBold: true, indentSize: 45, bulletToTextGapSize: 0 },
                                 [
-                                    { textSegments: [{ text: 'Type: ', fontBold: true }, { text: 'Task' }], bulletToTextGapSize: 0 },
-                                    { textSegments: [{ text: 'Overview: ordering breakfast is important.' }] },
-                                    { textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '10.5 hours' }] },
-                                    { text: 'Responsibility assignments:', fontBold: true, indentSize: 45, bulletToTextGapSize: 0 },
-                                    [
-                                        { text: 'Kitchen Porter (R): blaw.', fontFace: 'Arial', fontSize: 15 },
-                                        'Sous Chef (A): blaw, blaw.',
-                                        'Waiter (R)(A): more blaw...',
-                                        'Customer (R): blaw.',
-                                    ],
-                                    { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some comments here...' }] },
-                                    { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'No.' }] },
+                                    { text: 'Kitchen Porter (R): blaw.', fontFace: 'Arial', fontSize: 15 },
+                                    'Sous Chef (A): blaw, blaw.',
+                                    'Waiter (R)(A): more blaw...',
+                                    'Customer (R): blaw.',
                                 ],
-                                { text: 'Take Order:', fontBold: true, bulletType: PPTX.BulletTypes.STAR },
-                                [
-                                    {
-                                        textSegments: [{ text: 'Type: ', fontBold: true }, { text: 'Task' }],
-                                        bulletType: PPTX.BulletTypes.HOLLOW_ROUND,
-                                    },
-                                    {
-                                        textSegments: [{ text: 'Overview: ', fontBold: true }, { text: 'Taking orders is very important.' }],
-                                        bulletType: PPTX.BulletTypes.FILLED_SQUARE,
-                                    },
-                                    {
-                                        textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '12.5 hours' }],
-                                        bulletType: PPTX.BulletTypes.HOLLOW_SQUARE,
-                                    },
-                                    { text: 'Responsibility assignments:', fontBold: true, bulletType: PPTX.BulletTypes.ARROW },
-                                    ['Kitchen Porter (R): blaw.', 'Sous Chef (A): blaw, blaw.', 'Waiter (R)(A): stuff...'],
-                                    {
-                                        textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some more comments here...' }],
-                                        bulletType: PPTX.BulletTypes.CHECKMARK,
-                                    },
-                                    { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'No.' }] },
-                                ],
-                                { text: 'Prepare Ingredients:', fontBold: true, startAt: 6 },
-                                [
-                                    { textSegments: [{ text: 'Type: ', fontBold: true, fontFace: 'Arial' }, { text: 'Task' }] },
-                                    {
-                                        textSegments: [
-                                            { text: 'Overview: ', fontBold: true },
-                                            { text: 'this is very important to making breakfast.' },
-                                        ],
-                                    },
-                                    { textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '3.71 hours' }], startAt: 9 },
-                                    { text: 'Responsibility assignments:', fontBold: true, startAt: 10 },
-                                    ['Kitchen Porter (R): blaw.', 'Sous Chef (A): blaw, blaw.', 'Waiter (R)(A): Waiter needs to be trained.'],
-                                    { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some more comments here...' }], startAt: 9 },
-                                    { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'Yes.' }], startAt: 9 },
-                                ],
-                                [['Level 3 indented']],
-                            ])
+                                { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some comments here...' }] },
+                                { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'No.' }] },
+                            ],
+                            { text: 'Take Order:', fontBold: true, bulletType: PPTX.BulletTypes.STAR },
+                            [
+                                {
+                                    textSegments: [{ text: 'Type: ', fontBold: true }, { text: 'Task' }],
+                                    bulletType: PPTX.BulletTypes.HOLLOW_ROUND,
+                                },
+                                {
+                                    textSegments: [{ text: 'Overview: ', fontBold: true }, { text: 'Taking orders is very important.' }],
+                                    bulletType: PPTX.BulletTypes.FILLED_SQUARE,
+                                },
+                                {
+                                    textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '12.5 hours' }],
+                                    bulletType: PPTX.BulletTypes.HOLLOW_SQUARE,
+                                },
+                                { text: 'Responsibility assignments:', fontBold: true, bulletType: PPTX.BulletTypes.ARROW },
+                                ['Kitchen Porter (R): blaw.', 'Sous Chef (A): blaw, blaw.', 'Waiter (R)(A): stuff...'],
+                                {
+                                    textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some more comments here...' }],
+                                    bulletType: PPTX.BulletTypes.CHECKMARK,
+                                },
+                                { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'No.' }] },
+                            ],
+                            { text: 'Prepare Ingredients:', fontBold: true, startAt: 6 },
+                            [
+                                { textSegments: [{ text: 'Type: ', fontBold: true, fontFace: 'Arial' }, { text: 'Task' }] },
+                                {
+                                    textSegments: [{ text: 'Overview: ', fontBold: true }, { text: 'this is very important to making breakfast.' }],
+                                },
+                                { textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '3.71 hours' }], startAt: 9 },
+                                { text: 'Responsibility assignments:', fontBold: true, startAt: 10 },
+                                ['Kitchen Porter (R): blaw.', 'Sous Chef (A): blaw, blaw.', 'Waiter (R)(A): Waiter needs to be trained.'],
+                                { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some more comments here...' }], startAt: 9 },
+                                { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'Yes.' }], startAt: 9 },
+                            ],
+                            [['Level 3 indented']],
+                        ])
                             .fontFace('Calibri')
                             .textColor('002960')
                             .fontSize(10)

@@ -53,11 +53,13 @@ describe('Presentation Module', () => {
         try {
             expect.assertions(1);
 
-            let complete = (await new PPTX.Composer().compose(async pres => {
-                await pres.layout({ width: 13.33, height: 7.5 }).addSlide(slide => {
-                    makeProcessMapOnSlide(slide);
-                });
-            })).save(`${tmpDir}/new-process-map.pptx`);
+            let complete = (
+                await new PPTX.Composer().compose(async pres => {
+                    await pres.layout({ width: 13.33, height: 7.5 }).addSlide(slide => {
+                        makeProcessMapOnSlide(slide);
+                    });
+                })
+            ).save(`${tmpDir}/new-process-map.pptx`);
 
             await complete;
 
@@ -75,8 +77,7 @@ function makeProcessMapOnSlide(slide) {
 
     slide
         .addText(text => {
-            text
-                .value('Process map template')
+            text.value('Process map template')
                 .x(PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(2.12)))
                 .y(PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.52)))
                 .cx(PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.43)))
@@ -88,8 +89,7 @@ function makeProcessMapOnSlide(slide) {
                 .textVerticalAlign('bottom');
         })
         .addText(text => {
-            text
-                .value('Cool Font Test')
+            text.value('Cool Font Test')
                 .x(PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.1)))
                 .y(PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.1)))
                 .cx(PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(2.43)))
@@ -653,8 +653,7 @@ function makeProcessMapOnSlide(slide) {
                 .line({ width: 1.0 });
         })
         .addText(text => {
-            text
-                .value('Responsible')
+            text.value('Responsible')
                 .x(PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.74)))
                 .y(PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.61)))
                 .cx(PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.68)))
@@ -665,8 +664,7 @@ function makeProcessMapOnSlide(slide) {
                 .margin(0);
         })
         .addText(text => {
-            text
-                .value('Accountable')
+            text.value('Accountable')
                 .x(PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(10.81)))
                 .y(PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.61)))
                 .cx(PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.71)))
@@ -677,8 +675,7 @@ function makeProcessMapOnSlide(slide) {
                 .margin({ top: 0, bottom: 0, left: 0, right: 0 });
         })
         .addText(text => {
-            text
-                .value('Consulted')
+            text.value('Consulted')
                 .x(PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(9.74)))
                 .y(PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.82)))
                 .cx(PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.57)))
@@ -689,8 +686,7 @@ function makeProcessMapOnSlide(slide) {
                 .margin(0);
         })
         .addText(text => {
-            text
-                .value('Informed')
+            text.value('Informed')
                 .x(PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(10.81)))
                 .y(PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.82)))
                 .cx(PptxUnitHelper.toPixels(PptxUnitHelper.fromInches(0.53)))

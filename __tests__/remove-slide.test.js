@@ -16,29 +16,19 @@ describe('Presentation Module', () => {
             await pptx.compose(async pres => {
                 pres.addSlide(slide => {
                     slide.addText(text => {
-                        text
-                            .value('Slide 1')
-                            .x(200)
-                            .y(100);
+                        text.value('Slide 1').x(200).y(100);
                     });
                 });
 
                 pres.addSlide(slide => {
                     slide.addText(text => {
-                        text
-                            .value('Slide 2')
-                            .x(200)
-                            .y(100);
+                        text.value('Slide 2').x(200).y(100);
                     });
                 });
 
                 pres.addSlide(slide => {
                     slide.addText(text => {
-                        text
-                            .value('Slide 3 (which is now on slide 2 because the original slide 2 was removed)')
-                            .x(50)
-                            .y(100)
-                            .cx(800);
+                        text.value('Slide 3 (which is now on slide 2 because the original slide 2 was removed)').x(50).y(100).cx(800);
                     });
                 });
 
@@ -69,24 +59,15 @@ describe('Presentation Module', () => {
                 let slide3 = await pres.addSlide();
 
                 slide1.addText(text => {
-                    text
-                        .value('Slide 1')
-                        .x(200)
-                        .y(100);
+                    text.value('Slide 1').x(200).y(100);
                 });
 
                 slide2.addText(text => {
-                    text
-                        .value('Slide 2')
-                        .x(200)
-                        .y(100);
+                    text.value('Slide 2').x(200).y(100);
                 });
 
                 slide3.addText(text => {
-                    text
-                        .value('Slide 3')
-                        .x(200)
-                        .y(100);
+                    text.value('Slide 3').x(200).y(100);
                 });
 
                 pres.removeSlide(slide1);
@@ -157,24 +138,15 @@ describe('Presentation Module', () => {
                 let slide3 = await pres.addSlide();
 
                 slide1.addText(text => {
-                    text
-                        .value('Slide 1')
-                        .x(200)
-                        .y(100);
+                    text.value('Slide 1').x(200).y(100);
                 });
 
                 slide2.addText(text => {
-                    text
-                        .value('Slide 2')
-                        .x(200)
-                        .y(100);
+                    text.value('Slide 2').x(200).y(100);
                 });
 
                 slide3.addText(text => {
-                    text
-                        .value('Slide 3')
-                        .x(200)
-                        .y(100);
+                    text.value('Slide 3').x(200).y(100);
                 });
 
                 pres.removeSlide(slide3);

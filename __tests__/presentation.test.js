@@ -21,12 +21,7 @@ describe('Presentation Module', () => {
                 await pptx.load(`${__dirname}/fixtures/basic2.pptx`);
                 await pptx.compose(pres => {
                     pres.getSlide('slide1').addImage(image => {
-                        image
-                            .file(`${__dirname}/images/pizza.jpg`)
-                            .x(500)
-                            .y(100)
-                            .cx(166)
-                            .cy(100);
+                        image.file(`${__dirname}/images/pizza.jpg`).x(500).y(100).cx(166).cy(100);
                     });
 
                     pres.addSlide(slide => {
@@ -60,16 +55,10 @@ describe('Presentation Module', () => {
                                 text.value('This is slide 1');
                             })
                             .addText(text => {
-                                text
-                                    .value('Link to slide 3')
-                                    .href('#3')
-                                    .y(25);
+                                text.value('Link to slide 3').href('#3').y(25);
                             })
                             .addText(text => {
-                                text
-                                    .value('Link to slide 4')
-                                    .href('#4')
-                                    .y(50);
+                                text.value('Link to slide 4').href('#4').y(50);
                             });
                     });
 
@@ -83,16 +72,10 @@ describe('Presentation Module', () => {
                                 text.value('This is slide 3');
                             })
                             .addText(text => {
-                                text
-                                    .value('Go back to slide 1')
-                                    .href('#1')
-                                    .y(25);
+                                text.value('Go back to slide 1').href('#1').y(25);
                             })
                             .addText(text => {
-                                text
-                                    .value('Go to slide 2')
-                                    .y(50)
-                                    .href('#2');
+                                text.value('Go to slide 2').y(50).href('#2');
                             });
                     });
 
@@ -102,21 +85,14 @@ describe('Presentation Module', () => {
                                 text.value('This is slide 4.');
                             })
                             .addText(text => {
-                                text
-                                    .value('Go to slide 1')
-                                    .href('#1')
-                                    .x(25)
-                                    .y(25);
+                                text.value('Go to slide 1').href('#1').x(25).y(25);
                             });
                     });
 
                     pres.addSlide(slide => {
                         slide
                             .addText(text => {
-                                text
-                                    .value('This is slide 5.')
-                                    .x(200)
-                                    .y(200);
+                                text.value('This is slide 5.').x(200).y(200);
                             })
                             .addText(text => {
                                 text.value('Go back to slide 3').href('#3');
@@ -232,11 +208,7 @@ describe('Presentation Module', () => {
 
                     pres.addSlide(slide => {
                         slide.addImage(image => {
-                            image
-                                .file(`${__dirname}/images/pizza.jpg`)
-                                .x(50)
-                                .y(50)
-                                .cx(200);
+                            image.file(`${__dirname}/images/pizza.jpg`).x(50).y(50).cx(200);
                         });
                     });
 
@@ -247,71 +219,28 @@ describe('Presentation Module', () => {
                             text.value('Hello world!');
                         })
                         .addShape(shape => {
-                            shape
-                                .type(PPTX.ShapeTypes.TRIANGLE)
-                                .x(100)
-                                .y(400)
-                                .cx(100)
-                                .cy(100)
-                                .href('http://www.google.com');
+                            shape.type(PPTX.ShapeTypes.TRIANGLE).x(100).y(400).cx(100).cy(100).href('http://www.google.com');
                         })
                         .addShape(shape => {
-                            shape
-                                .type(PPTX.ShapeTypes.TRIANGLE)
-                                .x(300)
-                                .y(400)
-                                .cx(250)
-                                .cy(100)
-                                .text('link to slide 2')
-                                .href('#2');
+                            shape.type(PPTX.ShapeTypes.TRIANGLE).x(300).y(400).cx(250).cy(100).text('link to slide 2').href('#2');
                         })
                         .addText(text => {
-                            text
-                                .value('This is a hyperlink! Will this go to google?')
-                                .x(0)
-                                .y(25)
-                                .cx(400)
-                                .href('http://www.google.com');
+                            text.value('This is a hyperlink! Will this go to google?').x(0).y(25).cx(400).href('http://www.google.com');
                         })
                         .addText(text => {
-                            text
-                                .value('Will this go to slide 3?')
-                                .x(0)
-                                .y(50)
-                                .href('#3');
+                            text.value('Will this go to slide 3?').x(0).y(50).href('#3');
                         })
                         .addText(text => {
-                            text
-                                .value('Another piece of text, non-default position, wide block.')
-                                .x(100)
-                                .y(100)
-                                .cx(500)
-                                .cy(50);
+                            text.value('Another piece of text, non-default position, wide block.').x(100).y(100).cx(500).cy(50);
                         })
                         .addText(text => {
-                            text
-                                .value('Text in skinny block, this should wrap.')
-                                .textVerticalAlign('top')
-                                .x(20)
-                                .y(150)
-                                .cx(200)
-                                .cy(150);
+                            text.value('Text in skinny block, this should wrap.').textVerticalAlign('top').x(20).y(150).cx(200).cy(150);
                         })
                         .addText(text => {
-                            text
-                                .value('Non-Latin (Cyrillic) character test: Привет мир!')
-                                .textVerticalAlign('top')
-                                .x(300)
-                                .y(150)
-                                .cx(400)
-                                .cy(150);
+                            text.value('Non-Latin (Cyrillic) character test: Привет мир!').textVerticalAlign('top').x(300).y(150).cx(400).cy(150);
                         })
                         .addText(text => {
-                            text
-                                .value("Let's go crazy: оалмгцнйукрлмьтсмщфзйудлтлваывувыаитыбюяй")
-                                .x(300)
-                                .y(175)
-                                .cx(400);
+                            text.value("Let's go crazy: оалмгцнйукрлмьтсмщфзйудлтлваывувыаитыбюяй").x(300).y(175).cx(400);
                         })
                         .addImage(image => {
                             image
@@ -323,21 +252,11 @@ describe('Presentation Module', () => {
                         });
 
                     defaultSlide.addImage(image => {
-                        image
-                            .file(`${__dirname}/images/pizza.jpg`)
-                            .href('#3')
-                            .x(100)
-                            .y(200)
-                            .cx(166)
-                            .cy(100);
+                        image.file(`${__dirname}/images/pizza.jpg`).href('#3').x(100).y(200).cx(166).cy(100);
                     });
 
                     defaultSlide.addImage(image => {
-                        image
-                            .file(`${__dirname}/images/image1.png`)
-                            .x(400)
-                            .y(250)
-                            .cy(150);
+                        image.file(`${__dirname}/images/image1.png`).x(400).y(250).cy(150);
                     });
 
                     pres.getSlide('slide3').addText(text => {
@@ -346,7 +265,7 @@ describe('Presentation Module', () => {
                 });
 
                 await pptx.save(`${tmpDir}/presentation-new-multiple-slides.pptx`);
-                await pptx.save(function(content) {
+                await pptx.save(function (content) {
                     fs.writeFileSync(`${tmpDir}/presentation-new-multiple-slides-buffered.pptx`, content);
                 });
 

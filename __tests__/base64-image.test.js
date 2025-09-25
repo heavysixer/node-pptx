@@ -20,10 +20,7 @@ describe('Presentation Module', () => {
                         .author('Greg Dolley')
                         .addSlide(async slide => {
                             slide.addImage(image => {
-                                image
-                                    .file(`${__dirname}/images/pizza.jpg`)
-                                    .x(100)
-                                    .cx(200);
+                                image.file(`${__dirname}/images/pizza.jpg`).x(100).cx(200);
                             });
 
                             await slide.addImage({
@@ -60,20 +57,11 @@ describe('Presentation Module', () => {
                             });
 
                             await slide.addImage(image => {
-                                image
-                                    .src('https://www.kernel.org/theme/images/logos/tux.png')
-                                    .href('https://www.kernel.org')
-                                    .x(350)
-                                    .y(425)
-                                    .cx(50);
+                                image.src('https://www.kernel.org/theme/images/logos/tux.png').href('https://www.kernel.org').x(350).y(425).cx(50);
                             });
 
                             await slide.addImage(image => {
-                                image
-                                    .src('https://www.kernel.org/theme/images/logos/tux.png')
-                                    .x(400)
-                                    .y(350)
-                                    .cy(35);
+                                image.src('https://www.kernel.org/theme/images/logos/tux.png').x(400).y(350).cy(35);
                             });
 
                             await slide.addImage({
