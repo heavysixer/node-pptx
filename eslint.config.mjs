@@ -1,7 +1,8 @@
 import globals from 'globals';
 import js from '@eslint/js';
 import babelParser from '@babel/eslint-parser';
-import prettierConfig from 'eslint-config-prettier/flat';
+import prettierConfigFlat from 'eslint-config-prettier/flat';
+import prettierPlugin from 'eslint-plugin-prettier';
 
 export default [
   {
@@ -29,9 +30,12 @@ export default [
         ...globals.jest,
       },
     },
-    plugins: {},
+    plugins: {
+      prettier: prettierPlugin,
+    },
     rules: {
       complexity: ['error', 15],
+      'prettier/prettier': 'warn',
       'no-console': 'off',
       'prefer-template': 'warn',
       'array-callback-return': 'warn',
@@ -136,5 +140,5 @@ export default [
       'valid-typeof': 'error',
     },
   },
-  prettierConfig,
+  prettierConfigFlat,
 ];
