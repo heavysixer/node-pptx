@@ -60,25 +60,21 @@ describe('Charts Module', () => {
             ];
 
             let pptx = new PPTX.Composer();
-            let promise = (await pptx.compose(async pres => {
-                await pres.layout('LAYOUT_4x3').addSlide(async slide => {
-                    await slide.addChart(chart => {
-                        chart
-                            .type('bar')
-                            .data(barChartData1)
-                            .x(100)
-                            .y(100)
-                            .cx(400)
-                            .cy(300);
+            let promise = (
+                await pptx.compose(async pres => {
+                    await pres.layout('LAYOUT_4x3').addSlide(async slide => {
+                        await slide.addChart(chart => {
+                            chart.type('bar').data(barChartData1).x(100).y(100).cx(400).cy(300);
+                        });
                     });
-                });
 
-                await pres.addSlide(async slide => {
-                    await slide.addChart(chart => {
-                        chart.data(barChartData2);
+                    await pres.addSlide(async slide => {
+                        await slide.addChart(chart => {
+                            chart.data(barChartData2);
+                        });
                     });
-                });
-            })).save(`${tmpDir}/charts-new-add-chart.pptx`);
+                })
+            ).save(`${tmpDir}/charts-new-add-chart.pptx`);
 
             await promise;
 
@@ -90,9 +86,9 @@ describe('Charts Module', () => {
     });
 
     xtest('should be able to add a chart to an existing PowerPoint', () => {
-    // TODO: test the following:
-    //      1) load existing with no chart, then add a chart
-    //      2) load existing with a chart, then add a chart (you _might_ need to parse out worksheet counts for this)
+        // TODO: test the following:
+        //      1) load existing with no chart, then add a chart
+        //      2) load existing with a chart, then add a chart (you _might_ need to parse out worksheet counts for this)
     });
 });
 

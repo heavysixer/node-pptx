@@ -9,17 +9,17 @@
   },
   "author": "Mark Daggett <mark@humansized.com> (github.com/heavysixer)",
   "contributors": [
-    "Greg Dolley (github.com/gregdolley)"
+    "Greg Dolley (github.com/gregdolley)",
+    "Jonathan Boler (github.com/jboler)"
   ],
   "engines": {
-    "node": ">=4"
+    "node": ">=18"
   },
   "scripts": {
+    "lint": "eslint --ext .js .",
     "test": "jest",
-    "eslint-config": "eslint --print-config .eslintrc.json",
-    "eslint-check": "eslint --print-config .eslintrc.json | eslint-config-prettier-check",
-    "lint": "./node_modules/eslint/bin/eslint.js --ext .js lib",
-    "test-with-coverage": "nyc jest"
+    "prettier": "prettier -w .",
+    "prettier-check": "prettier -c ."
   },
   "jest": {
     "verbose": true,
@@ -51,33 +51,21 @@
     "presentations"
   ],
   "dependencies": {
-    "image-size": "^0.6.2",
-    "jszip": "^3.1.5",
-    "postman-request": "^2.88.1-postman.33",
-    "uuid": "^8.3.0",
-    "xml-js": "^1.5.2",
-    "xml2js": "^0.5.0",
-    "xmlbuilder": "~9.0.1"
+    "image-size": "^2.0.2",
+    "jszip": "^3.10.1",
+    "uuid": "^11.0.0",
+    "xml2js": "^0.6.2",
+    "xmlbuilder": "^11.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.2",
-    "@babel/eslint-parser": "^7.14.2",
-    "babel-cli": "^6.18.0",
-    "babel-eslint": "^7",
-    "babel-preset-env": "^1.6.1",
-    "eslint": "^7.26.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-config-prettier": "^2.6.0",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "jest": "^26.6.3",
-    "nodemon": "^3.1.10",
-    "prettier": "^1.7.4",
-    "superagent": "^3.8.1",
-    "supertest": "^3.0.0",
-    "tar": "^4.4.2"
+    "@babel/eslint-parser": "^7.25.1",
+    "@eslint/js": "^9.8.0",
+    "eslint": "^9.36.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "globals": "^15.8.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.6.2"
   },
   "bugs": {
     "url": "https://github.com/heavysixer/node-pptx/issues"

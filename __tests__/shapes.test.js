@@ -12,12 +12,7 @@ describe('Shape Module', () => {
             pptx.compose(pres => {
                 pres.addSlide(slide => {
                     slide.addShape(shape => {
-                        shape
-                            .type(PPTX.ShapeTypes.TRIANGLE)
-                            .x(50)
-                            .y(50)
-                            .cx(50)
-                            .cy(50);
+                        shape.type(PPTX.ShapeTypes.TRIANGLE).x(50).y(50).cx(50).cy(50);
                     });
 
                     slide.addShape({ type: PPTX.ShapeTypes.TRIANGLE, x: 150, y: 50, cx: 50, cy: 50, color: '00FF00' });
@@ -31,8 +26,7 @@ describe('Shape Module', () => {
                         type: PPTX.ShapeTypes.OVAL,
                         x: 50,
                         y: 325,
-                        text:
-                            'Auto-fit test - width and height of shape object should not be specified. This shape should auto-grow to fit this text. ',
+                        text: 'Auto-fit test - width and height of shape object should not be specified. This shape should auto-grow to fit this text. ',
                         autoFit: true,
                     });
                     // TODO: FIXME: auto-shrink text broke (well, it didn't work perfectly before either - when opening a PPTX with an auto-shrink text shape, the text

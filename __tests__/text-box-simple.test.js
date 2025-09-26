@@ -13,8 +13,7 @@ describe('TextBox Module', () => {
                 pres.addSlide(slide => {
                     // declarative way of adding an object
                     slide.addText(text => {
-                        text
-                            .value('Hello World!')
+                        text.value('Hello World!')
                             .x(100)
                             .y(50)
                             .fontFace('Alien Encounters')
@@ -31,35 +30,19 @@ describe('TextBox Module', () => {
                     slide.addText({ value: 'Link to google.com', x: 200, y: 200, href: 'http://www.google.com' });
 
                     slide.addText(text => {
-                        text
-                            .value('Italics')
-                            .x(100)
-                            .y(325)
-                            .fontItalic(true);
+                        text.value('Italics').x(100).y(325).fontItalic(true);
                     });
 
                     slide.addText(text => {
-                        text
-                            .value('Underlined text')
-                            .x(100)
-                            .y(350)
-                            .fontUnderline(true);
+                        text.value('Underlined text').x(100).y(350).fontUnderline(true);
                     });
 
                     slide.addText(text => {
-                        text
-                            .value('Subscript')
-                            .x(100)
-                            .y(375)
-                            .fontSubscript(true);
+                        text.value('Subscript').x(100).y(375).fontSubscript(true);
                     });
 
                     slide.addText(text => {
-                        text
-                            .value('Superscript')
-                            .x(100)
-                            .y(400)
-                            .fontSuperscript(true);
+                        text.value('Superscript').x(100).y(400).fontSuperscript(true);
                     });
 
                     slide.addText({
@@ -76,62 +59,58 @@ describe('TextBox Module', () => {
                 // how to do a set of bullet points:
                 pres.addSlide(slide => {
                     slide.addText(text => {
-                        text
-                            .bulletPoints([
-                                { text: 'Order Breakfast:', fontBold: true },
+                        text.bulletPoints([
+                            { text: 'Order Breakfast:', fontBold: true },
+                            [
+                                { textSegments: [{ text: 'Type: ', fontBold: true }, { text: 'Task' }], bulletToTextGapSize: 0 },
+                                { textSegments: [{ text: 'Overview: ordering breakfast is important.' }] },
+                                { textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '10.5 hours' }] },
+                                { text: 'Responsibility assignments:', fontBold: true, indentSize: 45, bulletToTextGapSize: 0 },
                                 [
-                                    { textSegments: [{ text: 'Type: ', fontBold: true }, { text: 'Task' }], bulletToTextGapSize: 0 },
-                                    { textSegments: [{ text: 'Overview: ordering breakfast is important.' }] },
-                                    { textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '10.5 hours' }] },
-                                    { text: 'Responsibility assignments:', fontBold: true, indentSize: 45, bulletToTextGapSize: 0 },
-                                    [
-                                        { text: 'Kitchen Porter (R): blaw.', fontFace: 'Arial', fontSize: 15 },
-                                        'Sous Chef (A): blaw, blaw.',
-                                        'Waiter (R)(A): more blaw...',
-                                        'Customer (R): blaw.',
-                                    ],
-                                    { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some comments here...' }] },
-                                    { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'No.' }] },
+                                    { text: 'Kitchen Porter (R): blaw.', fontFace: 'Arial', fontSize: 15 },
+                                    'Sous Chef (A): blaw, blaw.',
+                                    'Waiter (R)(A): more blaw...',
+                                    'Customer (R): blaw.',
                                 ],
-                                { text: 'Take Order:', fontBold: true, bulletType: PPTX.BulletTypes.STAR },
-                                [
-                                    {
-                                        textSegments: [{ text: 'Type: ', fontBold: true }, { text: 'Task' }],
-                                        bulletType: PPTX.BulletTypes.HOLLOW_ROUND,
-                                    },
-                                    {
-                                        textSegments: [{ text: 'Overview: ', fontBold: true }, { text: 'Taking orders is very important.' }],
-                                        bulletType: PPTX.BulletTypes.FILLED_SQUARE,
-                                    },
-                                    {
-                                        textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '12.5 hours' }],
-                                        bulletType: PPTX.BulletTypes.HOLLOW_SQUARE,
-                                    },
-                                    { text: 'Responsibility assignments:', fontBold: true, bulletType: PPTX.BulletTypes.ARROW },
-                                    ['Kitchen Porter (R): blaw.', 'Sous Chef (A): blaw, blaw.', 'Waiter (R)(A): stuff...'],
-                                    {
-                                        textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some more comments here...' }],
-                                        bulletType: PPTX.BulletTypes.CHECKMARK,
-                                    },
-                                    { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'No.' }] },
-                                ],
-                                { text: 'Prepare Ingredients:', fontBold: true, startAt: 6 },
-                                [
-                                    { textSegments: [{ text: 'Type: ', fontBold: true, fontFace: 'Arial' }, { text: 'Task' }] },
-                                    {
-                                        textSegments: [
-                                            { text: 'Overview: ', fontBold: true },
-                                            { text: 'this is very important to making breakfast.' },
-                                        ],
-                                    },
-                                    { textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '3.71 hours' }], startAt: 9 },
-                                    { text: 'Responsibility assignments:', fontBold: true, startAt: 10 },
-                                    ['Kitchen Porter (R): blaw.', 'Sous Chef (A): blaw, blaw.', 'Waiter (R)(A): Waiter needs to be trained.'],
-                                    { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some more comments here...' }], startAt: 9 },
-                                    { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'Yes.' }], startAt: 9 },
-                                ],
-                                [['Level 3 indented']],
-                            ])
+                                { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some comments here...' }] },
+                                { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'No.' }] },
+                            ],
+                            { text: 'Take Order:', fontBold: true, bulletType: PPTX.BulletTypes.STAR },
+                            [
+                                {
+                                    textSegments: [{ text: 'Type: ', fontBold: true }, { text: 'Task' }],
+                                    bulletType: PPTX.BulletTypes.HOLLOW_ROUND,
+                                },
+                                {
+                                    textSegments: [{ text: 'Overview: ', fontBold: true }, { text: 'Taking orders is very important.' }],
+                                    bulletType: PPTX.BulletTypes.FILLED_SQUARE,
+                                },
+                                {
+                                    textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '12.5 hours' }],
+                                    bulletType: PPTX.BulletTypes.HOLLOW_SQUARE,
+                                },
+                                { text: 'Responsibility assignments:', fontBold: true, bulletType: PPTX.BulletTypes.ARROW },
+                                ['Kitchen Porter (R): blaw.', 'Sous Chef (A): blaw, blaw.', 'Waiter (R)(A): stuff...'],
+                                {
+                                    textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some more comments here...' }],
+                                    bulletType: PPTX.BulletTypes.CHECKMARK,
+                                },
+                                { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'No.' }] },
+                            ],
+                            { text: 'Prepare Ingredients:', fontBold: true, startAt: 6 },
+                            [
+                                { textSegments: [{ text: 'Type: ', fontBold: true, fontFace: 'Arial' }, { text: 'Task' }] },
+                                {
+                                    textSegments: [{ text: 'Overview: ', fontBold: true }, { text: 'this is very important to making breakfast.' }],
+                                },
+                                { textSegments: [{ text: 'Cycle time: ', fontBold: true }, { text: '3.71 hours' }], startAt: 9 },
+                                { text: 'Responsibility assignments:', fontBold: true, startAt: 10 },
+                                ['Kitchen Porter (R): blaw.', 'Sous Chef (A): blaw, blaw.', 'Waiter (R)(A): Waiter needs to be trained.'],
+                                { textSegments: [{ text: 'Comments: ', fontBold: true }, { text: 'some more comments here...' }], startAt: 9 },
+                                { textSegments: [{ text: 'Repeating process: ', fontBold: true }, { text: 'Yes.' }], startAt: 9 },
+                            ],
+                            [['Level 3 indented']],
+                        ])
                             .fontFace('Calibri')
                             .textColor('002960')
                             .fontSize(10)

@@ -32,11 +32,7 @@ describe('Presentation Module', () => {
                 slide.moveTo(2);
 
                 slide.addText(text => {
-                    text
-                        .value('If this slide says "original slide #3" but is in slide position 2, then it worked.')
-                        .x(25)
-                        .y(200)
-                        .cx(600);
+                    text.value('If this slide says "original slide #3" but is in slide position 2, then it worked.').x(25).y(200).cx(600);
                 });
             });
 
